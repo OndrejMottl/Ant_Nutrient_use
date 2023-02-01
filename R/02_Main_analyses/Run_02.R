@@ -1,18 +1,18 @@
 #----------------------------------------------------------#
 #
 #
-#                       Project name
+#                Tropical ant nutrient use
 #
 #            Source all code for main analyses
-#                 
 #
-#                         Names 
-#                         Year
+#
+#             O. Mottl, J. Mosses, P. Klimes
+#                         2023
 #
 #----------------------------------------------------------#
 
-# Sources all or selected processing steps in the folder of 
-# 03_Main analyses. These analyses are meant for the main output such as 
+# Sources all or selected processing steps in the folder of
+# 03_Main analyses. These analyses are meant for the main output such as
 # the most important figures and tables of analyses
 
 
@@ -30,7 +30,7 @@ source("R/00_Config_file.R")
 # 2. Run individual parts -----
 #----------------------------------------------------------#
 
-working_dir <- 
+working_dir <-
   paste0(current_dir, "/R/02_Main_analyses/")
 
 # examples
@@ -43,5 +43,3 @@ working_dir <-
 #   paste0(
 #     working_dir,
 #     "/02_Analyses_ABC/Run_02_02.R"))
-
-

@@ -1,42 +1,43 @@
-# Template
-General HOPE structure for R project
-Developed by HOPE team Ondrej Mottl, Suzette Flantua, Vivian Felde, Kuber Bhatta
+# Nutrient use by tropical ant communities varies among three extensive elevational gradients: a cross-continental comparison
 
-# General info
-This template is a recommended structure for R projects which consists of modular codes with individual functions and purposes. A Master R code sources follow-up "Run" codes sourcing individual folders. The Config file is the single file where all variables, packages, criteria are defined. Operations are singled out in folders and R-codes.
+## Authors
 
+--- TO BE ADDED ---
 
+### Corresponding authors
 
-# Default Main structure 
-## R - Outputs - Data
-## R
-* R / 01_Data_processing: Folder for data sourcing, cleaning, filtering, organizing
-* R / 02_Supplementary_analyses: Folder for data exploratory analyses, code to create temporal outputs
-* R / 03_Main_analyses: Folder where main analyses of project/paper are done
-* R / Functions: Each single R code represents an R function. See HOPE convention for suggestions for function descriptions
-* 00_Config_file
-* 00_Master
+--- TO BE ADDED ---
 
-## Outputs
-### Data - Figures - Tables
+### Running title
 
-## Data
-### Input - Processed
+Nutrient use along elevational gradients
 
+## Abstract
 
+### *Aim*
 
-# HOPE code convention
-Based on reviews of multiple sources of code conventions, HOPE designed a code convention where different recommendations are merged:
-https://docs.google.com/document/d/1MFYi-VLiBAMsFvaTd5Z9qkrXV8TxFzhXnzlkc1VjJ3g/edit?usp=sharing
-Examples are:
-* Each R code (with exception of the functions) comes with the same header with a short note on the aims of the specific .R
-* Use subheaders throughout the code
-* Comment consistently with good descriptions
+Many studies demonstrated that climate limits invertebrates along tropical elevational gradients, but we have only a rudimentary understanding of the role of nutrient limitation and seasonality. Here we examine the relationships between ant community structure, nutrient use and seasonality along three undisturbed elevational gradients, each from a different continent.
 
+### *Location*
 
-# Setup
-* The template comes two branches namely the "main" branch and the dev (development) branch. At the start these will be exactly the same. We recommend that you make a "dev" (development) branch and that you branch off the "dev" branch with your follow up branches and merge them to your "dev" branch until you are completely ready to merge to the main branch and your repo is close to done.
-* Config file is the master file in terms of setting all criteria used throughout the repo, loading the required packages and saving all settings throughout the repo.
-* To run this project for the first time, run line 24 of Config file.
+Ecuador (America), Papua New Guinea (PNG: Australasia), and Tanzania (Africa).
 
+### *Time period*
 
+Present
+
+### *Major taxa studied*
+
+Ants
+
+### *Methods*
+
+Along each of the three elevational gradients, we placed six distinct nutrient types (amino acid, sucrose, sucrose + amino acid, lipid, NaCl, and H2O). In total, we distributed 2370 experimental baits at 38 sites from 200 m to ~4000 m. We used generalized linear models to test for the effects of elevation and season on ant species richness and activity and relative nutrient use. We also tested if changes in ant trophic guilds corresponded to changes in the use of particular nutrients
+
+### *Results*
+
+Both species richness and activity decreased with elevation along each gradient. However, there were significant interaction effects among elevation, region and season, as ant activity in the dry season was higher in Ecuador and Tanzania but lower in PNG. Relative nutrient use varied among regions: ant preference for some nutrients changed with increasing elevation in Ecuador (decrease in lipid use) and Tanzania (decrease in amino acid, NaCl, H2O use), while only season affected nutrient use in PNG. There were common trends in trophic guilds along the three elevational gradients (e.g., the proportional increase of predators), but these did not explain the nutrient use patterns
+
+### *Main conclusion*
+
+While changes in ant community structure with elevation were similar, both seasonal and elevational effects on nutrient use by ants differed among the elevational gradients. We argue that regional differences in climate and nutrient availability rather than ant functional composition shape nutrient use by ants

@@ -1,19 +1,19 @@
 #----------------------------------------------------------#
 #
 #
-#                       Project name
+#                Tropical ant nutrient use
 #
 #        Source all code for supplementary analyses
-#                 
 #
-#                         Names 
-#                         Year
+#
+#             O. Mottl, J. Mosses, P. Klimes
+#                         2023
 #
 #----------------------------------------------------------#
 
-# Sources all or selected processing steps in the folder of 
+# Sources all or selected processing steps in the folder of
 # 02_Supplementary analyses. These analyses are meant for output produced
-# during the process of data handling and analyses that are important enough 
+# during the process of data handling and analyses that are important enough
 # to be save but not the main analyses performed. Examples are data checking
 # coding, temporal figures, etc
 
@@ -21,8 +21,6 @@
 #----------------------------------------------------------#
 # 1. Set up run -----
 #----------------------------------------------------------#
-
-rm(list = ls())
 
 # Load configuration
 source("R/00_Config_file.R")
@@ -32,7 +30,7 @@ source("R/00_Config_file.R")
 # 2. Run individual parts -----
 #----------------------------------------------------------#
 
-working_dir <- 
+working_dir <-
   paste0(current_dir, "/R/03_Supplementary_analyses/")
 
 # examples
