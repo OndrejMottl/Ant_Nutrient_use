@@ -23,7 +23,15 @@
 package_list <-
   c(
     "assertthat",
+    "effectsize",
     "here",
+    "insight",
+    "knitr",
+    "MASS",
+    "MuMIn",
+    "patchwork",
+    "performance",
+    "readxl",
     "renv",
     "roxygen2",
     "tidyverse",
@@ -73,6 +81,7 @@ sapply(
 # 5. Define variables -----
 #----------------------------------------------------------#
 
+set.seed(1234)
 
 #----------------------------------------------------------#
 # 6. Graphical options -----
@@ -96,4 +105,3 @@ image_units <- "cm"
 # define pallets
 
 # define common color
-

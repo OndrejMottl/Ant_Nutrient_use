@@ -37,11 +37,18 @@ renv::deactivate()
 package_list <-
   c(
     "assertthat",
+    "effectsize",
     "here",
     "httpgd",
+    "insight",
     "janitor",
     "jsonlite",
+    "knitr",
+    "MuMIn",
     "languageserver",
+    "patchwork",
+    "performance",
+    "readxl",
     "renv",
     "roxygen2",
     "tidyverse",
