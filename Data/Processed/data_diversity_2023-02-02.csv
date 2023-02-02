@@ -1,0 +1,80 @@
+ETPcode,Regions,Sites,Seasons,meanElevation,totalAbundance,totalSp_richness,totalSp_occurrence
+1000_10,Ecuador,Ecuador_1000m,Dry,1050,294,16,31
+1000_10,Ecuador,Ecuador_1000m,Wet,1050,235,12,17
+1000_20,Ecuador,Ecuador_1000m,Dry,1073,115,19,31
+1000_20,Ecuador,Ecuador_1000m,Wet,1073,160,13,16
+1000_30,Ecuador,Ecuador_1000m,Dry,1108,550,17,34
+1000_30,Ecuador,Ecuador_1000m,Wet,1108,46,6,10
+1130_1,Tanzania,Kilimanjaro_SAV3_1130m,Dry,1130,116,5,16
+1200_1,Papua New Guinea,PNG_1200m,Dry,1164.63636363636,98,9,18
+1200_1,Papua New Guinea,PNG_1200m,Wet,1164.35135135135,373,13,27
+1200_2,Papua New Guinea,PNG_1200m,Dry,1088.22580645161,201,8,11
+1200_2,Papua New Guinea,PNG_1200m,Wet,1089.25641025641,605,14,30
+1500_10,Ecuador,Ecuador_1500m,Dry,1469,168,8,20
+1500_10,Ecuador,Ecuador_1500m,Wet,1469,105,9,13
+1500_20,Ecuador,Ecuador_1500m,Dry,1544,124,8,23
+1500_20,Ecuador,Ecuador_1500m,Wet,1544,86,6,12
+1500_30,Ecuador,Ecuador_1500m,Dry,1518,197,9,21
+1500_30,Ecuador,Ecuador_1500m,Wet,1518,29,6,13
+1620_1,Tanzania,Kilimanjaro_FLM3_1620m,Wet,1620,70,3,19
+1650_1,Tanzania,Kilimanjaro_FLM4_1650m,Wet,1650,3,2,3
+1700_1,Papua New Guinea,PNG_1700m,Dry,1636,62,3,12
+1700_1,Papua New Guinea,PNG_1700m,Wet,1639.3125,201,6,20
+1700_2,Papua New Guinea,PNG_1700m,Dry,1840.2,20,4,5
+1700_2,Papua New Guinea,PNG_1700m,Wet,1840.09677419355,100,8,14
+1800_1,Tanzania,Kilimanjaro_FLM2_1800m,Wet,1800,2,2,2
+1920_1,Tanzania,Kilimanjaro_FLM1_1920m,Dry,1920,100,5,26
+200_1,Papua New Guinea,PNG_200m,Dry,216.030303030303,753,11,20
+200_1,Papua New Guinea,PNG_200m,Wet,215.468085106383,283,14,41
+200_2,Papua New Guinea,PNG_200m,Dry,248.594594594595,85,10,27
+200_2,Papua New Guinea,PNG_200m,Wet,247.878048780488,916,14,35
+2000_10,Ecuador,Ecuador_2000m,Dry,2024,40,7,10
+2000_10,Ecuador,Ecuador_2000m,Wet,2024,55,7,17
+2000_20,Ecuador,Ecuador_2000m,Dry,2053,21,4,5
+2000_20,Ecuador,Ecuador_2000m,Wet,2053,41,4,4
+2000_30,Ecuador,Ecuador_2000m,Dry,1920,46,10,10
+2000_30,Ecuador,Ecuador_2000m,Wet,1920,142,8,15
+2020_1,Tanzania,Kilimanjaro_FLM5_2020m,Dry,2020,41,3,5
+2040_1,Tanzania,Kilimanjaro_FLM6_2040m,Wet,2040,26,3,4
+2120_1,Tanzania,Kilimanjaro_FOC1_2120m,Wet,2120,0,0,0
+2200_1,Papua New Guinea,PNG_2200m,Dry,2397.8,18,2,5
+2200_1,Papua New Guinea,PNG_2200m,Wet,2397.63333333333,13,2,7
+2200_2,Papua New Guinea,PNG_2200m,Dry,2339.75757575758,36,6,8
+2200_2,Papua New Guinea,PNG_2200m,Wet,2339.43333333333,15,4,8
+2260_1,Tanzania,Kilimanjaro_FOC2_2260m,Wet,2260,0,0,0
+2500_10,Ecuador,Ecuador_2500m,Dry,2452,14,3,6
+2500_10,Ecuador,Ecuador_2500m,Wet,2452,34,3,7
+2500_20,Ecuador,Ecuador_2500m,Dry,2449,33,5,13
+2500_20,Ecuador,Ecuador_2500m,Wet,2449,50,2,8
+2500_30,Ecuador,Ecuador_2500m,Dry,2446,8,3,4
+2500_30,Ecuador,Ecuador_2500m,Wet,2446,15,2,2
+2700_1,Papua New Guinea,PNG_2700m,Dry,2751.7,3,1,2
+2700_1,Papua New Guinea,PNG_2700m,Wet,2751.7,0,0,0
+2700_2,Papua New Guinea,PNG_2700m,Dry,2616.93333333333,1,1,1
+2700_2,Papua New Guinea,PNG_2700m,Wet,2616.93333333333,0,0,0
+2720_1,Tanzania,Kilimanjaro_FPO4_2720m,Dry,2720,0,0,0
+2850_1,Tanzania,Kilimanjaro_FPO1_2850m,Wet,2850,0,0,0
+3000_10,Ecuador,Ecuador_3000m,Dry,2885,0,0,0
+3000_10,Ecuador,Ecuador_3000m,Wet,2885,3,2,2
+3000_20,Ecuador,Ecuador_3000m,Dry,2882,0,0,0
+3000_20,Ecuador,Ecuador_3000m,Wet,2882,1,1,1
+3000_30,Ecuador,Ecuador_3000m,Dry,2889,0,0,0
+3000_30,Ecuador,Ecuador_3000m,Wet,2889,1,1,1
+3200_1,Papua New Guinea,PNG_3200m,Dry,3403.73333333333,0,0,0
+3200_1,Papua New Guinea,PNG_3200m,Wet,3403.73333333333,0,0,0
+3200_2,Papua New Guinea,PNG_3200m,Dry,3259.13333333333,0,0,0
+3200_2,Papua New Guinea,PNG_3200m,Wet,3259.13333333333,0,0,0
+3700_1,Papua New Guinea,PNG_3700m,Dry,3824.56666666667,0,0,0
+3700_1,Papua New Guinea,PNG_3700m,Wet,3824.56666666667,0,0,0
+3830_1,Tanzania,Kilimanjaro_FER3_3830m,Dry,3830,0,0,0
+3849_1,Tanzania,Kilimanjaro_FER1_3849m,Dry,3849,0,0,0
+700_1,Papua New Guinea,PNG_700m,Dry,716.41935483871,108,8,10
+700_1,Papua New Guinea,PNG_700m,Wet,712.302325581395,222,16,30
+700_2,Papua New Guinea,PNG_700m,Dry,773.470588235294,50,9,13
+700_2,Papua New Guinea,PNG_700m,Wet,774.763157894737,325,18,28
+871_1,Tanzania,Kilimanjaro_SAV1_871m,Dry,871,3729,8,26
+912_1,Tanzania,Kilimanjaro_SAV2_912m,Wet,912,1076,7,21
+950_1,Tanzania,Kilimanjaro_SAV5_950m,Wet,950,1096,12,27
+993_1,Tanzania,Kilimanjaro_SAV4_993m,Wet,993,187,12,22
+3700_2,Papua New Guinea,PNG_3700m,Dry,3915.66,0,0,0
+3700_2,Papua New Guinea,PNG_3700m,Wet,3915.66,0,0,0
