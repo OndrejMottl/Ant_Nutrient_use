@@ -31,3 +31,9 @@ data_diversity <-
 dim(data_diversity)
 dplyr::glimpse(data_diversity)
 
+readr::write_csv(
+  x = data_diversity,
+  file = here::here(
+    paste0("Data/Processed/data_diversity_", current_date, ".csv")
+  )
+)
