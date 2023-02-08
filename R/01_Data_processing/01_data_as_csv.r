@@ -37,3 +37,22 @@ readr::write_csv(
     paste0("Data/Processed/data_diversity_", current_date, ".csv")
   )
 )
+
+data_guild <-
+  readxl::read_xlsx(
+    path = here::here(
+      "Data/Input/AntPicnic_guilds_data.xlsx"
+    ),
+    sheet = "AntPicnic_guild_data",
+    col_names = TRUE
+  )[, -1]
+
+dim(data_guild)
+dplyr::glimpse(data_guild)
+
+readr::write_csv(
+  x = data_guild,
+  file = here::here(
+    paste0("Data/Processed/data_guilds_", current_date, ".csv")
+  )
+)
