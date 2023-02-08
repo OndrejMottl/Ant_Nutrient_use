@@ -37,7 +37,10 @@ renv::deactivate()
 package_list <-
   c(
     "assertthat",
+    "car",
     "effectsize",
+    "emmeans",
+    "glmmTMB",
     "here",
     "httpgd",
     "insight",
@@ -58,7 +61,6 @@ package_list <-
 # define helper function
 install_packages <-
   function(pkgs_list) {
-
     # install all packages in the list from CRAN
     sapply(pkgs_list, utils::install.packages, character.only = TRUE)
   }

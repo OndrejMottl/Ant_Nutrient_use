@@ -23,7 +23,10 @@
 package_list <-
   c(
     "assertthat",
+    "car",
     "effectsize",
+    "emmeans",
+    "glmmTMB",
     "here",
     "insight",
     "knitr",

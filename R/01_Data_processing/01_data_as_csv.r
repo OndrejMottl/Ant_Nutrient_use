@@ -56,3 +56,24 @@ readr::write_csv(
     paste0("Data/Processed/data_guilds_", current_date, ".csv")
   )
 )
+
+data_full <-
+  readxl::read_xlsx(
+    path = here::here(
+      "Data/Input/AntPicnic_FullData.xlsx"
+    ),
+    # specify directory path here. Better to use the "here" package.
+    sheet = "FullData-upto-treeline",
+    col_names = TRUE
+  ) %>%
+  janitor::clean_names()
+
+dim(data_full)
+dplyr::glimpse(data_full)
+
+readr::write_csv(
+  x = data_full,
+  file = here::here(
+    paste0("Data/Processed/data_full_", current_date, ".csv")
+  )
+)
