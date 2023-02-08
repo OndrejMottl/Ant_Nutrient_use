@@ -49,10 +49,7 @@ get_model_details <- function(
       )
   } else {
     table_best_model <-
-      data_source %>%
-      dplyr::filter(
-        mod_name == "poly_full"
-      )
+      data_source[nrow(data_source), ]
   }
 
   table_best_model_r2 <-
