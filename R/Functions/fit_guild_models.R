@@ -123,30 +123,7 @@ fit_guild_models <-
       )
 
     res <-
-      mod_details %>%
-      dplyr::mutate(
-        anova_res = purrr::map(
-          .x = mod,
-          .f = purrr::possibly(
-            .f = ~ stats::anova(mod_null, .x) %>%
-              as.data.frame() %>%
-              tibble::as_tibble() %>%
-              dplyr::slice(2) %>%
-              dplyr::rename_with(
-                .fn = ~ paste("aov_", .x)
-              ) %>%
-              janitor::clean_names()
-          )
-        )
-      ) %>%
-      tidyr::unnest(anova_res) %>%
-      dplyr::mutate(
-        aov_signif = insight::format_p(
-          p = aov_pr_chisq,
-          stars_only = TRUE
-        )
-      )
-
+      get_anova_to_null(mod_details, mod_null)
 
     return(res)
   }
