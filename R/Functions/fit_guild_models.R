@@ -39,7 +39,11 @@ fit_guild_models <-
               )
             ),
             family = glmmTMB::betabinomial(link = "logit"),
-            data = data_source
+            data = data_source,
+            ziformula = ~0,
+            control = glmmTMB::glmmTMBControl(
+              optimizer = optim
+            )
           )
       },
       "quasibinomial_aod" = {
@@ -70,7 +74,11 @@ fit_guild_models <-
               )
             ),
             family = stats::quasibinomial(link = "logit"),
-            data = data_source
+            data = data_source,
+            ziformula = ~0,
+            control = glmmTMB::glmmTMBControl(
+              optimizer = optim
+            )
           )
       }
     )
@@ -120,7 +128,7 @@ fit_guild_models <-
         anova_res = purrr::map(
           .x = mod,
           .f = purrr::possibly(
-            .f = ~ stats::anova(mod_details$mod[[1]], .x) %>%
+            .f = ~ stats::anova(mod_null, .x) %>%
               as.data.frame() %>%
               tibble::as_tibble() %>%
               dplyr::slice(2) %>%
@@ -131,7 +139,13 @@ fit_guild_models <-
           )
         )
       ) %>%
-      tidyr::unnest(anova_res)
+      tidyr::unnest(anova_res) %>%
+      dplyr::mutate(
+        aov_signif = insight::format_p(
+          p = aov_pr_chisq,
+          stars_only = TRUE
+        )
+      )
 
 
     return(res)
