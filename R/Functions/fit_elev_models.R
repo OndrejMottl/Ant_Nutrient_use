@@ -2,76 +2,62 @@ fit_elev_models <-
   function(data_source,
            sel_var,
            sel_family,
-           sel_mod = c("glm", "nb_glm"),
            compare_aic = FALSE,
-           sel_dev_test = "Chisq",
            test_overdispersion = FALSE) {
-    sel_mod <- match.arg(sel_mod)
+    mod_null <-
+      glmmTMB::glmmTMB(
+        formula = as.formula(paste0(sel_var, " ~ 1")),
+        family = sel_family,
+        data = data_source,
+        ziformula = ~0,
+        na.action = "na.fail"
+      )
 
-    switch(sel_mod,
-      "glm" = {
-        mod_null <-
-          stats::glm(
-            formula = as.formula(paste0(sel_var, " ~ 1")),
-            family = sel_family,
-            data = data_source,
-            na.action = "na.fail"
-          )
-      },
-      "nb_glm" = {
-        mod_null <-
-          MASS::glm.nb(
-            formula = as.formula(paste0(sel_var, " ~ 1")),
-            link = "log",
-            data = data_source,
-            na.action = "na.fail"
-          )
-      }
-    )
+    mod_elev <-
+      stats::update(mod_null, . ~ poly(mean_elevation, 2))
 
-    suppressWarnings({
-      mod_ln <-
-        stats::update(mod_null, . ~ poly(meanElevation, 1) * Regions)
+    mod_season <-
+      stats::update(mod_null, . ~ seasons)
 
-      mod_poly <-
-        stats::update(mod_null, . ~ poly(meanElevation, 2) * Regions)
+    mod_elev_season <-
+      stats::update(mod_elev, . ~ . + seasons)
 
-      mod_ln_full <-
-        stats::update(mod_ln, . ~ . * Seasons)
-
-      mod_poly_full <-
-        stats::update(mod_poly, . ~ . * Seasons)
-    })
+    mod_elev_season_int <-
+      stats::update(mod_elev, . ~ . * seasons)
 
     mod_table <-
       tibble::tibble(
         mod_name = c(
           "null",
-          "linear",
-          "poly",
-          "linerar_full",
-          "poly_full"
+          "elevation",
+          "season",
+          "elevation + season",
+          "elevation * season"
         )
       ) %>%
       dplyr::mutate(
         mod = list(
           mod_null,
-          mod_ln,
-          mod_poly,
-          mod_ln_full,
-          mod_poly_full
+          mod_elev,
+          mod_season,
+          mod_elev_season,
+          mod_elev_season_int
         ) %>%
           rlang::set_names(
             nm = mod_name
           )
       )
 
-    res <-
+    mod_details <-
       get_model_details(
         data_source = mod_table,
         compare_aic = compare_aic,
         test_overdispersion = test_overdispersion
       )
+
+    res <-
+      get_anova_to_null(mod_details, mod_null)
+
 
     return(res)
   }

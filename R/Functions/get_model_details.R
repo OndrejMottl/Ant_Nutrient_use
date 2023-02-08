@@ -46,14 +46,10 @@ get_model_details <- function(
       dplyr::inner_join(
         mod_comp,
         by = dplyr::join_by(mod_name)
-      ) %>%
-      dplyr::arrange(-weight)
+      )
   } else {
     table_best_model <-
-      data_source %>%
-      dplyr::filter(
-        mod_name == "poly_full"
-      )
+      data_source[nrow(data_source), ]
   }
 
   table_best_model_r2 <-
@@ -85,7 +81,13 @@ get_model_details <- function(
       mod_anova = purrr::map(
         .x = mod,
         .f = purrr::possibly(
-          .f = ~ get_anova(.x),
+          .f = ~ get_anova(.x) %>%
+            dplyr::mutate(
+              signif = insight::format_p(
+                p = pr_chisq,
+                stars_only = TRUE
+              )
+            ),
           otherwise = NA_real_
         )
       ),
@@ -94,23 +96,6 @@ get_model_details <- function(
         .f = purrr::possibly(
           .f = ~ get_r2_partial(.x),
           otherwise = NA_real_
-        )
-      ),
-      model_details = purrr::map2(
-        .x = mod_anova,
-        .y = mod_r2_partial,
-        .f = purrr::possibly(
-          .f = ~ dplyr::full_join(
-            .x, .y,
-            by = dplyr::join_by(term)
-          ) %>%
-            dplyr::mutate(
-              signif = insight::format_p(
-                p = pr_chi,
-                stars_only = TRUE
-              )
-            ),
-          otherwise = "NA_real"
         )
       )
     )

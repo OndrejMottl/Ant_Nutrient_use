@@ -77,3 +77,23 @@ readr::write_csv(
     paste0("Data/Processed/data_full_", current_date, ".csv")
   )
 )
+
+data_rel_use <-
+  readxl::read_xlsx(
+    path = here::here(
+      "Data/Input/RelativeNutrientUse-Data.xlsx"
+    ),
+    col_names = TRUE,
+    sheet = "RelativeNutrientUse"
+  ) %>%
+  janitor::clean_names()
+
+dim(data_rel_use)
+dplyr::glimpse(data_rel_use)
+
+readr::write_csv(
+  x = data_rel_use,
+  file = here::here(
+    paste0("Data/Processed/data_rel_use_", current_date, ".csv")
+  )
+)
