@@ -33,11 +33,73 @@ get_model_details <- function(
     )
 
     if (
+      # several models have delta < 2
       sum(mod_comp$best_model, na.rm = TRUE) > 1
     ) {
-      message(
-        paste("WARNING: Cannot select the best model just by AICc")
+      RUtilpol::output_warning(
+        msg = "Cannot select the best model just by AIC"
       )
+
+      RUtilpol::output_comment(
+        msg = "Here is the importance of individual terms in best models:"
+      )
+
+      data_all_best_models <-
+        mod_comp %>%
+        dplyr::filter(
+          best_model == TRUE
+        ) %>%
+        dplyr::inner_join(
+          data_source,
+          by = dplyr::join_by(mod_name)
+        ) %>%
+        dplyr::mutate(
+          model_id = dplyr::row_number()
+        ) %>%
+        dplyr::relocate(model_id)
+
+      RUtilpol::output_comment(
+        msg = "General rule of thimb is to keep terms with > 70 importance"
+      )
+
+      # Therefoere, estimate the importance of predictors across models
+      data_all_best_models %>%
+        purrr::pluck("mod") %>%
+        MuMIn::model.avg() %>%
+        MuMIn::sw() %>%
+        as.data.frame() %>%
+        tibble::rownames_to_column("term") %>%
+        tibble::as_tibble() %>%
+        dplyr::rename(
+          importance = "."
+        ) %>%
+        print()
+
+      data_all_best_models %>%
+        dplyr::select(-mod) %>%
+        print()
+
+      # open custom menu to select model
+      best_model_id <-
+        utils::menu(
+          choices = data_all_best_models$model_id,
+          title = "Please select model to KEEP:"
+        )
+
+      mod_comp <-
+        mod_comp %>%
+        dplyr::select(-best_model) %>%
+        dplyr::left_join(
+          data_all_best_models %>%
+            dplyr::filter(
+              model_id == best_model_id
+            ) %>%
+            dplyr::select(mod_name, best_model),
+          by = dplyr::join_by(mod_name)
+        ) %>%
+        dplyr::mutate(
+          best_model = ifelse(is.na(best_model), FALSE, best_model)
+        )
     }
 
     table_best_model <-
