@@ -1,25 +1,9 @@
 get_anova <- function(data_source, sel_test = "Chisq") {
-  mod_class <- class(data_source)
-
-
-  switch(mod_class,
-    "glm" = {
-      suppressWarnings(
-        test_res <-
-          stats::anova(
-            data_source,
-            test = sel_test
-          )
+  suppressWarnings(
+    test_res <-
+      car::Anova(
+        data_source
       )
-    },
-    "glmmTMB" = {
-      suppressWarnings(
-        test_res <-
-          car::Anova(
-            data_source
-          )
-      )
-    }
   )
 
   test_res %>%

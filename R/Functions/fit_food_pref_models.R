@@ -1,9 +1,12 @@
 fit_food_pref_models <-
-  function(data_source) {
+  function(
+      data_source,
+      sel_var = "cbind(total_occurrence, max occurrence - total_occurrence)",
+      sel_family = glmmTMB::betabinomial(link = "logit")) {
     mod_null <-
       glmmTMB::glmmTMB(
-        formula = cbind(total_occurrence, ma_xoccurrence - total_occurrence) ~ 1,
-        family = glmmTMB::betabinomial(link = "logit"),
+        formula = as.formula(paste(sel_var, "~ 1")),
+        family = sel_family,
         data = data_source,
         ziformula = ~0,
         na.action = "na.fail"
@@ -13,16 +16,16 @@ fit_food_pref_models <-
       stats::update(mod_null, . ~ bait_type)
 
     mod_elev <-
-      stats::update(mod_null, . ~ poly(mean_elevation, 2))
+      stats::update(mod_null, . ~ poly(elevation_mean, 2))
 
     mod_season <-
       stats::update(mod_null, . ~ seasons)
 
     mod_food_elev <-
-      stats::update(mod_food, . ~ . + poly(mean_elevation, 2))
+      stats::update(mod_food, . ~ . + poly(elevation_mean, 2))
 
     mod_food_elev_int <-
-      stats::update(mod_food, . ~ . * poly(mean_elevation, 2))
+      stats::update(mod_food, . ~ . * poly(elevation_mean, 2))
 
     mod_food_season <-
       stats::update(mod_food, . ~ . + seasons)
