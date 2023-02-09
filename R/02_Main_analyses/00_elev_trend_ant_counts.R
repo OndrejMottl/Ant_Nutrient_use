@@ -86,7 +86,11 @@ mod_richness <-
     sel_var = "n_species",
     sel_method = "glmmTMB",
     sel_family = glmmTMB::nbinom1(link = "log"),
-    compare_aic = TRUE
+    compare_aic = TRUE,
+    control = glmmTMB::glmmTMBControl(
+      optimizer = optim,
+      optArgs = list(method = "BFGS")
+    )
   )
 
 mod_richness
@@ -118,24 +122,6 @@ mod_abundnace <-
   )
 
 mod_abundnace
-
-# several models have delta < 2
-# Therefoere, estimate the importance of predictors across models
-MuMIn::model.avg(
-  mod_abundnace$mod
-) %>%
-  MuMIn::sw() %>%
-  as.data.frame() %>%
-  tibble::rownames_to_column("term") %>%
-  tibble::as_tibble() %>%
-  dplyr::rename(
-    importance = "."
-  )
-
-# only elevation_mean * regions has importance > 70
-mod_abundnace$best_model[
-  mod_abundnace$mod_name == "elevation * region * season"
-] <- FALSE
 
 mod_abundnace$mod_name[which(mod_abundnace$best_model == TRUE)]
 
