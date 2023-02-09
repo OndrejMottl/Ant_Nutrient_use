@@ -1,24 +1,66 @@
 get_r2 <- function(data_source) {
+  opt <-
+    options(show.error.messages = FALSE)
+  on.exit(options(opt))
+
   res <- NA_real_
 
-  if (
-    "glmmTMB" %in% class(data_source)
-  ) {
-    suppressWarnings(
-      res <-
-        performance::r2_tjur(data_source)
-    )
-  }
+  mod_family <- get_model_family_name(data_source)
 
-  if (
-    "glm" %in% class(data_source)
-  ) {
-    suppressWarnings(
-      res <-
-        performance::r2_nagelkerke(data_source) %>%
-        as.double()
-    )
-  }
+  switch(mod_family,
+    "Negative Binomial" = {
+      capture.output(
+        suppressWarnings(
+          res <-
+            performance::r2_nagelkerke(data_source)
+        ),
+        file = "NUL"
+      )
+    },
+    "betabinomial" = {
+      capture.output(
+        suppressWarnings(
+          res <-
+            performance::r2_tjur(data_source)
+        ),
+        file = "NUL"
+      )
+    },
+    "nbinom" = {
+      capture.output(
+        suppressWarnings(
+          res <-
+            performance::r2_nakagawa(data_source) %>%
+            as.data.frame() %>%
+            purrr::pluck("R2_marginal") %>%
+            mean(., na.rm = TRUE)
+        ),
+        file = "NUL"
+      )
+    },
+    "ordbeta" = {
+      capture.output(
+        suppressWarnings(
+          res <-
+            performance::r2_nakagawa(data_source) %>%
+            as.data.frame() %>%
+            purrr::pluck("R2_marginal") %>%
+            mean(., na.rm = TRUE)
+        ),
+        file = "NUL"
+      )
+    },
+    {
+      capture.output(
+        suppressWarnings(
+          res <-
+            performance::r2(data_source)
+        ),
+        file = "NUL"
+      )
+    }
+  )
 
-  return(res)
+  as.double(res) %>%
+    return()
 }
