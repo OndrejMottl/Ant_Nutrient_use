@@ -52,6 +52,7 @@ package_list <-
     "patchwork",
     "performance",
     "readxl",
+    "remotes",
     "renv",
     "roxygen2",
     "tidyverse",
@@ -63,6 +64,9 @@ install_packages <-
   function(pkgs_list) {
     # install all packages in the list from CRAN
     sapply(pkgs_list, utils::install.packages, character.only = TRUE)
+
+    # install R-Utilpol package
+    remotes::install_github("HOPE-UIB-BIO/R-Utilpol-package")
   }
 
 #----------------------------------------------------------#

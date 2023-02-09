@@ -37,6 +37,7 @@ package_list <-
     "readxl",
     "renv",
     "roxygen2",
+    "RUtilpol",
     "tidyverse",
     "usethis"
   )
