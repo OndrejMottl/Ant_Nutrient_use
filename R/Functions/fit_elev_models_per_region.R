@@ -4,7 +4,8 @@ fit_elev_models_per_region <-
            sel_family = NULL,
            compare_aic = FALSE,
            sel_method = c("glmmTMB", "glm.nb"),
-           test_overdispersion = FALSE) {
+           test_overdispersion = FALSE,
+           ...) {
     sel_method <- match.arg(sel_method)
     switch(sel_method,
       "glmmTMB" = {
@@ -14,7 +15,8 @@ fit_elev_models_per_region <-
             family = sel_family,
             data = data_source,
             ziformula = ~0,
-            na.action = "na.fail"
+            na.action = "na.fail",
+            ...
           )
       },
       "glm.nb" = {
@@ -30,13 +32,10 @@ fit_elev_models_per_region <-
 
     mod_elev <-
       stats::update(mod_null, . ~ poly(elevation_mean, 2))
-
     mod_season <-
       stats::update(mod_null, . ~ seasons)
-
     mod_elev_season <-
       stats::update(mod_elev, . ~ . + seasons)
-
     mod_elev_season_int <-
       stats::update(mod_elev, . ~ . * seasons)
 
