@@ -1,17 +1,19 @@
 get_predicted_data <- function(
     mod,
     dummy_table) {
-  dummy_table %>%
-    dplyr::bind_cols(
-      stats::predict.glm(
-        mod,
-        newdata = .,
-        type = "response",
-        se.fit = TRUE
-      )
+  marginaleffects::predictions(
+    model = mod,
+    newdata = dummy_table
+  ) %>%
+    as.data.frame() %>%
+    janitor::clean_names() %>%
+    tibble::as_tibble() %>%
+    dplyr::filter(
+      type == "response"
     ) %>%
-    dplyr::rename(
-      "predicted" = fit, "se_fit" = se.fit
+    dplyr::select(
+      -c(rowid, type, statistic, p_value)
     ) %>%
+    dplyr::relocate(names(dummy_table), dplyr::last_col()) %>%
     return()
 }
