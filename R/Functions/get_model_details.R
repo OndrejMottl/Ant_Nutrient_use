@@ -9,8 +9,7 @@ get_model_details <- function(
     suppressWarnings(
       mod_comp <-
         MuMIn::model.sel(
-          data_source$mod,
-          rank = "AICc"
+          data_source$mod
         ) %>%
         as.data.frame() %>%
         tibble::rownames_to_column("mod_name") %>%
