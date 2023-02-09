@@ -19,118 +19,106 @@ source(
   )
 )
 
-# load data ----
-
-data_diversity <-
-  readr::read_csv(
-    file = here::here(
-      paste0("Data/Processed/data_diversity_2023-02-01.csv")
-    ),
-    show_col_types = FALSE
-  ) %>%
-  dplyr::mutate(
-    Regions = as.factor(Regions),
-    Seasons = as.factor(Seasons)
-  )
-
 # load models ----
-mods_div <-
-  readr::read_rds(
-    file = here::here(
-      paste0(
-        "Data/Processed/Models/ele_trend_diversity_2023-02-02.rds"
-      )
-    )
+mod_richness <-
+  RUtilpol::get_latest_file(
+    file_name = "mod_richness",
+    dir = here::here("Data/Processed/Models/")
   )
 
-
-mods_occ <-
-  readr::read_rds(
-    file = here::here(
-      paste0(
-        "Data/Processed/Models/ele_trend_occurences_2023-02-02.rds"
-      )
-    )
+mod_occurences <-
+  RUtilpol::get_latest_file(
+    file_name = "mod_occurences",
+    dir = here::here("Data/Processed/Models/")
   )
+
+data_to_fit <-
+  mod_richness %>%
+  purrr::pluck("data_to_fit")
 
 # dummy tables ----
 # dummy tables to predict upon
-
-dummy_predict_table_simple <-
-  data_diversity %>%
-  dplyr::select(meanElevation, Regions) %>%
+dummy_predict_table_elev <-
+  data_to_fit %>%
+  dplyr::select(elevation_mean, regions) %>%
   modelbased::visualisation_matrix(
-    at = c("meanElevation", "Regions"),
+    at = c("elevation_mean", "regions"),
     length = 100,
     preserve_range = TRUE
   ) %>%
   tidyr::as_tibble()
 
-dummy_predict_table_full <-
-  data_diversity %>%
-  dplyr::select(meanElevation, Regions, Seasons) %>%
+dummy_predict_table_season <-
+  data_to_fit %>%
+  dplyr::select(seasons, regions) %>%
   modelbased::visualisation_matrix(
-    at = c("meanElevation", "Regions", "Seasons"),
+    at = c("seasons", "regions"),
+    length = 100,
+    preserve_range = TRUE
+  ) %>%
+  tidyr::as_tibble()
+
+dummy_predict_table_interaction <-
+  data_to_fit %>%
+  dplyr::select(elevation_mean, regions, seasons) %>%
+  modelbased::visualisation_matrix(
+    at = c("elevation_mean", "regions", "seasons"),
     length = 100,
     preserve_range = TRUE
   ) %>%
   tidyr::as_tibble()
 
 # predict -----
-data_pred_div_simple <-
+# richness
+mod_richness %>%
+  purrr::pluck("models") %>%
+  dplyr::filter(best_model == TRUE) %>%
+  purrr::pluck("mod_name", 1)
+
+data_pred_richness_elev <-
   get_predicted_data(
-    mod = mods_div %>%
-      dplyr::filter(mod_name == "poly") %>%
+    mod = mod_richness %>%
+      purrr::pluck("models") %>%
+      dplyr::filter(best_model == TRUE) %>%
       purrr::pluck("mod", 1),
-    dummy_table = dummy_predict_table_simple
+    dummy_table = dummy_predict_table_elev
   )
 
-data_pred_div_full <-
-  get_predicted_data(
-    mod = mods_div %>%
-      dplyr::filter(mod_name == "poly_full") %>%
-      purrr::pluck("mod", 1),
-    dummy_table = dummy_predict_table_full
-  )
+# occurences
+mod_occurences %>%
+  purrr::pluck("models") %>%
+  dplyr::filter(best_model == TRUE) %>%
+  purrr::pluck("mod_name", 1)
 
-data_pred_occ_simple <-
+data_pred_occurences_interaction <-
   get_predicted_data(
-    mod = mods_occ %>%
-      dplyr::filter(mod_name == "poly") %>%
+    mod = mod_occurences %>%
+      purrr::pluck("models") %>%
+      dplyr::filter(best_model == TRUE) %>%
       purrr::pluck("mod", 1),
-    dummy_table = dummy_predict_table_simple
-  )
-
-data_pred_occ_full <-
-  get_predicted_data(
-    mod = mods_occ %>%
-      dplyr::filter(mod_name == "poly_full") %>%
-      purrr::pluck("mod", 1),
-    dummy_table = dummy_predict_table_full
+    dummy_table = dummy_predict_table_interaction
   )
 
 # plot the figure -----
 
-firure_1a <-
+figure_1a <-
   plot_elev_trend(
-    data_diversity,
-    data_pred_div_simple,
-    data_pred_div_full,
-    "totalSp_richness",
-    "Species richness"
+    data_source = data_to_fit,
+    data_pred_trend = data_pred_richness_elev,
+    y_var = "n_species",
+    y_var_name = "Species richness"
   )
 
 figure_1b <-
   plot_elev_trend(
-    data_diversity,
-    data_pred_occ_simple,
-    data_pred_occ_full,
-    "totalSp_occurrence",
-    "Species occurences"
+    data_source = data_to_fit,
+    data_pred_interaction = data_pred_occurences_interaction,
+    y_var = "n_occurecnes",
+    y_var_name = "Species occurences"
   )
 
 figure_1 <-
-  firure_1a + firure_1a +
+  figure_1a + figure_1b +
     patchwork::plot_layout(guides = "collect", ncol = 1) +
     patchwork::plot_annotation(
       tag_levels = "a",
@@ -141,19 +129,10 @@ figure_1 <-
 
 
 # save ----
-ggplot2::ggsave(
-  filename = here::here("Outputs/figure_1.pdf"),
+save_figure(
+  filename = "figure_1",
+  dir = here::here("Outputs"),
   plot = figure_1,
   width = 168,
-  height = 150,
-  device = cairo_pdf,
-  units = "mm",
-  dpi = 600,
-  family = "arial",
-  pointsize = 12,
-  scale = 1,
-  antialias = "subpixel",
-  onefile = FALSE,
-  bg = "transparent",
-  limitsize = FALSE
+  height = 150
 )
