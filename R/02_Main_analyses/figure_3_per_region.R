@@ -102,7 +102,8 @@ data_food_pref_individual_plot <-
                   data_pred_trend = data_pred_trend,
                   data_pred_season = data_pred_season,
                   data_pred_interaction = data_pred_interaction,
-                  p_value = sel_p_value
+                  p_value = sel_p_value,
+                  y_lim = c(0, 1)
                 ) +
                 ggpubr::rremove("xylab")
 
@@ -120,10 +121,14 @@ figure_3_per_region <-
       .x = data_food_pref_individual_plot$indiv_plot_list,
       .f = ~ ggpubr::ggarrange(
         plotlist = .x,
-        ncol = 1
+        ncol = 1,
+        common.legend = TRUE,
+        legend = "bottom"
       )
     ),
-    nrow = 1
+    nrow = 1,
+    common.legend = TRUE,
+    legend = "bottom"
   ) %>%
   ggpubr::annotate_figure(
     left = ggpubr::text_grob(

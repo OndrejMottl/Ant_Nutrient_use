@@ -67,6 +67,9 @@ p_template <-
   ggplot2::scale_fill_manual(
     values = c("dry" = "red", "wet" = "blue")
   ) +
+   ggplot2::scale_color_manual(
+    values = c("dry" = "red", "wet" = "blue")
+  ) +
   ggplot2::scale_shape_manual(
     values = c("dry" = 21, "wet" = 22)
   ) +
@@ -184,7 +187,7 @@ figure_2 <-
     nrow = 1,
     widths = c(1, 3),
     common.legend = TRUE,
-    legend = "bottom",
+    legend = "top",
     align = "hv"
   )
 

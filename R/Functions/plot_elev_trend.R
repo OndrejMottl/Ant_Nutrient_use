@@ -11,6 +11,8 @@ plot_elev_trend <- function(
     y_breaks = ggplot2::waiver(),
     x_line = NULL,
     p_value = 0,
+    x_lim = c(NA, NA),
+    y_lim = c(NA, NA),
     shape_legend = c("dry" = 21, "wet" = 22),
     color_legend = c("dry" = "red", "wet" = "blue"),
     legend_position = "none") {
@@ -47,7 +49,10 @@ plot_elev_trend <- function(
       fill = color_by,
       shape = color_by
     ) +
-    ggplot2::ylab(y_var_name) +
+    ggplot2::coord_cartesian(
+      xlim = x_lim,
+      ylim = y_lim
+    ) +
     ggplot2::theme_bw(
       base_size = 12,
       base_family = "arial"
