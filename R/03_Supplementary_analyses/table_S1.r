@@ -45,7 +45,7 @@ arsenal::write2word(
   )
 )
 
-table_s1_extra <-
+table_s1_models <-
   mod_abundnace %>%
   dplyr::rename(model_df = df) %>%
   tidyr::unnest(anova_to_null) %>%
@@ -53,8 +53,8 @@ table_s1_extra <-
   get_nice_table()
 
 arsenal::write2word(
-  object = table_s1_extra,
+  object = table_s1_models,
   file = here::here(
-    "Outputs/Table_s1_extra.docx"
+    "Outputs/Table_s1_models.docx"
   )
 )

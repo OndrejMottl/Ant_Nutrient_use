@@ -61,7 +61,7 @@ arsenal::write2word(
   )
 )
 
-tabel_1_extra <-
+tabel_1_models <-
   list(
     mod_richness,
     mod_occurences
@@ -80,8 +80,8 @@ tabel_1_extra <-
 
 # save
 arsenal::write2word(
-  object = tabel_1_extra,
+  object = tabel_1_models,
   file = here::here(
-    "Outputs/Table_1_extra.docx"
+    "Outputs/Table_1_models.docx"
   )
 )
