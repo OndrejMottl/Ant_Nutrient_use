@@ -39,11 +39,14 @@ mod_bait_occupancy %>%
 
 data_pred_bait_type <-
   get_predict_by_emmeans(
-    sel_mod = ,
+    sel_mod = mod_bait_occupancy %>%
+      purrr::pluck("models") %>%
+      dplyr::filter(best_model == TRUE) %>%
+      purrr::pluck("mod", 1),
     sel_spec = ~bait_type
   ) %>%
   dplyr::mutate(
-    regions = "Average across region"
+    regions = "Average"
   )
 
 data_pred_full <-
