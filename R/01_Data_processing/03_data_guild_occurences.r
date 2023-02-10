@@ -24,6 +24,12 @@ data_full <-
   RUtilpol::get_latest_file(
     file_name = "data_full_clean",
     dir = here::here("Data/Processed")
+  ) %>%
+  dplyr::filter(
+    excl_occupancy == FALSE
+  ) %>%
+  dplyr::filter(
+    exl_food_pref == FALSE
   )
 
 dplyr::glimpse(data_full)
