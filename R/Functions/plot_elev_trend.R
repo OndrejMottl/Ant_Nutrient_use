@@ -7,7 +7,8 @@ plot_elev_trend <- function(
     y_var,
     y_var_name,
     y_trans = "identity",
-    y_breaks = ggplot2::waiver()) {
+    y_breaks = ggplot2::waiver(),
+    x_line = NULL) {
   use_elev_trend <- isFALSE(is.null(data_pred_trend))
   use_season <- isFALSE(is.null(data_pred_season))
   use_interaction <- isFALSE(is.null(data_pred_interaction))
@@ -39,7 +40,7 @@ plot_elev_trend <- function(
     ) +
     ggplot2::theme(legend.position = "none") +
     ggplot2::geom_vline(
-      xintercept = c(1000, 3000),
+      xintercept = NULL,
       linetype = "dashed",
       color = "darkgrey",
       linewidth = 1
@@ -58,7 +59,7 @@ plot_elev_trend <- function(
     p_0 <-
       p_0 +
       ggplot2::facet_grid(
-        as.formula(paste("~", facet_by))
+        as.formula(paste(facet_by))
       )
   }
 
@@ -137,25 +138,17 @@ plot_elev_trend <- function(
         ),
         alpha = 0.15
       ) +
-      ggplot2::geom_hline(
-        yintercept = data_pred_season %>%
-          dplyr::filter(
-            seasons == "dry"
-          ) %>%
-          purrr::pluck("estimate"),
-        col = "red",
-        lty = 1,
-        linewidth = 1.5
-      ) +
-      ggplot2::geom_hline(
-        yintercept = data_pred_season %>%
-          dplyr::filter(
-            seasons == "wet"
-          ) %>%
-          purrr::pluck("estimate"),
-        col = "blue",
-        lty = 1,
-        linewidth = 1.5
+      ggplot2::geom_rect(
+        data = data_pred_season,
+        mapping = ggplot2::aes(
+          x = NULL,
+          y = NULL,
+          xmin = -Inf,
+          xmax = Inf,
+          ymin = estimate - 0.01,
+          ymax = estimate + 0.01,
+          fill = seasons
+        )
       )
   }
 
