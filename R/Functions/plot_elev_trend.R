@@ -8,7 +8,8 @@ plot_elev_trend <- function(
     y_var_name,
     y_trans = "identity",
     y_breaks = ggplot2::waiver(),
-    x_line = NULL) {
+    x_line = NULL,
+    p_value = 0) {
   use_elev_trend <- isFALSE(is.null(data_pred_trend))
   use_season <- isFALSE(is.null(data_pred_season))
   use_interaction <- isFALSE(is.null(data_pred_interaction))
@@ -23,7 +24,7 @@ plot_elev_trend <- function(
       )
     ) +
     ggplot2::scale_shape_manual(
-      values = c(21, 22)
+      values = c("dry" = 21, "wet" = 22)
     ) +
     ggplot2::scale_colour_manual(
       values = c("dry" = "red", "wet" = "blue")
@@ -78,7 +79,11 @@ plot_elev_trend <- function(
         ),
         color = NA,
         fill = "gray50",
-        alpha = 0.15
+        alpha = dplyr::case_when(
+          p_value < 0.05 ~ 0.15,
+          p_value < 0.1 ~ 0.10,
+          .default = 0
+        )
       ) +
       ggplot2::geom_line(
         data = data_pred_trend,
@@ -86,7 +91,15 @@ plot_elev_trend <- function(
           x = elevation_mean,
           y = estimate
         ),
-        lty = 1,
+        lty = dplyr::case_when(
+          p_value < 0.05 ~ 1,
+          p_value < 0.1 ~ 2,
+          .default = 0
+        ),
+        alpha = dplyr::case_when(
+          p_value < 0.1 ~ 1,
+          .default = 0
+        ),
         linewidth = 1.5
       )
   }
@@ -106,7 +119,11 @@ plot_elev_trend <- function(
           fill = seasons
         ),
         color = NA,
-        alpha = 0.15
+        alpha = dplyr::case_when(
+          p_value < 0.05 ~ 0.15,
+          p_value < 0.1 ~ 0.10,
+          .default = 0
+        )
       ) +
       ggplot2::geom_line(
         data = data_pred_interaction,
@@ -115,7 +132,15 @@ plot_elev_trend <- function(
           y = estimate,
           col = seasons
         ),
-        lty = 1,
+        lty = dplyr::case_when(
+          p_value < 0.05 ~ 1,
+          p_value < 0.1 ~ 2,
+          .default = 0
+        ),
+        alpha = dplyr::case_when(
+          p_value < 0.1 ~ 1,
+          .default = 0
+        ),
         linewidth = 1.5
       )
   }
@@ -136,18 +161,46 @@ plot_elev_trend <- function(
           ymax = upper_cl,
           fill = seasons
         ),
-        alpha = 0.15
+        alpha = dplyr::case_when(
+          p_value < 0.05 ~ 0.15,
+          p_value < 0.1 ~ 0.10,
+          .default = 0
+        )
       ) +
-      ggplot2::geom_rect(
-        data = data_pred_season,
-        mapping = ggplot2::aes(
-          x = NULL,
-          y = NULL,
-          xmin = -Inf,
-          xmax = Inf,
-          ymin = estimate - 0.01,
-          ymax = estimate + 0.01,
-          fill = seasons
+      ggplot2::geom_hline(
+        yintercept = data_pred_season %>%
+          dplyr::filter(
+            seasons == "dry"
+          ) %>%
+          purrr::pluck("estimate"),
+        col = "red",
+        linewidth = 1.5,
+        lty = dplyr::case_when(
+          p_value < 0.05 ~ 1,
+          p_value < 0.1 ~ 2,
+          .default = 0
+        ),
+        alpha = dplyr::case_when(
+          p_value < 0.1 ~ 1,
+          .default = 0
+        )
+      ) +
+      ggplot2::geom_hline(
+        yintercept = data_pred_season %>%
+          dplyr::filter(
+            seasons == "wet"
+          ) %>%
+          purrr::pluck("estimate"),
+        col = "blue",
+        linewidth = 1.5,
+        lty = dplyr::case_when(
+          p_value < 0.05 ~ 1,
+          p_value < 0.1 ~ 2,
+          .default = 0
+        ),
+        alpha = dplyr::case_when(
+          p_value < 0.1 ~ 1,
+          .default = 0
         )
       )
   }
