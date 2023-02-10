@@ -33,6 +33,7 @@ data_to_fit <-
 data_food_pref_individual_plot <-
   food_pref_models_individual %>%
   purrr::pluck("models") %>%
+  dplyr::filter(best_model == TRUE) %>%
   tidyr::unnest(anova_to_null) %>%
   dplyr::mutate(
     indiv_plot = purrr::pmap(
