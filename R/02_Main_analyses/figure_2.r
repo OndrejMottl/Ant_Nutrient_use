@@ -67,6 +67,9 @@ p_template <-
   ggplot2::scale_fill_manual(
     values = c("dry" = "red", "wet" = "blue")
   ) +
+  ggplot2::scale_shape_manual(
+    values = c("dry" = 21, "wet" = 22)
+  ) +
   ggplot2::theme_bw(
     base_size = 12,
     base_family = "arial"
@@ -104,7 +107,7 @@ figure_2a <-
     ),
     size = 2,
     shape = 20,
-    alpha = 0.25,
+    alpha = 0.75,
     varwidth = TRUE,
     col = "gray50"
   ) +
@@ -138,11 +141,11 @@ figure_2b <-
     mapping = ggplot2::aes(
       x = bait_type,
       y = traps_occupied / (traps_occupied + traps_empty),
-      col = seasons
+      col = seasons,
+      shape = seasons
     ),
     size = 2,
-    shape = 20,
-    alpha = 0.25,
+    alpha = 0.75,
     dodge.width = 0.9
   ) +
   ggplot2::geom_linerange(
@@ -156,7 +159,6 @@ figure_2b <-
     ),
     linewidth = 1.5,
     lty = 1,
-    size = 1,
     position = ggplot2::position_dodge(.9)
   ) +
   ggplot2::geom_point(
@@ -164,11 +166,11 @@ figure_2b <-
     mapping = ggplot2::aes(
       x = bait_type,
       y = estimate,
-      col = seasons
+      col = seasons,
+      shape = seasons
     ),
     size = 3,
     fill = "white",
-    shape = 21,
     position = ggplot2::position_dodge(.9)
   )
 
