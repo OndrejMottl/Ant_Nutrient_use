@@ -4,12 +4,16 @@ plot_elev_trend <- function(
     data_pred_season = NULL,
     data_pred_interaction = NULL,
     facet_by = NULL,
+    color_by = "seasons",
     y_var,
     y_var_name,
     y_trans = "identity",
     y_breaks = ggplot2::waiver(),
     x_line = NULL,
-    p_value = 0) {
+    p_value = 0,
+    shape_legend = c("dry" = 21, "wet" = 22),
+    color_legend = c("dry" = "red", "wet" = "blue"),
+    legend_position = "none") {
   use_elev_trend <- isFALSE(is.null(data_pred_trend))
   use_season <- isFALSE(is.null(data_pred_season))
   use_interaction <- isFALSE(is.null(data_pred_interaction))
@@ -24,22 +28,31 @@ plot_elev_trend <- function(
       )
     ) +
     ggplot2::scale_shape_manual(
-      values = c("dry" = 21, "wet" = 22)
+      values = shape_legend
     ) +
     ggplot2::scale_colour_manual(
-      values = c("dry" = "red", "wet" = "blue")
+      values = color_legend
+    ) +
+    ggplot2::scale_fill_manual(
+      values = color_legend
     ) +
     ggplot2::scale_y_continuous(
       trans = y_trans,
       breaks = y_breaks
     ) +
-    ggplot2::xlab("Elevation (m.a.s.l.)") +
+    ggplot2::labs(
+      x = "Elevation (m.a.s.l.)",
+      y = y_var_name,
+      color = color_by,
+      fill = color_by,
+      shape = color_by
+    ) +
     ggplot2::ylab(y_var_name) +
     ggplot2::theme_bw(
       base_size = 12,
       base_family = "arial"
     ) +
-    ggplot2::theme(legend.position = "none") +
+    ggplot2::theme(legend.position = legend_position) +
     ggplot2::geom_vline(
       xintercept = x_line,
       linetype = "dashed",
@@ -48,8 +61,8 @@ plot_elev_trend <- function(
     ) +
     ggplot2::geom_point(
       ggplot2::aes(
-        shape = seasons,
-        col = seasons
+        shape = get(color_by),
+        col = get(color_by)
       ),
       size = 5
     )
@@ -116,7 +129,7 @@ plot_elev_trend <- function(
           y = estimate,
           ymax = conf_high,
           ymin = conf_low,
-          fill = seasons
+          fill = get(color_by)
         ),
         color = NA,
         alpha = dplyr::case_when(
@@ -130,7 +143,7 @@ plot_elev_trend <- function(
         ggplot2::aes(
           x = elevation_mean,
           y = estimate,
-          col = seasons
+          col = get(color_by)
         ),
         lty = dplyr::case_when(
           p_value < 0.05 ~ 1,
@@ -159,7 +172,7 @@ plot_elev_trend <- function(
           xmax = Inf,
           ymin = lower_cl,
           ymax = upper_cl,
-          fill = seasons
+          fill = get(color_by)
         ),
         alpha = dplyr::case_when(
           p_value < 0.05 ~ 0.15,
@@ -170,7 +183,7 @@ plot_elev_trend <- function(
       ggplot2::geom_hline(
         yintercept = data_pred_season %>%
           dplyr::filter(
-            seasons == "dry"
+            get(color_by) == "dry"
           ) %>%
           purrr::pluck("estimate"),
         col = "red",
@@ -188,7 +201,7 @@ plot_elev_trend <- function(
       ggplot2::geom_hline(
         yintercept = data_pred_season %>%
           dplyr::filter(
-            seasons == "wet"
+            get(color_by) == "wet"
           ) %>%
           purrr::pluck("estimate"),
         col = "blue",
