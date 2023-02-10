@@ -67,6 +67,18 @@ plot_elev_trend <- function(
   ) {
     p_0 <-
       p_0 +
+      ggplot2::geom_ribbon(
+        data = data_pred_trend,
+        mapping = ggplot2::aes(
+          x = elevation_mean,
+          y = estimate,
+          ymax = conf_high,
+          ymin = conf_low
+        ),
+        color = NA,
+        fill = "gray50",
+        alpha = 0.15
+      ) +
       ggplot2::geom_line(
         data = data_pred_trend,
         ggplot2::aes(
@@ -83,6 +95,18 @@ plot_elev_trend <- function(
   ) {
     p_0 <-
       p_0 +
+      ggplot2::geom_ribbon(
+        data = data_pred_interaction,
+        mapping = ggplot2::aes(
+          x = elevation_mean,
+          y = estimate,
+          ymax = conf_high,
+          ymin = conf_low,
+          fill = seasons
+        ),
+        color = NA,
+        alpha = 0.15
+      ) +
       ggplot2::geom_line(
         data = data_pred_interaction,
         ggplot2::aes(
