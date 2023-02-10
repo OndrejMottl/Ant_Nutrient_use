@@ -67,7 +67,6 @@ p_template <-
   ggplot2::scale_fill_manual(
     values = c("dry" = "red", "wet" = "blue")
   ) +
-  ggplot2::facet_wrap(~regions, nrow = 1) +
   ggplot2::theme_bw(
     base_size = 12,
     base_family = "arial"
@@ -96,7 +95,20 @@ p_template <-
 
 figure_2a <-
   p_template +
-  ggplot2::geom_pointrange(
+  ggplot2::facet_wrap(~"Average", nrow = 1) +
+  ggbeeswarm::geom_quasirandom(
+    data = data_to_fit,
+    mapping = ggplot2::aes(
+      x = bait_type,
+      y = traps_occupied / (traps_occupied + traps_empty),
+    ),
+    size = 2,
+    shape = 20,
+    alpha = 0.25,
+    varwidth = TRUE,
+    col = "gray50"
+  ) +
+  ggplot2::geom_linerange(
     data = data_pred_bait_type,
     mapping = ggplot2::aes(
       x = bait_type,
@@ -105,13 +117,35 @@ figure_2a <-
       ymax = upper_cl
     ),
     linewidth = 1.5,
-    lty = 1,
-    size = 1,
+    lty = 1
+  ) +
+  ggplot2::geom_point(
+    data = data_pred_bait_type,
+    mapping = ggplot2::aes(
+      x = bait_type,
+      y = estimate,
+    ),
+    size = 3,
+    fill = "white",
+    shape = 21
   )
 
 figure_2b <-
   p_template +
-  ggplot2::geom_pointrange(
+  ggplot2::facet_wrap(~regions, nrow = 1) +
+  ggbeeswarm::geom_beeswarm(
+    data = data_to_fit,
+    mapping = ggplot2::aes(
+      x = bait_type,
+      y = traps_occupied / (traps_occupied + traps_empty),
+      col = seasons
+    ),
+    size = 2,
+    shape = 20,
+    alpha = 0.25,
+    dodge.width = 0.9
+  ) +
+  ggplot2::geom_linerange(
     data = data_pred_full,
     mapping = ggplot2::aes(
       x = bait_type,
@@ -123,6 +157,18 @@ figure_2b <-
     linewidth = 1.5,
     lty = 1,
     size = 1,
+    position = ggplot2::position_dodge(.9)
+  ) +
+  ggplot2::geom_point(
+    data = data_pred_full,
+    mapping = ggplot2::aes(
+      x = bait_type,
+      y = estimate,
+      col = seasons
+    ),
+    size = 3,
+    fill = "white",
+    shape = 21,
     position = ggplot2::position_dodge(.9)
   )
 
