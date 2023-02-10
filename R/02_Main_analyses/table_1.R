@@ -35,35 +35,6 @@ mod_occurences <-
   ) %>%
   purrr::pluck("models")
 
-mod_occurences %>%
-  dplyr::rename(model_df = df) %>%
-  dplyr::filter(best_model == TRUE) %>%
-  purrr::pluck("mod_anova", 1)
-
-mod_occurences %>%
-  dplyr::rename(model_df = df) %>%
-  tidyr::unnest(anova_to_null) %>%
-  dplyr::select(-c(mod, mod_anova)) %>%
-  get_nice_table()
-
-
-mod_occurences$mod_anova[[2]]
-summary(mod_occurences$mod[[2]])
-
-car::Anova(mod_occurences$mod[[2]])
-
-broom::glance(mod_occurences$mod[[2]])
-
-library(broom)
-library(broom.mixed)
-
-glance(mod_occurences$mod[[2]])
-glance()
-
-
-mod_richness$anova_to_null
-
-
 # make table ----
 table_1 <-
   list(
