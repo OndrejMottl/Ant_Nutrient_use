@@ -3,6 +3,7 @@ plot_elev_trend <- function(
     data_pred_trend = NULL,
     data_pred_season = NULL,
     data_pred_interaction = NULL,
+    facet_by = NULL,
     y_var,
     y_var_name,
     y_trans = "identity",
@@ -10,12 +11,7 @@ plot_elev_trend <- function(
   use_elev_trend <- isFALSE(is.null(data_pred_trend))
   use_season <- isFALSE(is.null(data_pred_season))
   use_interaction <- isFALSE(is.null(data_pred_interaction))
-
-  if (
-    isTRUE(use_interaction)
-  ) {
-    use_elev_trend <- TRUE
-  }
+  use_facet <- isFALSE(is.null(facet_by))
 
   p_0 <-
     ggplot2::ggplot(
@@ -35,7 +31,6 @@ plot_elev_trend <- function(
       trans = y_trans,
       breaks = y_breaks
     ) +
-    ggplot2::facet_grid(~regions) +
     ggplot2::xlab("Elevation (m.a.s.l.)") +
     ggplot2::ylab(y_var_name) +
     ggplot2::theme_bw(
@@ -58,40 +53,46 @@ plot_elev_trend <- function(
     )
 
   if (
+    isTRUE(use_facet)
+  ) {
+    p_0 <-
+      p_0 +
+      ggplot2::facet_grid(
+        as.formula(paste("~", facet_by))
+      )
+  }
+
+  if (
     isTRUE(use_elev_trend)
   ) {
-    if (
-      isFALSE(use_interaction) && isFALSE(use_season)
-    ) {
-      p_0 <-
-        p_0 +
-        ggplot2::geom_line(
-          data = data_pred_trend,
-          ggplot2::aes(
-            x = elevation_mean,
-            y = estimate
-          ),
-          lty = 1,
-          linewidth = 1.5
-        )
-    }
+    p_0 <-
+      p_0 +
+      ggplot2::geom_line(
+        data = data_pred_trend,
+        ggplot2::aes(
+          x = elevation_mean,
+          y = estimate
+        ),
+        lty = 1,
+        linewidth = 1.5
+      )
+  }
 
-    if (
-      isTRUE(use_interaction)
-    ) {
-      p_0 <-
-        p_0 +
-        ggplot2::geom_line(
-          data = data_pred_interaction,
-          ggplot2::aes(
-            x = elevation_mean,
-            y = estimate,
-            col = seasons
-          ),
-          lty = 1,
-          linewidth = 1.5
-        )
-    }
+  if (
+    isTRUE(use_interaction)
+  ) {
+    p_0 <-
+      p_0 +
+      ggplot2::geom_line(
+        data = data_pred_interaction,
+        ggplot2::aes(
+          x = elevation_mean,
+          y = estimate,
+          col = seasons
+        ),
+        lty = 1,
+        linewidth = 1.5
+      )
   }
 
   if (
