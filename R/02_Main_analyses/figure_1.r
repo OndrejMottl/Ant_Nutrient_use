@@ -106,7 +106,8 @@ figure_1a <-
     data_source = data_to_fit,
     data_pred_trend = data_pred_richness_elev,
     y_var = "n_species",
-    y_var_name = "Species richness"
+    y_var_name = "Species richness",
+    facet_by = "regions"
   )
 
 figure_1b <-
@@ -114,7 +115,8 @@ figure_1b <-
     data_source = data_to_fit,
     data_pred_interaction = data_pred_occurences_interaction,
     y_var = "n_occurecnes",
-    y_var_name = "Species occurences"
+    y_var_name = "Species occurences",
+    facet_by = "regions"
   )
 
 figure_1 <-
