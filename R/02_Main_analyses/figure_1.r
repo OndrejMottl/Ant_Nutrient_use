@@ -48,16 +48,6 @@ dummy_predict_table_elev <-
   ) %>%
   tidyr::as_tibble()
 
-dummy_predict_table_season <-
-  data_to_fit %>%
-  dplyr::select(seasons, regions) %>%
-  modelbased::visualisation_matrix(
-    at = c("seasons", "regions"),
-    length = 100,
-    preserve_range = TRUE
-  ) %>%
-  tidyr::as_tibble()
-
 dummy_predict_table_interaction <-
   data_to_fit %>%
   dplyr::select(elevation_mean, regions, seasons) %>%
@@ -107,7 +97,13 @@ figure_1a <-
     data_pred_trend = data_pred_richness_elev,
     y_var = "n_species",
     y_var_name = "Species richness",
-    facet_by = "regions"
+    facet_by = "~ regions",
+    x_line = c(1000, 3000),
+    p_value = mod_richness %>%
+      purrr::pluck("models") %>%
+      dplyr::filter(best_model == TRUE) %>%
+      tidyr::unnest(anova_to_null) %>%
+      purrr::pluck("aov_pr_chisq", 1)
   )
 
 figure_1b <-
@@ -116,7 +112,13 @@ figure_1b <-
     data_pred_interaction = data_pred_occurences_interaction,
     y_var = "n_occurecnes",
     y_var_name = "Species occurences",
-    facet_by = "regions"
+    facet_by = "~ regions",
+    x_line = c(1000, 3000),
+    p_value = mod_occurences %>%
+      purrr::pluck("models") %>%
+      dplyr::filter(best_model == TRUE) %>%
+      tidyr::unnest(anova_to_null) %>%
+      purrr::pluck("aov_pr_chisq", 1)
   )
 
 figure_1 <-
