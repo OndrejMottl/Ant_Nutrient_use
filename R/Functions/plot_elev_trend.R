@@ -41,7 +41,7 @@ plot_elev_trend <- function(
     ) +
     ggplot2::theme(legend.position = "none") +
     ggplot2::geom_vline(
-      xintercept = NULL,
+      xintercept = x_line,
       linetype = "dashed",
       color = "darkgrey",
       linewidth = 1
