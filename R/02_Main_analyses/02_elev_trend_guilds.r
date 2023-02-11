@@ -63,7 +63,7 @@ data_to_fit <-
 
 # fit model ----
 mod_guilds_proportions <-
-  fit_guild_elev_models(
+  fit_guild_elev_region_season(
     data_source = data_to_fit,
     sel_var = "n_occ_prop",
     sel_family = glmmTMB::ordbeta(link = "logit"),

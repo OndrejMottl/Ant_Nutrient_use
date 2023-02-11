@@ -75,7 +75,7 @@ food_pref_models <-
           paste(.x, .y, sep = " - ")
         )
 
-        fit_elev_models_per_region(
+        fit_elev_season(
           data_source = data_to_fit %>%
             dplyr::filter(regions %in% .x) %>%
             dplyr::filter(bait_type %in% .y),

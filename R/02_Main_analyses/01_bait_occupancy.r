@@ -77,7 +77,7 @@ data_to_fit <-
 
 # fit models  ----
 mod_bait_occupancy <-
-  fit_food_pref_models(
+  fit_food_elev_region_season(
     data_source = data_to_fit,
     sel_var = "cbind(traps_occupied, traps_empty)",
     sel_family = glmmTMB::betabinomial(link = "logit")
