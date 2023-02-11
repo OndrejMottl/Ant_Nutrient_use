@@ -19,6 +19,10 @@
 # 1. Load packages -----
 #----------------------------------------------------------#
 
+renv::restore(
+  lockfile = here::here("renv/library_list.lock")
+)
+
 # define packages
 package_list <-
   c(
@@ -26,10 +30,13 @@ package_list <-
     "car",
     "effectsize",
     "emmeans",
+    "ggbeeswarm",
+    "ggpubr",
     "glmmTMB",
     "here",
     "insight",
     "knitr",
+    "marginaleffects",
     "MASS",
     "MuMIn",
     "patchwork",
