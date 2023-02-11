@@ -1,6 +1,7 @@
 fit_guild_elev_region_season <-
   function(data_source,
            sel_var = "n_occ_prop",
+           elev_poly = 1,
            sel_family = glmmTMB::ordbeta(link = "logit"),
            ...) {
     # singl pred
@@ -16,7 +17,7 @@ fit_guild_elev_region_season <-
     mod_guild <-
       stats::update(mod_null, . ~ guild)
     mod_elev <-
-      stats::update(mod_null, . ~ poly(elevation_mean, 2))
+      stats::update(mod_null, . ~ poly(elevation_mean, elev_poly))
     mod_region <-
       stats::update(mod_null, . ~ regions)
     mod_season <-
@@ -25,10 +26,10 @@ fit_guild_elev_region_season <-
     # two predictors
     # guild + elevation"
     mod_guild_elev <-
-      stats::update(mod_guild, . ~ . + poly(elevation_mean, 2))
+      stats::update(mod_guild, . ~ . + poly(elevation_mean, elev_poly))
     # guild * elevation"
     mod_guild_elev_int <-
-      stats::update(mod_guild, . ~ . * poly(elevation_mean, 2))
+      stats::update(mod_guild, . ~ . * poly(elevation_mean, elev_poly))
     # guild + region"
     mod_guild_region <-
       stats::update(mod_guild, . ~ . + regions)
@@ -246,11 +247,11 @@ fit_guild_elev_region_season <-
         test_overdispersion = FALSE
       )
 
-   mod_deviance <-
-     get_d2(mod_details, mod_null)
+    mod_deviance <-
+      get_d2(mod_details, mod_null)
 
-   res <-
-     get_anova_to_null(mod_deviance, mod_null)
+    res <-
+      get_anova_to_null(mod_deviance, mod_null)
 
     return(res)
   }
