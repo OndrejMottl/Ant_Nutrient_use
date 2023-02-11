@@ -1,8 +1,9 @@
-get_anova <- function(data_source, sel_test = "Chisq") {
+get_anova <- function(data_source, sel_type = "III") {
   suppressWarnings(
     test_res <-
       car::Anova(
-        data_source
+        mod = data_source,
+        type = sel_type
       )
   )
 
