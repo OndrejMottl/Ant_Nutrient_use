@@ -1,4 +1,4 @@
-fit_guild_models <-
+fit_guild_addtion <-
   function(data_source,
            sel_var = "n_occ_prop",
            sel_family = glmmTMB::betabinomial(link = "logit"),
@@ -53,8 +53,11 @@ fit_guild_models <-
         test_overdispersion = FALSE
       )
 
+    mod_deviance <-
+      get_d2(mod_details, mod_null)
+
     res <-
-      get_anova_to_null(mod_details, mod_null)
+      get_anova_to_null(mod_deviance, mod_null)
 
     return(res)
   }

@@ -1,4 +1,4 @@
-fit_food_pref_models <-
+fit_food_elev_region_season <-
   function(data_source,
            sel_var = "cbind(total_occurrence, max occurrence - total_occurrence)",
            sel_family = glmmTMB::betabinomial(link = "logit"),
@@ -246,8 +246,11 @@ fit_food_pref_models <-
         test_overdispersion = FALSE
       )
 
-    res <-
-      get_anova_to_null(mod_details, mod_null)
+ mod_deviance <-
+   get_d2(mod_details, mod_null)
+
+ res <-
+   get_anova_to_null(mod_deviance, mod_null)
 
     return(res)
   }
