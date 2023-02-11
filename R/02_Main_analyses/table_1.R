@@ -21,63 +21,67 @@ source(
 
 
 # load models ----
-mods_div <-
-  readr::read_rds(
-    file = here::here(
-      paste0(
-        "Data/Processed/Models/ele_trend_diversity_2023-02-02.rds"
-      )
-    )
-  )
+mod_richness <-
+  RUtilpol::get_latest_file(
+    file_name = "mod_richness",
+    dir = here::here("Data/Processed/Models/")
+  ) %>%
+  purrr::pluck("models")
 
-
-mods_occ <-
-  readr::read_rds(
-    file = here::here(
-      paste0(
-        "Data/Processed/Models/ele_trend_occurences_2023-02-02.rds"
-      )
-    )
-  )
+mod_occurences <-
+  RUtilpol::get_latest_file(
+    file_name = "mod_occurences",
+    dir = here::here("Data/Processed/Models/")
+  ) %>%
+  purrr::pluck("models")
 
 # make table ----
 table_1 <-
   list(
-    mods_div,
-    mods_occ
+    mod_richness,
+    mod_occurences
+  ) %>%
+  rlang::set_names(
+    nm = c("Species richness", "Species occurences")
   ) %>%
   purrr::map(
     .f = ~ .x %>%
-      dplyr::filter(
-        mod_name == "poly_full"
-      ) %>%
-      purrr::pluck("model_details", 1) %>%
+      dplyr::rename(model_df = df) %>%
+      dplyr::filter(best_model == TRUE) %>%
+      purrr::pluck("mod_anova", 1) %>%
       get_nice_table()
   ) %>%
   knitr::kables(format = "simple")
 
-# results for models selected based of AIC
-if (FALSE) {
-  table_1 <-
-    list(
-      mods_div,
-      mods_occ
-    ) %>%
-    purrr::map(
-      .f = ~ .x %>%
-        dplyr::filter(
-          best_model == TRUE
-        ) %>%
-        purrr::pluck("model_details", 1) %>%
-        get_nice_table()
-    ) %>%
-    knitr::kables(format = "simple")
-}
-
-# save docx to workspace and manually copy table over to xlsx
+# save 
 arsenal::write2word(
   object = table_1,
   file = here::here(
-      "Outputs/Table_1.docx"
-    )
+    "Outputs/Table_1.docx"
+  )
+)
+
+tabel_1_models <-
+  list(
+    mod_richness,
+    mod_occurences
+  ) %>%
+  rlang::set_names(
+    nm = c("Species richness", "Species occurences")
+  ) %>%
+  purrr::map(
+    .f = ~ .x %>%
+      dplyr::rename(model_df = df) %>%
+      tidyr::unnest(anova_to_null) %>%
+      dplyr::select(-c(mod, mod_anova)) %>%
+      get_nice_table()
+  ) %>%
+  knitr::kables(format = "simple")
+
+# save
+arsenal::write2word(
+  object = tabel_1_models,
+  file = here::here(
+    "Outputs/Table_1_models.docx"
+  )
 )

@@ -90,11 +90,11 @@ food_pref_models <-
 
 food_pref_models_individual <-
   food_pref_models %>%
-  tidyr::unnest(models) %>%
-  dplyr::filter(best_model == TRUE)
+  tidyr::unnest(models)
 
 food_pref_models_individual %>%
   dplyr::arrange(regions) %>%
+  dplyr::filter(best_model == TRUE) %>%
   dplyr::select(regions, sel_bait_type, mod_name)
 
 # save
@@ -133,11 +133,11 @@ food_pref_models_per_region <-
 
 data_food_pref_models_regions <-
   food_pref_models_per_region %>%
-  tidyr::unnest(models) %>%
-  dplyr::filter(best_model == TRUE)
+  tidyr::unnest(models) 
 
 data_food_pref_models_regions %>%
   dplyr::arrange(regions) %>%
+  dplyr::filter(best_model == TRUE)
   dplyr::select(regions, mod_name)
 
 # save

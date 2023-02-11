@@ -66,7 +66,11 @@ mod_guilds_proportions <-
   fit_guild_elev_models(
     data_source = data_to_fit,
     sel_var = "n_occ_prop",
-    sel_family = glmmTMB::ordbeta(link = "logit")
+    sel_family = glmmTMB::ordbeta(link = "logit"),
+    control = glmmTMB::glmmTMBControl(
+      optimizer = optim,
+      optArgs = list(method = "BFGS")
+    )
   )
 
 mod_guilds_proportions

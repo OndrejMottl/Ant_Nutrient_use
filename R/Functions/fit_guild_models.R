@@ -1,97 +1,28 @@
 fit_guild_models <-
   function(data_source,
-           sel_nutrient,
-           max_nutrient,
-           sel_mod = c(
-             "betabinomial_aod",
-             "betabinomial_glmmTMB",
-             "quasibinomial_aod",
-             "quasibinomial_glmmTMB"
-           ),
-           test_overdispersion = FALSE) {
-    sel_mod <- match.arg(sel_mod)
-
-    switch(sel_mod,
-      "betabinomial_aod" = {
-        mod_null <-
-          aods3::aodml(
-            formula = as.formula(
-              paste0(
-                "cbind(", sel_nutrient, " , ",
-                max_nutrient, " - ", sel_nutrient, ")  ~ 1"
-              )
-            ),
-            phi.formula = ~1,
-            link = "logit",
-            family = "bb",
-            method = "Nelder-Mead",
-            control = list(maxit = 500, trace = 0),
-            data = data_source
-          )
-      },
-      "betabinomial_glmmTMB" = {
-        mod_null <-
-          glmmTMB::glmmTMB(
-            formula = as.formula(
-              paste0(
-                "cbind(", sel_nutrient, " , ",
-                max_nutrient, " - ", sel_nutrient, ")  ~ 1"
-              )
-            ),
-            family = glmmTMB::betabinomial(link = "logit"),
-            data = data_source,
-            ziformula = ~0,
-            control = glmmTMB::glmmTMBControl(
-              optimizer = optim
-            )
-          )
-      },
-      "quasibinomial_aod" = {
-        mod_null <-
-          aods3::aodql(
-            formula = as.formula(
-              paste0(
-                "cbind(", sel_nutrient, " , ",
-                max_nutrient, " - ", sel_nutrient, ")  ~ 1"
-              )
-            ),
-            phi.formula = ~1,
-            link = "logit",
-            family = "qbin",
-            method = "chisq",
-            method = "Nelder-Mead",
-            control = list(maxit = 500, trace = 0),
-            data = data_source
-          )
-      },
-      "quasibinomial_glmmTMB" = {
-        mod_null <-
-          glmmTMB::glmmTMB(
-            formula = as.formula(
-              paste0(
-                "cbind(", sel_nutrient, " , ",
-                max_nutrient, " - ", sel_nutrient, ")  ~ 1"
-              )
-            ),
-            family = stats::quasibinomial(link = "logit"),
-            data = data_source,
-            ziformula = ~0,
-            control = glmmTMB::glmmTMBControl(
-              optimizer = optim
-            )
-          )
-      }
-    )
+           sel_var = "n_occ_prop",
+           sel_family = glmmTMB::betabinomial(link = "logit"),
+           ...) {
+    mod_null <-
+      glmmTMB::glmmTMB(
+        formula = as.formula(
+          paste0(sel_var, "  ~ 1")
+        ),
+        family = sel_family,
+        data = data_source,
+        ziformula = ~0,
+        ...
+      )
 
     suppressWarnings({
       mod_g <-
-        stats::update(mod_null, . ~ G_prop)
+        stats::update(mod_null, . ~ n_occ_generalistic_prop)
 
       mod_ht <-
-        stats::update(mod_null, . ~ HT_prop)
+        stats::update(mod_null, . ~ n_occ_herbivorous_trophobiotic)
 
       mod_ps <-
-        stats::update(mod_null, . ~ PS_prop)
+        stats::update(mod_null, . ~ n_occ_predator_scavenger)
     })
 
     mod_table <-
@@ -119,7 +50,7 @@ fit_guild_models <-
       get_model_details(
         data_source = mod_table,
         compare_aic = TRUE,
-        test_overdispersion = test_overdispersion
+        test_overdispersion = FALSE
       )
 
     res <-
