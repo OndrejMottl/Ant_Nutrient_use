@@ -31,31 +31,44 @@ fit_elev_season <-
     )
 
     mod_elev <-
+      stats::update(mod_null, . ~ poly(elevation_mean, 1))
+    mod_elev_poly <-
       stats::update(mod_null, . ~ poly(elevation_mean, 2))
     mod_season <-
       stats::update(mod_null, . ~ seasons)
+
     mod_elev_season <-
       stats::update(mod_elev, . ~ . + seasons)
     mod_elev_season_int <-
       stats::update(mod_elev, . ~ . * seasons)
+    mod_elev_poly_season <-
+      stats::update(mod_elev_poly, . ~ . + seasons)
+    mod_elev_poly_season_int <-
+      stats::update(mod_elev_poly, . ~ . * seasons)
 
     mod_table <-
       tibble::tibble(
         mod_name = c(
           "null",
           "elevation",
+          "elevation-poly",
           "season",
           "elevation + season",
-          "elevation * season"
+          "elevation * season",
+          "elevation-poly + season",
+          "elevation-poly * season"
         )
       ) %>%
       dplyr::mutate(
         mod = list(
           mod_null,
           mod_elev,
+          mod_elev_poly,
           mod_season,
           mod_elev_season,
-          mod_elev_season_int
+          mod_elev_season_int,
+          mod_elev_poly_season,
+          mod_elev_poly_season_int
         ) %>%
           rlang::set_names(
             nm = mod_name
