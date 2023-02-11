@@ -4,7 +4,7 @@ print_model_summary <- function(data_source) {
     dplyr::select(
       mod_name, AICc, delta, r2, d2, best_model
     ) %>%
-    print()
+    print(., n = 100)
 
   RUtilpol::output_comment("best model:")
   data_source %>%
