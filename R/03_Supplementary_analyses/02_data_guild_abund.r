@@ -111,3 +111,9 @@ RUtilpol::save_latest_file(
   object_to_save = data_guild_abundances,
   dir = here::here("Data/Supplementary/")
 )
+
+RUtilpol::save_latest_file(
+  object_to_save = data_guild_abundances,
+  dir = here::here("Data/Reference_tables/"),
+  prefered_format = "csv"
+)

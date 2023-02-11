@@ -43,8 +43,8 @@ data_n_sites
 
 RUtilpol::save_latest_file(
   object_to_save = data_n_sites,
-  dir = here::here("Data/Processed"),
-  prefered_format = "rds"
+  dir = here::here("Data/Reference_tables"),
+  prefered_format = "csv"
 )
 
 data_n_traps <-
@@ -68,8 +68,8 @@ data_n_traps
 
 RUtilpol::save_latest_file(
   object_to_save = data_n_traps,
-  dir = here::here("Data/Processed"),
-  prefered_format = "rds"
+  dir = here::here("Data/Reference_tables"),
+  prefered_format = "csv"
 )
 
 data_mean_elevation <-
