@@ -19,7 +19,6 @@ source(
   )
 )
 
-
 # load models ----
 food_pref_models_abundance <-
   RUtilpol::get_latest_file(
@@ -35,12 +34,21 @@ table_s3 <-
   dplyr::arrange(regions, sel_bait_type)  %>% 
   dplyr::rename(model_df = df) %>%
   tidyr::unnest("anova_to_null") %>%
-  dplyr::select(-c(mod, mod_anova)) %>%
-  get_nice_table()
+  dplyr::select(-c(mod, mod_anova)) 
 
-# save
+# save ----
+# csv
+readr::write_csv(
+  table_s3,
+  file = here::here(
+    "Outputs/Table_s3.csv"
+  )
+)
+
+# word
 arsenal::write2word(
-  object = table_s3,
+  object = table_s3 %>%
+  get_nice_table(),
   file = here::here(
     "Outputs/Table_S3.docx"
   )

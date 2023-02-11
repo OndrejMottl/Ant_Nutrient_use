@@ -24,11 +24,19 @@ food_pref_models_abundance <-
   RUtilpol::get_latest_file(
     file_name = "food_pref_models_abundance",
     dir = here::here("Data/Supplementary/Models/")
-  )  
+  )
 
 data_to_fit <-
   food_pref_models_abundance %>%
   purrr::pluck("data_to_fit")
+
+# check all podel outcomes
+food_pref_models_abundance %>%
+  purrr::pluck("models") %>%
+  dplyr::filter(best_model == TRUE) %>%
+  View()
+  purrr::pluck("mod_name") %>%
+  unique()
 
 data_food_pref_individual_plot <-
   food_pref_models_abundance %>%
@@ -59,7 +67,7 @@ data_food_pref_individual_plot <-
         data_pred_interaction <- NULL
 
         switch(..3,
-          "elevation" = {
+          "elevation-poly" = {
             dummy_predict_table_elev <-
               data_to_plot %>%
               dplyr::select(elevation_mean) %>%
@@ -98,13 +106,29 @@ data_food_pref_individual_plot <-
                 mod = ..4,
                 dummy_table = dummy_predict_table_interaction
               )
+          },
+          "elevation-poly * season" = {
+            dummy_predict_table_interaction <-
+              data_to_plot %>%
+              dplyr::select(elevation_mean, seasons) %>%
+              modelbased::visualisation_matrix(
+                at = c("elevation_mean", "seasons"),
+                length = 100,
+                preserve_range = TRUE
+              ) %>%
+              tidyr::as_tibble()
+            data_pred_interaction <-
+              get_predicted_data(
+                mod = ..4,
+                dummy_table = dummy_predict_table_interaction
+              )
           }
         )
 
         res_plot <-
           plot_elev_trend(
             data_source = data_to_plot,
-            y_var = "rel_occurences",
+            y_var = "rel_abundance",
             y_var_name = "Relative nutrient use",
             data_pred_trend = data_pred_trend,
             data_pred_season = data_pred_season,
