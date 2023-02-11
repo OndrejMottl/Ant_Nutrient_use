@@ -132,3 +132,9 @@ RUtilpol::save_latest_file(
   dir = here::here("Data/Processed"),
   prefered_format = "rds"
 )
+
+RUtilpol::save_latest_file(
+  object_to_save = data_ant_counts,
+  dir = here::here("Data/Reference_tables"),
+  prefered_format = "csv"
+)

@@ -176,3 +176,9 @@ RUtilpol::save_latest_file(
   object_to_save = data_bait_type,
   dir = here::here("Data/Processed/")
 )
+
+RUtilpol::save_latest_file(
+  object_to_save = data_bait_type,
+  dir = here::here("Data/Reference_tables/"),
+  prefered_format = "csv"
+)
