@@ -84,7 +84,7 @@ mod_richness <-
     compare_aic = TRUE
   )
 
-print_model_summary(mod_occurences)
+print_model_summary(mod_richness)
 
 # save
 list(
