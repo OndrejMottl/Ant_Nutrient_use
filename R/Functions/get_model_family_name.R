@@ -5,6 +5,25 @@ get_model_family_name <- function(data_source) {
     purrr::pluck("family")
 
   if (
+    is.null(family_name)
+  ) {
+    try(
+      expr = {
+        family_name <-
+          data_source %>%
+          purrr::pluck("family")
+      },
+      silent = TRUE
+    )
+  }
+
+  if (
+    is.null(family_name)
+  ) {
+    return()
+  }
+
+  if (
     stringr::str_detect(family_name, "Negative Binomial")
   ) {
     family_name <- "Negative Binomial"

@@ -1,11 +1,14 @@
 get_r2 <- function(data_source) {
-  opt <-
-    options(show.error.messages = FALSE)
-  on.exit(options(opt))
-
   res <- NA_real_
 
+
   mod_family <- get_model_family_name(data_source)
+
+  if (
+    is.null(mod_family)
+  ) {
+    mod_family <- NA
+  }
 
   switch(mod_family,
     "Negative Binomial" = {
@@ -61,6 +64,8 @@ get_r2 <- function(data_source) {
     }
   )
 
-  as.double(res) %>%
-    return()
+  res <-
+    as.double(res)
+
+  return(res)
 }
