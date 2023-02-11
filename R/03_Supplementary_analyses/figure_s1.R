@@ -30,9 +30,7 @@ data_to_fit <-
   mod_abundnace %>%
   purrr::pluck("data_to_fit")
 
-
 # dummy tables ----
-
 mod_abundnace %>%
   purrr::pluck("models") %>%
   dplyr::filter(best_model == TRUE) %>%
@@ -50,7 +48,7 @@ dummy_predict_table_trend <-
   tidyr::as_tibble()
 
 # predict -----
-data_pred_abundance_trend<-
+data_pred_abundance_trend <-
   get_predicted_data(
     mod = mod_abundnace %>%
       purrr::pluck("models") %>%
@@ -76,7 +74,6 @@ firure_s1 <-
     y_breaks = c(0, 1, 10, 100, 500, 1500, 4000)
   )
 
-
 # save ----
 save_figure(
   filename = "figure_s1",
@@ -85,4 +82,3 @@ save_figure(
   width = 168,
   height = 150
 )
-

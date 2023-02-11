@@ -19,7 +19,6 @@ source(
   )
 )
 
-
 # load models ----
 mod_richness <-
   RUtilpol::get_latest_file(
@@ -35,32 +34,6 @@ mod_occurences <-
   ) %>%
   purrr::pluck("models")
 
-# make table ----
-table_1 <-
-  list(
-    mod_richness,
-    mod_occurences
-  ) %>%
-  rlang::set_names(
-    nm = c("Species richness", "Species occurences")
-  ) %>%
-  purrr::map(
-    .f = ~ .x %>%
-      dplyr::rename(model_df = df) %>%
-      dplyr::filter(best_model == TRUE) %>%
-      purrr::pluck("mod_anova", 1) %>%
-      get_nice_table()
-  ) %>%
-  knitr::kables(format = "simple")
-
-# save 
-arsenal::write2word(
-  object = table_1,
-  file = here::here(
-    "Outputs/Table_1.docx"
-  )
-)
-
 tabel_1_models <-
   list(
     mod_richness,
@@ -73,15 +46,58 @@ tabel_1_models <-
     .f = ~ .x %>%
       dplyr::rename(model_df = df) %>%
       tidyr::unnest(anova_to_null) %>%
-      dplyr::select(-c(mod, mod_anova)) %>%
-      get_nice_table()
-  ) %>%
-  knitr::kables(format = "simple")
+      dplyr::select(-c(mod, mod_anova))
+  )
 
-# save
+# save ----
+# csv
+dplyr::bind_rows(
+  tabel_1_models,
+  .id = "var"
+) %>%
+  readr::write_csv(
+    file = here::here(
+      "Outputs/Table_1_models.csv"
+    )
+  )
+
+# word
 arsenal::write2word(
-  object = tabel_1_models,
+  object = tabel_1_models %>%
+    purrr::map(
+      .f = ~ get_nice_table(.x)
+    ) %>%
+    knitr::kables(format = "simple"),
   file = here::here(
     "Outputs/Table_1_models.docx"
   )
 )
+
+# do not use seletion based on predicotr deviance
+if (FALSE) {
+  # make table ----
+  table_1 <-
+    list(
+      mod_richness,
+      mod_occurences
+    ) %>%
+    rlang::set_names(
+      nm = c("Species richness", "Species occurences")
+    ) %>%
+    purrr::map(
+      .f = ~ .x %>%
+        dplyr::rename(model_df = df) %>%
+        dplyr::filter(best_model == TRUE) %>%
+        purrr::pluck("mod_anova", 1) %>%
+        get_nice_table()
+    ) %>%
+    knitr::kables(format = "simple")
+
+  # save
+  arsenal::write2word(
+    object = table_1,
+    file = here::here(
+      "Outputs/Table_1.docx"
+    )
+  )
+}

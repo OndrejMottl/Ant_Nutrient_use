@@ -65,7 +65,7 @@ mod_richness %>%
   dplyr::filter(best_model == TRUE) %>%
   purrr::pluck("mod_name", 1)
 
-data_pred_richness_elev <-
+data_pred_richness_trend <-
   get_predicted_data(
     mod = mod_richness %>%
       purrr::pluck("models") %>%
@@ -94,7 +94,7 @@ data_pred_occurences_interaction <-
 figure_1a <-
   plot_elev_trend(
     data_source = data_to_fit,
-    data_pred_trend = data_pred_richness_elev,
+    data_pred_trend = data_pred_richness_trend,
     y_var = "n_species",
     y_var_name = "Species richness",
     facet_by = "~ regions",
@@ -103,7 +103,7 @@ figure_1a <-
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
       tidyr::unnest(anova_to_null) %>%
-      purrr::pluck("aov_pr_chisq", 1)
+      purrr::pluck(stringr::str_subset(names(.), "pr_chi"), 1)
   )
 
 figure_1b <-
@@ -118,7 +118,7 @@ figure_1b <-
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
       tidyr::unnest(anova_to_null) %>%
-      purrr::pluck("aov_pr_chisq", 1)
+      purrr::pluck(stringr::str_subset(names(.), "pr_chi"), 1)
   )
 
 figure_1 <-
@@ -130,7 +130,6 @@ figure_1 <-
       tag_suffix = ")"
     ) &
     ggplot2::theme(legend.position = "top")
-
 
 # save ----
 save_figure(
