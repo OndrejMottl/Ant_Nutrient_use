@@ -30,6 +30,13 @@ data_to_fit <-
   food_pref_models_individual %>%
   purrr::pluck("data_to_fit")
 
+# check all podel outcomes
+food_pref_models_individual %>%
+  purrr::pluck("models") %>%
+  dplyr::filter(best_model == TRUE) %>%
+  purrr::pluck("mod_name") %>%
+  unique()
+
 data_food_pref_individual_plot <-
   food_pref_models_individual %>%
   purrr::pluck("models") %>%
