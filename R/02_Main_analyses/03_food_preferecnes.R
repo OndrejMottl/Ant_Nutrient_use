@@ -81,6 +81,7 @@ food_pref_models <-
             dplyr::filter(bait_type %in% .y),
           sel_var = "cbind(n_occurecnes, max_occurecnes - n_occurecnes)",
           sel_family = glmmTMB::betabinomial(link = "logit"),
+          sel_method = "glmmTMB",
           compare_aic = TRUE
         ) %>%
           return()
