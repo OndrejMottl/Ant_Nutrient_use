@@ -21,16 +21,48 @@ source(
 )
 
 # load data ----
-data_guilds <-
-  readr::read_csv(
-    file = here::here(
-      paste0("Data/Processed/data_guilds_2023-02-02.csv")
-    ),
-    show_col_types = FALSE
+data_guild_occurences <-
+  RUtilpol::get_latest_file(
+    file_name = "data_guild_occurences",
+    dir = here::here("Data/Processed/")
+  )
+
+dplyr::glimpse(data_guild_occurences)
+
+data_bait_type_rel_use <-
+  RUtilpol::get_latest_file(
+    file_name = "data_bait_type",
+    dir = here::here("Data/Processed/")
+  )
+
+dplyr::glimpse(data_bait_type_rel_use)
+
+data_mean_elevation <-
+  RUtilpol::get_latest_file(
+    file_name  = "data_mean_elevation",
+    dir = here::here("Data/Processed")
+  )
+
+dplyr::glimpse(data_mean_elevation)
+
+# data wragling ----
+data_to_fit <-
+  dplyr::left_join(
+    data_bait_type_rel_use,
+    data_mean_elevation,
+    by = dplyr::join_by(regions, seasons, et_pcode)
+  ) %>%
+  dplyr::left_join(
+    data_guild_occurences,
+    by = dplyr::join_by(regions, seasons, et_pcode)
   ) %>%
   dplyr::mutate(
-    Regions = as.factor(Regions),
-    Seasons = as.factor(Seasons)
+    dplyr::across(
+      tidyselect::where(
+        is.character
+      ),
+      as.factor
+    )
   )
 
 # fit model ----
@@ -38,24 +70,18 @@ data_guilds <-
 # create a table to apply model to
 data_all_possibilies <-
   expand.grid(
-    Regions = data_guilds$Regions %>%
+    regions = data_to_fit$regions %>%
       unique(),
-    sel_nutrient = c(
-      "AminoAcid_spoc",
-      "CHO_spoc",
-      "CHOAminoAcid_spoc",
-      "H2O_spoc",
-      "Lipid_spoc",
-      "NaCl_spoc"
-    )
+    sel_nutrient = data_to_fit$bait_type %>%
+      unique()
   ) %>%
   tibble::as_tibble()
 
-data_guild_models <-
+data_guild_models_all <-
   data_all_possibilies %>%
   dplyr::mutate(
     models = purrr::map2(
-      .x = Regions,
+      .x = regions,
       .y = sel_nutrient,
       .f = ~ {
         message(
@@ -63,65 +89,34 @@ data_guild_models <-
         )
 
         fit_guild_models(
-          data_source = data_guilds %>%
-            dplyr::filter(Regions %in% .x),
-          sel_nutrient = .y,
-          max_nutrient = "MAXoccurrence",
-          sel_mod = "betabinomial_glmmTMB"
+          data_source = data_to_fit %>%
+            dplyr::filter(regions == .x) %>%
+            dplyr::filter(bait_type == .y),
+          sel_var = "cbind(n_occurecnes, max_occurecnes - n_occurecnes)",
+          sel_family = glmmTMB::betabinomial(link = "logit")
         ) %>%
           return()
       }
     )
   )
 
-data_guild_models_res <-
-  data_guild_models %>%
-  tidyr::unnest(models) %>%
+data_guild_models <-
+  data_guild_models_all %>%
+  tidyr::unnest(models)
+
+data_guild_models %>%
+  dplyr::arrange(sel_nutrient, regions) %>%
   dplyr::filter(best_model == TRUE) %>%
-  # replce NA for NULL models with arbitrary 1e3
-  dplyr::mutate(
-    weight = ifelse(is.na(weight), 1e3, weight)
-  ) %>%
-  dplyr::group_by(Regions, sel_nutrient) %>%
-  dplyr::filter(
-    weight == max(weight)
-  ) %>%
-  # replce NULL models back to arbitrary NA
-  dplyr::mutate(
-    weight = ifelse(weight == 1e3, NA_real_, weight)
-  ) %>%
-  dplyr::select(
-    dplyr::any_of(
-      c(
-        "Regions",
-        "sel_nutrient",
-        "mod_name",
-        "mod",
-        "df",
-        "AICc",
-        "delta",
-        "weight",
-        "r2",
-        "mod_anova",
-        "aov_df",
-        "aov_log_lik",
-        "aov_deviance",
-        "aov_chisq",
-        "aov_chi_df",
-        "aov_pr_chisq",
-        "aov_signif"
-      )
-    )
-  )
+  dplyr::select(regions, sel_nutrient, mod_name)
 
 # save ----
-data_guild_models_res %>%
-  readr::write_rds(
-    file = here::here(
-      paste0(
-        "Data/Processed/Models/guild_",
-        current_date,
-        ".rds"
-      )
-    )
+# save
+list(
+  data_to_fit = data_to_fit,
+  models = data_guild_models
+) %>%
+  RUtilpol::save_latest_file(
+    object_to_save = .,
+    file_name = "data_guild_models",
+    dir = here::here("Data/Processed/Models/")
   )
