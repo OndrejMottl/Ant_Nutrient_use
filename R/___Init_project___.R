@@ -36,6 +36,7 @@ renv::deactivate()
 
 package_list <-
   c(
+    "aods3",
     "assertthat",
     "car",
     "effectsize",
