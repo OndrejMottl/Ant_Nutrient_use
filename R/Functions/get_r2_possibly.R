@@ -1,4 +1,4 @@
-get_r2 <- function(data_source) {
+get_r2_possibly <- function(data_source) {
   res <- NA_real_
 
   mod_family <- get_model_family_name(data_source)
@@ -38,15 +38,12 @@ get_r2 <- function(data_source) {
       )
     },
     "nbinom" = {
-      capture.output(
-        suppressWarnings(
-          res <-
-            performance::r2_nakagawa(data_source) %>%
-            as.data.frame() %>%
-            purrr::pluck("R2_marginal") %>%
-            mean(., na.rm = TRUE)
-        ),
-        file = "NUL"
+      suppressWarnings(
+        res <-
+          performance::r2_nakagawa(data_source) %>%
+          as.data.frame() %>%
+          purrr::pluck("R2_marginal") %>%
+          mean(., na.rm = TRUE)
       )
     },
     "ordbeta" = {
