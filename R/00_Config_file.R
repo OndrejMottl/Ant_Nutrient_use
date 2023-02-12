@@ -26,6 +26,7 @@ renv::restore(
 # define packages
 package_list <-
   c(
+    "aods3",
     "assertthat",
     "car",
     "effectsize",

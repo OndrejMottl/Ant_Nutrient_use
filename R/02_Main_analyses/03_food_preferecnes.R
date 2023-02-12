@@ -75,12 +75,13 @@ food_pref_models <-
           paste(.x, .y, sep = " - ")
         )
 
-        fit_elev_models_per_region(
+        fit_elev_season(
           data_source = data_to_fit %>%
             dplyr::filter(regions %in% .x) %>%
             dplyr::filter(bait_type %in% .y),
           sel_var = "cbind(n_occurecnes, max_occurecnes - n_occurecnes)",
           sel_family = glmmTMB::betabinomial(link = "logit"),
+          sel_method = "glmmTMB",
           compare_aic = TRUE
         ) %>%
           return()
@@ -120,7 +121,7 @@ food_pref_models_per_region <-
       .f = ~ {
         message(.x)
 
-        fit_food_pref_models_per_region(
+        fit_food_elev_season(
           data_source = data_to_fit %>%
             dplyr::filter(regions %in% .x),
           sel_var = "cbind(n_occurecnes, max_occurecnes - n_occurecnes)",

@@ -88,7 +88,7 @@ data_guild_models_all <-
           paste(.x, .y, sep = " - ")
         )
 
-        fit_guild_models(
+        fit_guild_addtion(
           data_source = data_to_fit %>%
             dplyr::filter(regions == .x) %>%
             dplyr::filter(bait_type == .y),

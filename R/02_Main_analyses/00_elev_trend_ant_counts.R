@@ -53,20 +53,15 @@ summary(data_to_fit)
 # fit models ----
 # - occurences ----
 mod_occurences <-
-  fit_elev_models(
+  fit_elev_region_season(
     data_source = data_to_fit,
     sel_var = "n_occurecnes",
     sel_method = "glmmTMB",
-    sel_family = glmmTMB::nbinom1(link = "log"),
+    sel_family = glmmTMB::nbinom2(link = "log"),
     compare_aic = TRUE
   )
 
-mod_occurences
-
-mod_occurences$mod_name[which(mod_occurences$best_model == TRUE)]
-
-# Check parametr details
-mod_occurences$mod_anova[which(mod_occurences$best_model == TRUE)]
+print_model_summary(mod_occurences)
 
 # save
 list(
@@ -81,24 +76,15 @@ list(
 
 # - richness ----
 mod_richness <-
-  fit_elev_models(
+  fit_elev_region_season(
     data_source = data_to_fit,
     sel_var = "n_species",
     sel_method = "glmmTMB",
-    sel_family = glmmTMB::nbinom1(link = "log"),
-    compare_aic = TRUE,
-    control = glmmTMB::glmmTMBControl(
-      optimizer = optim,
-      optArgs = list(method = "BFGS")
-    )
+    sel_family = glmmTMB::nbinom2(link = "log"),
+    compare_aic = TRUE
   )
 
-mod_richness
-
-mod_richness$mod_name[which(mod_richness$best_model == TRUE)]
-
-# Check parametr details
-mod_richness$mod_anova[which(mod_richness$best_model == TRUE)]
+print_model_summary(mod_richness)
 
 # save
 list(
@@ -113,20 +99,15 @@ list(
 
 # - richness ----
 mod_abundnace <-
-  fit_elev_models(
+  fit_elev_region_season(
     data_source = data_to_fit,
     sel_var = "n_abundance",
     sel_method = "glmmTMB",
-    sel_family = glmmTMB::nbinom1(link = "log"),
+    sel_family = glmmTMB::nbinom2(link = "log"),
     compare_aic = TRUE
   )
 
-mod_abundnace
-
-mod_abundnace$mod_name[which(mod_abundnace$best_model == TRUE)]
-
-# Check parametr details
-mod_abundnace$mod_anova[which(mod_abundnace$best_model == TRUE)]
+print_model_summary(mod_abundnace)
 
 # save
 list(

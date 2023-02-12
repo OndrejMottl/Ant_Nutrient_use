@@ -118,7 +118,10 @@ get_model_details <- function(
     dplyr::mutate(
       r2 = purrr::map_dbl(
         .x = mod,
-        .f = ~ get_r2(.x)
+        .f = purrr::possibly(
+          .f = ~ get_r2(.x),
+          otherwise = NA_real_
+        )
       )
     )
 

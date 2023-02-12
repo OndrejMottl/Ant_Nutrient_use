@@ -59,7 +59,7 @@ data_guild_abundances_total <-
   dplyr::group_by(
     regions, seasons, et_pcode, guild
   ) %>%
-  tidyr::drop_na(guild)  %>% 
+  tidyr::drop_na(guild) %>%
   dplyr::summarise(
     .groups = "drop",
     n_abundances = sum(abundance, na.rm = TRUE)
@@ -94,7 +94,7 @@ data_guild_abundances <-
     dplyr::across(
       .names = "{.col}_prop",
       dplyr::starts_with("n_abund"),
-      ~ .x / abundances_total
+      ~ log(.x + 1) / log(abundances_total + 1)
     )
   ) %>%
   dplyr::mutate(

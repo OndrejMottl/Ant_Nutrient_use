@@ -63,26 +63,13 @@ data_to_fit <-
 
 # fit model ----
 mod_guilds_proportions <-
-  fit_guild_elev_models(
+  fit_guild_elev_region_season(
     data_source = data_to_fit,
     sel_var = "n_occ_prop",
-    sel_family = glmmTMB::ordbeta(link = "logit"),
-    control = glmmTMB::glmmTMBControl(
-      optimizer = optim,
-      optArgs = list(method = "BFGS")
-    )
+    sel_family = glmmTMB::ordbeta(link = "logit")
   )
 
-mod_guilds_proportions
-
-mod_guilds_proportions$mod_name[
-  which(mod_guilds_proportions$best_model == TRUE)
-]
-
-# Check parametr details
-mod_guilds_proportions$mod_anova[
-  which(mod_guilds_proportions$best_model == TRUE)
-]
+print_model_summary(mod_guilds_proportions)
 
 # save ----
 list(
