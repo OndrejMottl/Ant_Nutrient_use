@@ -218,7 +218,7 @@ save_figure(
   dir = here::here("Outputs"),
   plot = figure_2,
   width = 168,
-  height = 120
+  height = 170
 )
 
 # alternative figure 2 ----
