@@ -58,14 +58,23 @@ if (FALSE) {
     mod_abundnace %>%
     dplyr::rename(model_df = df) %>%
     dplyr::filter(best_model == TRUE) %>%
-    purrr::pluck("mod_anova", 1) %>%
-    get_nice_table()
+    purrr::pluck("mod_anova", 1)
 
-  # save
-  arsenal::write2word(
-    object = table_s1,
+  # save ----
+  # csv
+  readr::write_csv(
+    table_s1,
     file = here::here(
-      "Outputs/Table_S1.docx"
+      "Outputs/Table_s1.csv"
+    )
+  )
+
+  # word
+  arsenal::write2word(
+    object = table_s1 %>%
+      get_nice_table(),
+    file = here::here(
+      "Outputs/Table_s1.docx"
     )
   )
 }
