@@ -28,14 +28,50 @@ mod_bait_occupancy <-
 
 data_to_fit <-
   mod_bait_occupancy %>%
-  purrr::pluck("data_to_fit")
-
+  purrr::pluck("data_to_fit") %>%
+  dplyr::mutate(
+    trap_occupied = as.numeric(trap_occupied)
+  )
 
 # predict ----
 mod_bait_occupancy %>%
   purrr::pluck("models") %>%
   dplyr::filter(best_model == TRUE) %>%
   purrr::pluck("mod_name", 1)
+
+dummy_predict_table_interaction <-
+  data_to_fit %>%
+  dplyr::select(bait_type, elevation_mean, regions, seasons) %>%
+  modelbased::visualisation_matrix(
+    at = c("bait_type", "elevation_mean", "regions", "seasons"),
+    length = 100,
+    preserve_range = TRUE
+  ) %>%
+  tidyr::as_tibble()
+
+data_pred_full <-
+  get_predicted_data(
+    mod = mod_bait_occupancy %>%
+      purrr::pluck("models") %>%
+      dplyr::filter(best_model == TRUE) %>%
+      purrr::pluck("mod", 1),
+    dummy_table = dummy_predict_table_interaction
+  )
+
+figure_2a <-
+  plot_elev_trend(
+    data_source = data_to_fit,
+    data_pred_interaction = data_pred_full,
+    facet_by = "bait_type ~ regions",
+    y_var = "trap_occupied",
+    y_var_name = "Proportion of occupied baits",
+    shape_legend = c(dry = NA, wet = NA),
+    p_value = mod_bait_occupancy %>%
+      purrr::pluck("models") %>%
+      dplyr::filter(best_model == TRUE) %>%
+      tidyr::unnest(anova_to_null) %>%
+      purrr::pluck(stringr::str_subset(names(.), "pr_chi"), 1)
+  )
 
 data_pred_bait_type <-
   get_predict_by_emmeans(
@@ -49,13 +85,13 @@ data_pred_bait_type <-
     regions = "Average"
   )
 
-data_pred_full <-
+data_pred_no_elev <-
   get_predict_by_emmeans(
     sel_mod = mod_bait_occupancy %>%
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
       purrr::pluck("mod", 1),
-    sel_spec = ~ bait_type + poly(elevation_mean, 2) * regions * seasons
+    sel_spec = ~ bait_type * regions * seasons
   )
 
 p_template <-
@@ -67,7 +103,7 @@ p_template <-
   ggplot2::scale_fill_manual(
     values = c("dry" = "red", "wet" = "blue")
   ) +
-   ggplot2::scale_color_manual(
+  ggplot2::scale_color_manual(
     values = c("dry" = "red", "wet" = "blue")
   ) +
   ggplot2::scale_shape_manual(
@@ -99,21 +135,9 @@ p_template <-
     x = ""
   )
 
-figure_2a <-
+figure_2b <-
   p_template +
   ggplot2::facet_wrap(~"Average", nrow = 1) +
-  ggbeeswarm::geom_quasirandom(
-    data = data_to_fit,
-    mapping = ggplot2::aes(
-      x = bait_type,
-      y = traps_occupied / (traps_occupied + traps_empty),
-    ),
-    size = 2,
-    shape = 20,
-    alpha = 0.75,
-    varwidth = TRUE,
-    col = "gray50"
-  ) +
   ggplot2::geom_linerange(
     data = data_pred_bait_type,
     mapping = ggplot2::aes(
@@ -136,23 +160,11 @@ figure_2a <-
     shape = 21
   )
 
-figure_2b <-
+figure_2c <-
   p_template +
   ggplot2::facet_wrap(~regions, nrow = 1) +
-  ggbeeswarm::geom_beeswarm(
-    data = data_to_fit,
-    mapping = ggplot2::aes(
-      x = bait_type,
-      y = traps_occupied / (traps_occupied + traps_empty),
-      col = seasons,
-      shape = seasons
-    ),
-    size = 2,
-    alpha = 0.75,
-    dodge.width = 0.9
-  ) +
   ggplot2::geom_linerange(
-    data = data_pred_full,
+    data = data_pred_no_elev,
     mapping = ggplot2::aes(
       x = bait_type,
       y = estimate,
@@ -165,7 +177,7 @@ figure_2b <-
     position = ggplot2::position_dodge(.9)
   ) +
   ggplot2::geom_point(
-    data = data_pred_full,
+    data = data_pred_no_elev,
     mapping = ggplot2::aes(
       x = bait_type,
       y = estimate,
@@ -177,18 +189,28 @@ figure_2b <-
     position = ggplot2::position_dodge(.9)
   )
 
-figure_2 <-
+figure_2bc <-
   ggpubr::ggarrange(
-    figure_2a,
-    figure_2b +
+    figure_2b,
+    figure_2c +
       ggpubr::rremove("ylab") +
       ggpubr::rremove("y.ticks") +
       ggpubr::rremove("y.text"),
     nrow = 1,
     widths = c(1, 3),
     common.legend = TRUE,
-    legend = "top",
+    legend = "none",
     align = "hv"
+  )
+
+figure_2 <-
+  ggpubr::ggarrange(
+    figure_2a,
+    figure_2bc,
+    nrow = 2,
+    heights = c(1, 0.5),
+    common.legend = TRUE,
+    legend = "top"
   )
 
 save_figure(
