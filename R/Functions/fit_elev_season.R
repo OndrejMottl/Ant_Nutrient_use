@@ -88,18 +88,12 @@ fit_elev_season <-
           )
       )
 
-    mod_details <-
+    res <-
       get_model_details(
         data_source = mod_table,
         compare_aic = compare_aic,
         test_overdispersion = test_overdispersion
       )
-
-    mod_deviance <-
-      get_d2(mod_details, mod_null)
-
-    res <-
-      get_anova_to_null(mod_deviance, mod_null)
 
     return(res)
   }
