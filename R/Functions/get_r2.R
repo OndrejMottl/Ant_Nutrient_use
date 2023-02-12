@@ -1,7 +1,6 @@
 get_r2 <- function(data_source) {
   res <- NA_real_
 
-
   mod_family <- get_model_family_name(data_source)
 
   if (
@@ -21,6 +20,15 @@ get_r2 <- function(data_source) {
       )
     },
     "betabinomial" = {
+      capture.output(
+        suppressWarnings(
+          res <-
+            performance::r2_tjur(data_source)
+        ),
+        file = "NUL"
+      )
+    },
+    "binomial" = {
       capture.output(
         suppressWarnings(
           res <-
