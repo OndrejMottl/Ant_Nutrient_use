@@ -9,6 +9,7 @@ plot_elev_trend <- function(
     y_var_name,
     y_trans = "identity",
     y_breaks = ggplot2::waiver(),
+    x_breaks = ggplot2::waiver(),
     x_line = NULL,
     p_value = 0,
     x_lim = c(NA, NA),
@@ -41,6 +42,9 @@ plot_elev_trend <- function(
     ggplot2::scale_y_continuous(
       trans = y_trans,
       breaks = y_breaks
+    ) +
+    ggplot2::scale_x_continuous(
+      breaks = x_breaks
     ) +
     ggplot2::labs(
       x = "Elevation (m.a.s.l.)",
@@ -78,7 +82,8 @@ plot_elev_trend <- function(
     p_0 <-
       p_0 +
       ggplot2::facet_grid(
-        as.formula(paste(facet_by))
+        as.formula(paste(facet_by)),
+        scales = "free_x"
       )
   }
 
