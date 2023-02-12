@@ -220,3 +220,81 @@ save_figure(
   width = 168,
   height = 120
 )
+
+# alternative figure 2 ----
+figure_2_alt <-
+  data_to_fit %>%
+  dplyr::group_by(bait_type, regions, seasons, et_pcode) %>%
+  dplyr::summarise(
+    .groups = "drop",
+    n_total_baits = dplyr::n(),
+    bait_occupied = sum(trap_occupied, na.rm = TRUE)
+  ) %>%
+  dplyr::mutate(
+    rel_baits_occupied = bait_occupied / n_total_baits
+  ) %>%
+  ggplot2::ggplot(
+    mapping = ggplot2::aes(
+      x = bait_type, region,
+      y = rel_baits_occupied,
+      col = seasons,
+      fill = seasons
+    )
+  ) +
+  ggplot2::facet_wrap(~regions) +
+  ggplot2::geom_violin(
+    alpha = 0.5,
+    position = ggplot2::position_dodge(0.9),
+    color = NA
+  ) +
+  ggplot2::geom_boxplot(
+    fill = "white",
+    width = 0.25,
+    position = ggplot2::position_dodge(0.9),
+    outlier.shape = NA
+  ) +
+  ggplot2::coord_cartesian(
+    ylim = c(0, 1)
+  ) +
+  ggplot2::scale_fill_manual(
+    values = c("dry" = "red", "wet" = "blue")
+  ) +
+  ggplot2::scale_color_manual(
+    values = c("dry" = "red", "wet" = "blue")
+  ) +
+  ggplot2::scale_shape_manual(
+    values = c("dry" = 21, "wet" = 22)
+  ) +
+  ggplot2::theme_bw(
+    base_size = 12,
+    base_family = "arial"
+  ) +
+  ggplot2::theme(
+    legend.position = "bottom",
+    axis.text.x = ggplot2::element_text(
+      angle = 45,
+      hjust = 1,
+      size = 10
+    ),
+    axis.text.y = ggplot2::element_text(size = 10),
+    plot.title = ggplot2::element_text(hjust = 0.5, size = 13),
+    axis.title.x = ggplot2::element_text(size = 12),
+    axis.title.y = ggplot2::element_text(size = 12),
+    legend.title = ggplot2::element_text(size = 13),
+    legend.text = ggplot2::element_text(size = 12),
+    legend.key.size = unit(0.5, "cm"),
+    legend.key.width = unit(0.5, "cm"),
+    panel.grid = ggplot2::element_blank()
+  ) +
+  ggplot2::labs(
+    y = "Proportion of occupied baits",
+    x = ""
+  )
+
+save_figure(
+  filename = "figure_2_alt",
+  dir = here::here("Outputs"),
+  plot = figure_2_alt,
+  width = 168,
+  height = 100
+)
