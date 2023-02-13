@@ -1,19 +1,23 @@
 get_predicted_data <- function(
     mod,
     dummy_table) {
-  marginaleffects::predictions(
-    model = mod,
-    newdata = dummy_table
-  ) %>%
-    as.data.frame() %>%
-    janitor::clean_names() %>%
+      dummy_table  %>% 
+      dplyr::bind_cols(
+        predict(
+          object = mod,
+          newdata = dummy_table,
+          type = "response",
+          se.fit = TRUE
+        ) %>%
+          as.data.frame() %>%
+          janitor::clean_names()
+      )  %>% 
+      dplyr::mutate(
+        estimate = fit,
+          conf_high = estimate + se_fit,
+          conf_low = estimate - se_fit
+      ) %>%
     tibble::as_tibble() %>%
-    dplyr::filter(
-      type == "response"
-    ) %>%
-    dplyr::select(
-      -c(rowid, type, statistic, p_value)
-    ) %>%
-    dplyr::relocate(names(dummy_table), dplyr::last_col()) %>%
+    dplyr::relocate(names(dummy_table)) %>%
     return()
 }

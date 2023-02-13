@@ -184,8 +184,8 @@ plot_elev_trend <- function(
           y = NULL,
           xmin = -Inf,
           xmax = Inf,
-          ymin = lower_cl,
-          ymax = upper_cl,
+          ymin = conf_low,
+          ymax = conf_high,
           fill = get(color_by)
         ),
         alpha = dplyr::case_when(
