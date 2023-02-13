@@ -182,9 +182,13 @@ get_model_details <- function(
       data_all_best_model_candidates %>%
         tidyr::unnest(anova_to_null) %>%
         dplyr::select(
-          mod_name, AICc, delta, weight,
-          r2, d2,
-          aov_pr_chisq, aov_signif
+          dplyr::any_of(
+            c(
+              "mod_name", "AICc", "delta", "weight",
+              "r2", "d2",
+              "lr_pr_chisq", "lr_signif"
+            )
+          )
         ) %>%
         print()
 
