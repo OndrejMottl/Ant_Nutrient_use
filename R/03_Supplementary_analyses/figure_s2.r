@@ -34,7 +34,6 @@ data_to_fit <-
 food_pref_models_abundance %>%
   purrr::pluck("models") %>%
   dplyr::filter(best_model == TRUE) %>%
-  View()
   purrr::pluck("mod_name") %>%
   unique()
 
@@ -50,7 +49,7 @@ data_food_pref_individual_plot <-
         sel_bait_type, # ..2
         mod_name, # ..3
         mod, # ..4
-        aov_pr_chisq # ..5
+        lr_pr_chisq # ..5
       ),
       .f = ~ {
         message(
@@ -67,6 +66,23 @@ data_food_pref_individual_plot <-
         data_pred_interaction <- NULL
 
         switch(..3,
+          "elevation" = {
+            dummy_predict_table_elev <-
+              data_to_plot %>%
+              dplyr::select(elevation_mean) %>%
+              modelbased::visualisation_matrix(
+                at = c("elevation_mean"),
+                length = 100,
+                preserve_range = TRUE
+              ) %>%
+              tidyr::as_tibble()
+
+            data_pred_trend <-
+              get_predicted_data(
+                mod = ..4,
+                dummy_table = dummy_predict_table_elev
+              )
+          },
           "elevation-poly" = {
             dummy_predict_table_elev <-
               data_to_plot %>%
@@ -85,13 +101,55 @@ data_food_pref_individual_plot <-
               )
           },
           "season" = {
+            dummy_predict_table_seasons <-
+              data_to_plot %>%
+              dplyr::select(seasons) %>%
+              modelbased::visualisation_matrix(
+                at = c("seasons"),
+                length = 100,
+                preserve_range = TRUE
+              ) %>%
+              tidyr::as_tibble()
+
             data_pred_season <-
-              get_predict_by_emmeans(
-                sel_mod = ..4,
-                sel_spec = ~seasons
+              get_predicted_data(
+                mod = ..4,
+                dummy_table = dummy_predict_table_seasons
+              )
+          },
+          "elevation + season" = {
+            dummy_predict_table_interaction <-
+              data_to_plot %>%
+              dplyr::select(elevation_mean, seasons) %>%
+              modelbased::visualisation_matrix(
+                at = c("elevation_mean", "seasons"),
+                length = 100,
+                preserve_range = TRUE
+              ) %>%
+              tidyr::as_tibble()
+            data_pred_interaction <-
+              get_predicted_data(
+                mod = ..4,
+                dummy_table = dummy_predict_table_interaction
               )
           },
           "elevation * season" = {
+            dummy_predict_table_interaction <-
+              data_to_plot %>%
+              dplyr::select(elevation_mean, seasons) %>%
+              modelbased::visualisation_matrix(
+                at = c("elevation_mean", "seasons"),
+                length = 100,
+                preserve_range = TRUE
+              ) %>%
+              tidyr::as_tibble()
+            data_pred_interaction <-
+              get_predicted_data(
+                mod = ..4,
+                dummy_table = dummy_predict_table_interaction
+              )
+          },
+          "elevation-poly + season" = {
             dummy_predict_table_interaction <-
               data_to_plot %>%
               dplyr::select(elevation_mean, seasons) %>%
@@ -154,13 +212,13 @@ figure_s2 <-
   ggpubr::annotate_figure(
     left = ggpubr::text_grob(
       "Relative nutrient use",
-      family = "arial",
+      family = "sans",
       size = 12,
       rot = 90
     ),
     bottom = ggpubr::text_grob(
       "Elevation (m.a.s.l.)",
-      family = "arial",
+      family = "sans",
       size = 12
     )
   )
