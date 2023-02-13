@@ -80,8 +80,8 @@ food_pref_models <-
             dplyr::filter(regions %in% .x) %>%
             dplyr::filter(bait_type %in% .y),
           sel_var = "cbind(n_occurecnes, max_occurecnes - n_occurecnes)",
-          sel_family = glmmTMB::betabinomial(link = "logit"),
-          sel_method = "glmmTMB",
+          # sel_family = glmmTMB::betabinomial(link = "logit"),
+          sel_method = "aods3.bb",
           compare_aic = TRUE
         ) %>%
           return()
@@ -96,7 +96,8 @@ food_pref_models_individual <-
 food_pref_models_individual %>%
   dplyr::arrange(regions) %>%
   dplyr::filter(best_model == TRUE) %>%
-  dplyr::select(regions, sel_bait_type, mod_name)
+  tidyr::unnest(anova_to_null) %>%
+  dplyr::select(regions, sel_bait_type, mod_name, lr_pr_chisq)
 
 # save
 list(
@@ -106,48 +107,5 @@ list(
   RUtilpol::save_latest_file(
     object_to_save = .,
     file_name = "food_pref_models_individual",
-    dir = here::here("Data/Processed/Models/")
-  )
-
-# - regional models ----
-food_pref_models_per_region <-
-  tibble::tibble(
-    regions = data_to_fit$regions %>%
-      unique()
-  ) %>%
-  dplyr::mutate(
-    models = purrr::map(
-      .x = regions,
-      .f = ~ {
-        message(.x)
-
-        fit_food_elev_season(
-          data_source = data_to_fit %>%
-            dplyr::filter(regions %in% .x),
-          sel_var = "cbind(n_occurecnes, max_occurecnes - n_occurecnes)",
-          sel_family = glmmTMB::betabinomial(link = "logit")
-        ) %>%
-          return()
-      }
-    )
-  )
-
-data_food_pref_models_regions <-
-  food_pref_models_per_region %>%
-  tidyr::unnest(models) 
-
-data_food_pref_models_regions %>%
-  dplyr::arrange(regions) %>%
-  dplyr::filter(best_model == TRUE)
-  dplyr::select(regions, mod_name)
-
-# save
-list(
-  data_to_fit = data_to_fit,
-  models = data_food_pref_models_regions
-) %>%
-  RUtilpol::save_latest_file(
-    object_to_save = .,
-    file_name = "data_food_pref_models_regions",
     dir = here::here("Data/Processed/Models/")
   )

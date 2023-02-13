@@ -4,6 +4,7 @@ plot_elev_trend <- function(
     data_pred_season = NULL,
     data_pred_interaction = NULL,
     facet_by = NULL,
+    facet_scales = "fixed",
     color_by = "seasons",
     y_var,
     y_var_name,
@@ -61,6 +62,9 @@ plot_elev_trend <- function(
       base_size = 12,
       base_family = "arial"
     ) +
+    ggplot2::guides(
+      fill = "none"
+    ) +
     ggplot2::theme(legend.position = legend_position) +
     ggplot2::geom_vline(
       xintercept = x_line,
@@ -83,7 +87,7 @@ plot_elev_trend <- function(
       p_0 +
       ggplot2::facet_grid(
         as.formula(paste(facet_by)),
-        scales = "free_x"
+        scales = facet_scales
       )
   }
 
@@ -180,8 +184,8 @@ plot_elev_trend <- function(
           y = NULL,
           xmin = -Inf,
           xmax = Inf,
-          ymin = lower_cl,
-          ymax = upper_cl,
+          ymin = conf_low,
+          ymax = conf_high,
           fill = get(color_by)
         ),
         alpha = dplyr::case_when(

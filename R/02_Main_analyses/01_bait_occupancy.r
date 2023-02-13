@@ -51,6 +51,15 @@ data_to_traps <-
   ) %>%
   dplyr::mutate(
     trap_occupied = ifelse(total_abundance > 0, 1, 0)
+  ) %>%
+  dplyr::group_by(
+    regions, seasons, et_pcode, bait_type
+  ) %>%
+  dplyr::summarise(
+    .groups = "drop",
+    n = dplyr::n(),
+    traps_occupied = sum(trap_occupied),
+    traps_empty = n - traps_occupied
   )
 
 data_to_fit <-
@@ -69,9 +78,9 @@ data_to_fit <-
 # fit models  ----
 mod_bait_occupancy <-
   fit_food_elev_region_season(
-    data_source = data_to_fit,
-    sel_var = "trap_occupied",
-    sel_family = stats::binomial(link = "logit")
+   data_source = data_to_fit,
+    sel_var = "cbind(traps_occupied, traps_empty)",
+    sel_family = glmmTMB::betabinomial(link = "logit")
   )
 
 print_model_summary(mod_bait_occupancy)

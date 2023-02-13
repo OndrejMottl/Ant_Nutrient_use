@@ -88,16 +88,30 @@ if (FALSE) {
       .f = ~ .x %>%
         dplyr::rename(model_df = df) %>%
         dplyr::filter(best_model == TRUE) %>%
-        purrr::pluck("mod_anova", 1) %>%
-        get_nice_table()
-    ) %>%
-    knitr::kables(format = "simple")
+        purrr::pluck("mod_anova", 1) 
+    )    
 
-  # save
-  arsenal::write2word(
-    object = table_1,
+# save ----
+# csv
+dplyr::bind_rows(
+  tabel_1,
+  .id = "var"
+) %>%
+  readr::write_csv(
     file = here::here(
-      "Outputs/Table_1.docx"
+      "Outputs/Table_1.csv"
     )
   )
+
+# word
+arsenal::write2word(
+  object = table_1 %>%
+    purrr::map(
+      .f = ~ get_nice_table(.x)
+    ) %>%
+    knitr::kables(format = "simple"),
+  file = here::here(
+    "Outputs/Table_1.docx"
+  )
+)
 }

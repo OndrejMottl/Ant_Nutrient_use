@@ -7,6 +7,19 @@ fit_elev_season <-
            test_overdispersion = FALSE,
            ...) {
     sel_method <- match.arg(sel_method)
+
+
+    mod_null <- NULL
+    mod_elev <- NULL
+    mod_elev_poly <- NULL
+    mod_season <- NULL
+
+    mod_elev_season <- NULL
+    mod_elev_season_int <- NULL
+    mod_elev_poly_season <- NULL
+    mod_elev_poly_season_int <- NULL
+
+
     switch(sel_method,
       "glmmTMB" = {
         mod_null <-
@@ -43,21 +56,61 @@ fit_elev_season <-
       }
     )
 
-    mod_elev <-
-      stats::update(mod_null, . ~ poly(elevation_mean, 1))
-    mod_elev_poly <-
-      stats::update(mod_null, . ~ poly(elevation_mean, 2))
-    mod_season <-
-      stats::update(mod_null, . ~ seasons)
+    try(
+      {
+        mod_elev <-
+          stats::update(mod_null, . ~ poly(elevation_mean, 1))
+      },
+      silent = TRUE
+    )
 
-    mod_elev_season <-
-      stats::update(mod_elev, . ~ . + seasons)
-    mod_elev_season_int <-
-      stats::update(mod_elev, . ~ . * seasons)
-    mod_elev_poly_season <-
-      stats::update(mod_elev_poly, . ~ . + seasons)
-    mod_elev_poly_season_int <-
-      stats::update(mod_elev_poly, . ~ . * seasons)
+    try(
+      {
+        mod_elev_poly <-
+          stats::update(mod_null, . ~ poly(elevation_mean, 2))
+      },
+      silent = TRUE
+    )
+
+    try(
+      {
+        mod_season <-
+          stats::update(mod_null, . ~ seasons)
+      },
+      silent = TRUE
+    )
+
+    try(
+      {
+        mod_elev_season <-
+          stats::update(mod_elev, . ~ . + seasons)
+      },
+      silent = TRUE
+    )
+
+    try(
+      {
+        mod_elev_season_int <-
+          stats::update(mod_elev, . ~ . * seasons)
+      },
+      silent = TRUE
+    )
+
+    try(
+      {
+        mod_elev_poly_season <-
+          stats::update(mod_elev_poly, . ~ . + seasons)
+      },
+      silent = TRUE
+    )
+
+    try(
+      {
+        mod_elev_poly_season_int <-
+          stats::update(mod_elev_poly, . ~ . * seasons)
+      },
+      silent = TRUE
+    )
 
     mod_table <-
       tibble::tibble(
@@ -86,20 +139,17 @@ fit_elev_season <-
           rlang::set_names(
             nm = mod_name
           )
+      ) %>%
+      dplyr::filter(
+        purrr::map_lgl(mod, ~ is.null(.x) == FALSE)
       )
 
-    mod_details <-
+    res <-
       get_model_details(
         data_source = mod_table,
         compare_aic = compare_aic,
         test_overdispersion = test_overdispersion
       )
-
-    mod_deviance <-
-      get_d2(mod_details, mod_null)
-
-    res <-
-      get_anova_to_null(mod_deviance, mod_null)
 
     return(res)
   }

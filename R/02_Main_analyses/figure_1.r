@@ -97,13 +97,16 @@ figure_1a <-
     data_pred_trend = data_pred_richness_trend,
     y_var = "n_species",
     y_var_name = "Species richness",
+    x_breaks = seq(0, 4e3, 1e3),
+    x_lim = c(0, 4e3),
     facet_by = "~ regions",
     x_line = c(1000, 3000),
     p_value = mod_richness %>%
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
       tidyr::unnest(anova_to_null) %>%
-      purrr::pluck(stringr::str_subset(names(.), "pr_chi"), 1)
+      purrr::pluck(stringr::str_subset(names(.), "pr_chi"), 1),
+    legend_position = "top"
   )
 
 figure_1b <-
@@ -112,24 +115,31 @@ figure_1b <-
     data_pred_interaction = data_pred_occurences_interaction,
     y_var = "n_occurecnes",
     y_var_name = "Species occurences",
+    x_breaks = seq(0, 4e3, 1e3),
+    x_lim = c(0, 4e3),
     facet_by = "~ regions",
     x_line = c(1000, 3000),
     p_value = mod_occurences %>%
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
       tidyr::unnest(anova_to_null) %>%
-      purrr::pluck(stringr::str_subset(names(.), "pr_chi"), 1)
+      purrr::pluck(stringr::str_subset(names(.), "pr_chi"), 1),
+    legend_position = "top"
   )
 
+figure_1_legend <-
+  cowplot::get_legend(figure_1b)
+
 figure_1 <-
-  figure_1a + figure_1b +
-    patchwork::plot_layout(guides = "collect", ncol = 1) +
-    patchwork::plot_annotation(
-      tag_levels = "a",
-      tag_prefix = "(",
-      tag_suffix = ")"
-    ) &
-    ggplot2::theme(legend.position = "top")
+  ggpubr::ggarrange(
+    figure_1_legend,
+    figure_1a + ggpubr::rremove("legend"),
+    figure_1b + ggpubr::rremove("legend"),
+    nrow = 3,
+    heights = c(0.1, 1, 1),
+    align = "hv",
+    labels = c("", "(a)", "(b)")
+  )
 
 # save ----
 save_figure(

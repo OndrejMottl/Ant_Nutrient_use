@@ -2,7 +2,12 @@ print_model_summary <- function(data_source) {
   RUtilpol::output_comment("model fit:")
   data_source %>%
     dplyr::select(
-      mod_name, AICc, delta, r2, d2, best_model
+     dplyr::any_of(
+      c(
+         "mod_name", "AICc", "delta", "r2", "d2", "best_model", 
+         "best_model_candidate"
+      )
+     )
     ) %>%
     print(., n = 100)
 

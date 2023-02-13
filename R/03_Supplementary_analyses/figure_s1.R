@@ -63,15 +63,19 @@ firure_s1 <-
     data_pred_trend = data_pred_abundance_trend,
     y_var = "n_abundance",
     y_var_name = "Ant worker abundance",
+    x_breaks = seq(0, 4e3, 1e3),
+    x_lim = c(0, 4e3),
     facet_by = "~ regions",
+    facet_scales = "fixed",
     x_line = c(1000, 3000),
     p_value = mod_abundnace %>%
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
       tidyr::unnest(anova_to_null) %>%
-      purrr::pluck("aov_pr_chisq", 1),
+      purrr::pluck(stringr::str_subset(names(.), "pr_chi"), 1),
     y_trans = "log1p",
-    y_breaks = c(0, 1, 10, 100, 500, 1500, 4000)
+    y_breaks = c(0, 1, 10, 100, 500, 1500, 4000),
+    legend_position = "top"
   )
 
 # save ----
@@ -80,5 +84,5 @@ save_figure(
   dir = here::here("Outputs"),
   plot = firure_s1,
   width = 168,
-  height = 150
+  height = 100
 )
