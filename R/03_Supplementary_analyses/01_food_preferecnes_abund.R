@@ -44,6 +44,10 @@ data_to_fit <-
     by = dplyr::join_by(regions, seasons, et_pcode)
   ) %>%
   dplyr::mutate(
+    n_abundance_log = log10(n_abundance + 1),
+    max_abundance_log = log10(max_abundance + 1)
+  ) %>%
+  dplyr::mutate(
     dplyr::across(
       tidyselect::where(
         is.character
@@ -79,8 +83,9 @@ food_pref_models <-
           data_source = data_to_fit %>%
             dplyr::filter(regions %in% .x) %>%
             dplyr::filter(bait_type %in% .y),
-          sel_var = "cbind(n_abundance, max_abundance - n_abundance)",
-          sel_family = glmmTMB::betabinomial(link = "logit"),
+          sel_var = "cbind(n_abundance_log, max_abundance_log - n_abundance_log)",
+          # sel_family = glmmTMB::betabinomial(link = "logit"),
+          sel_method = "aods3.bb",
           compare_aic = TRUE
         ) %>%
           return()
@@ -95,7 +100,8 @@ food_pref_models_individual <-
 food_pref_models_individual %>%
   dplyr::arrange(regions) %>%
   dplyr::filter(best_model == TRUE) %>%
-  dplyr::select(regions, sel_bait_type, mod_name)
+  tidyr::unnest(anova_to_null) %>%
+  dplyr::select(regions, sel_bait_type, mod_name, lr_pr_chisq)
 
 # save
 list(
