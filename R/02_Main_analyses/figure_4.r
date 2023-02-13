@@ -28,7 +28,7 @@ mod_guilds_proportions <-
 
 data_to_fit <-
   mod_guilds_proportions %>%
-  purrr::pluck("data_to_fit")
+  purrr::pluck("data_to_fit") 
 
 # predict -----
 # check the final model
@@ -78,15 +78,15 @@ figure_4 <-
       "n_occ_predator_scavenger_prop" = 25
     ),
     color_legend = c(
-      "n_occ_generalistic_prop" = "red",
-      "n_occ_herbivorous_trophobiotic_prop" = "blue",
+      "n_occ_generalistic_prop" = "#00FF8C",
+      "n_occ_herbivorous_trophobiotic_prop" = "#8C00FF",
       "n_occ_predator_scavenger_prop" = "darkorange"
     ),
     p_value = mod_guilds_proportions %>%
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
       tidyr::unnest(anova_to_null) %>%
-      purrr::pluck("aov_pr_chisq", 1),
+      purrr::pluck("lr_pr_chisq", 1),
     legend_position = "top"
   )
 

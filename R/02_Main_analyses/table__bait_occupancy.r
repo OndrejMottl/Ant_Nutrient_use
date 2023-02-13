@@ -24,7 +24,7 @@ mod_bait_occupancy <-
   RUtilpol::get_latest_file(
     file_name = "mod_bait_occupancy",
     dir = here::here("Data/Processed/Models/")
-  )  %>% 
+  ) %>%
   purrr::pluck("models")
 
 table_bait_occupancy_models <-
