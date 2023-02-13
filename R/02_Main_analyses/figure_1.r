@@ -65,13 +65,13 @@ mod_richness %>%
   dplyr::filter(best_model == TRUE) %>%
   purrr::pluck("mod_name", 1)
 
-data_pred_richness_trend <-
+data_pred_richness_interaction <-
   get_predicted_data(
     mod = mod_richness %>%
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
       purrr::pluck("mod", 1),
-    dummy_table = dummy_predict_table_elev
+    dummy_table = dummy_predict_table_interaction
   )
 
 # occurences
@@ -94,7 +94,7 @@ data_pred_occurences_interaction <-
 figure_1a <-
   plot_elev_trend(
     data_source = data_to_fit,
-    data_pred_trend = data_pred_richness_trend,
+    data_pred_interaction = data_pred_richness_interaction,
     y_var = "n_species",
     y_var_name = "Species richness",
     x_breaks = seq(0, 4e3, 1e3),

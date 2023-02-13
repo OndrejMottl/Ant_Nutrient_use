@@ -94,7 +94,7 @@ if (FALSE) {
 # save ----
 # csv
 dplyr::bind_rows(
-  tabel_1,
+  table_1,
   .id = "var"
 ) %>%
   readr::write_csv(

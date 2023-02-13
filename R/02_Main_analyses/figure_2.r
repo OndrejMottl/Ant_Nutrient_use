@@ -131,7 +131,7 @@ p_template <-
   ) +
   ggplot2::theme_bw(
     base_size = 12,
-    base_family = "arial"
+    base_family = "sans"
   ) +
   ggplot2::theme(
     legend.position = "bottom",

@@ -40,9 +40,9 @@ mod_guilds_proportions_abund %>%
 # dummy tables to predict upon
 dummy_predict_table_interaction <-
   data_to_fit %>%
-  dplyr::select(guild, elevation_mean, regions) %>%
+  dplyr::select(guild, elevation_mean, regions, seasons) %>%
   modelbased::visualisation_matrix(
-    at = c("guild", "elevation_mean", "regions"),
+    at = c("guild", "elevation_mean", "regions", "seasons"),
     length = 100,
     preserve_range = TRUE
   ) %>%
@@ -70,7 +70,7 @@ figure_s3 <-
     data_pred_interaction = data_pred_guilds_proportions,
     y_var = "n_abund_prop",
     y_var_name = "Proportion of species abundances",
-    facet_by = ". ~ regions",
+    facet_by = "seasons ~ regions",
     color_by = "guild",
     shape_legend = c(
       "n_abund_generalistic_prop" = 23,
@@ -78,15 +78,15 @@ figure_s3 <-
       "n_abund_predator_scavenger_prop" = 25
     ),
     color_legend = c(
-      "n_abund_generalistic_prop" = "red",
-      "n_abund_herbivorous_trophobiotic_prop" = "blue",
+      "n_abund_generalistic_prop" = "#00FF8C",
+      "n_abund_herbivorous_trophobiotic_prop" = "#8C00FF",
       "n_abund_predator_scavenger_prop" = "darkorange"
     ),
     p_value = mod_guilds_proportions_abund %>%
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
       tidyr::unnest(anova_to_null) %>%
-      purrr::pluck("aov_pr_chisq", 1),
+      purrr::pluck("lr_pr_chisq", 1),
     legend_position = "top"
   )
 

@@ -81,7 +81,11 @@ mod_richness <-
     sel_var = "n_species",
     sel_method = "glmmTMB",
     sel_family = glmmTMB::nbinom2(link = "log"),
-    compare_aic = TRUE
+    compare_aic = TRUE,
+    control = glmmTMBControl(
+      optimizer = optim,
+      optArgs = list(method = "BFGS")
+    )
   )
 
 print_model_summary(mod_richness)
