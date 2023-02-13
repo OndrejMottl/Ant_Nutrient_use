@@ -200,13 +200,13 @@ figure_3 <-
   ggpubr::annotate_figure(
     left = ggpubr::text_grob(
       "Relative nutrient use",
-      family = "arial",
+      family = "sans",
       size = 12,
       rot = 90
     ),
     bottom = ggpubr::text_grob(
       "Elevation (m.a.s.l.)",
-      family = "arial",
+      family = "sans",
       size = 12
     )
   )

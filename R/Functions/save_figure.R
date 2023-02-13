@@ -11,15 +11,16 @@ save_figure <- function(
     plot = plot,
     width = width,
     height = height,
-    device = cairo_pdf,
+    device = grDevices::cairo_pdf(
+      antialias = "subpixel",
+      family = "arial",
+      bg = "transparent",
+      onefile = FALSE
+    ),
     units = "mm",
     dpi = 600,
-    family = "arial",
     pointsize = 12,
     scale = 1,
-    antialias = "subpixel",
-    onefile = FALSE,
-    bg = "transparent",
     limitsize = FALSE
   )
 

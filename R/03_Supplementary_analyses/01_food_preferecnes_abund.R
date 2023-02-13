@@ -84,9 +84,13 @@ food_pref_models <-
             dplyr::filter(regions %in% .x) %>%
             dplyr::filter(bait_type %in% .y),
           sel_var = "cbind(n_abundance_log, max_abundance_log - n_abundance_log)",
-          # sel_family = glmmTMB::betabinomial(link = "logit"),
-          sel_method = "aods3.bb",
-          compare_aic = TRUE
+          sel_family = glmmTMB::betabinomial(link = "logit"),
+          sel_method = "glmmTMB",
+          compare_aic = TRUE,
+          control = glmmTMBControl(
+            optimizer = optim,
+            optArgs = list(method = "BFGS")
+          )
         ) %>%
           return()
       }
