@@ -94,7 +94,7 @@ data_guild_abundances <-
     dplyr::across(
       .names = "{.col}_prop",
       dplyr::starts_with("n_abund"),
-      ~ log(.x + 1) / log(abundances_total + 1)
+      ~ log10(.x + 1) / log10(abundances_total + 1)
     )
   ) %>%
   dplyr::mutate(
