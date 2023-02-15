@@ -3,7 +3,7 @@
 #
 #                Tropical ant nutrient use
 #
-#                  Ant occurence models
+#                  Ant count models
 #
 #
 #             O. Mottl, J. Mosses, P. Klimes

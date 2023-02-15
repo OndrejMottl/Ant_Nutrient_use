@@ -23,7 +23,7 @@ source(
 food_pref_models_abundance <-
   RUtilpol::get_latest_file(
     file_name = "food_pref_models_abundance",
-    dir = here::here("Data/Supplementary/Models/")
+    dir = here::here("Data/Processed/Models/")
   )
 
 data_to_fit <-
@@ -37,7 +37,7 @@ food_pref_models_abundance %>%
   purrr::pluck("mod_name") %>%
   unique()
 
-data_food_pref_individual_plot <-
+food_pref_abundance_individual_plots <-
   food_pref_models_abundance %>%
   purrr::pluck("models") %>%
   dplyr::filter(best_model == TRUE) %>%
@@ -201,9 +201,9 @@ data_food_pref_individual_plot <-
     )
   )
 
-figure_s2 <-
+figure_food_preferences_abundance <-
   ggpubr::ggarrange(
-    plotlist = data_food_pref_individual_plot$indiv_plot,
+    plotlist = food_pref_abundance_individual_plots$indiv_plot,
     ncol = 3,
     nrow = 6,
     common.legend = TRUE,
@@ -224,9 +224,9 @@ figure_s2 <-
   )
 
 save_figure(
-  filename = "figure_s2",
+  filename = "figure_food_preferences_abundance",
   dir = here::here("Outputs"),
-  plot = figure_s2,
+  plot = figure_food_preferences_abundance,
   width = 168,
   height = 250
 )

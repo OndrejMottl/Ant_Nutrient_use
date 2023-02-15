@@ -155,7 +155,7 @@ p_template <-
     x = ""
   )
 
-figure_2a <-
+figure_bait_occupancy_a <-
   p_template +
   ggplot2::facet_wrap(~"Average", nrow = 1) +
   ggplot2::geom_bar(
@@ -187,7 +187,7 @@ figure_2a <-
     position = ggplot2::position_dodge(0.9)
   )
 
-figure_2b <-
+figure_bait_occupancy_b <-
   p_template +
   ggplot2::facet_wrap(~regions, nrow = 1) +
   ggplot2::geom_bar(
@@ -223,10 +223,10 @@ figure_2b <-
     position = ggplot2::position_dodge(0.9)
   )
 
-figure_2 <-
+figure_bait_occupancy_data <-
   ggpubr::ggarrange(
-    figure_2a,
-    figure_2b +
+    figure_bait_occupancy_a,
+    figure_bait_occupancy_b +
       ggpubr::rremove("ylab") +
       ggpubr::rremove("y.ticks") +
       ggpubr::rremove("y.text"),
@@ -237,9 +237,9 @@ figure_2 <-
   )
 
 save_figure(
-  filename = "figure_2",
+  filename = "figure_bait_occupancy_data",
   dir = here::here("Outputs"),
-  plot = figure_2,
+  plot = figure_bait_occupancy_data,
   width = 168,
   height = 80
 )

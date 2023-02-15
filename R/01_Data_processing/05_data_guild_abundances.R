@@ -109,7 +109,7 @@ data_guild_abundances <-
 # save ----
 RUtilpol::save_latest_file(
   object_to_save = data_guild_abundances,
-  dir = here::here("Data/Supplementary/")
+  dir = here::here("Data/Processed/")
 )
 
 RUtilpol::save_latest_file(

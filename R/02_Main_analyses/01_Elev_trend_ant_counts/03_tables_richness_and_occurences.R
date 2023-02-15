@@ -3,7 +3,7 @@
 #
 #                Tropical ant nutrient use
 #
-#                        Table 1
+#                Table richness and occurences
 #
 #
 #             O. Mottl, J. Mosses, P. Klimes
@@ -34,7 +34,7 @@ mod_occurences <-
   ) %>%
   purrr::pluck("models")
 
-tabel_1_models <-
+table_richness_and_occurence_models <-
   list(
     mod_richness,
     mod_occurences
@@ -52,66 +52,64 @@ tabel_1_models <-
 # save ----
 # csv
 dplyr::bind_rows(
-  tabel_1_models,
+  table_richness_and_occurence_models,
   .id = "var"
 ) %>%
   readr::write_csv(
     file = here::here(
-      "Outputs/Table_1_models.csv"
+      "Outputs/table_richness_and_occurence_models.csv"
     )
   )
 
 # word
 arsenal::write2word(
-  object = tabel_1_models %>%
+  object = table_richness_and_occurence_models %>%
     purrr::map(
       .f = ~ get_nice_table(.x)
     ) %>%
     knitr::kables(format = "simple"),
   file = here::here(
-    "Outputs/Table_1_models.docx"
+    "Outputs/table_richness_and_occurence_models.docx"
   )
 )
 
-# do not use seletion based on predicotr deviance
-if (FALSE) {
-  # make table ----
-  table_1 <-
-    list(
-      mod_richness,
-      mod_occurences
-    ) %>%
-    rlang::set_names(
-      nm = c("Species richness", "Species occurences")
-    ) %>%
-    purrr::map(
-      .f = ~ .x %>%
-        dplyr::rename(model_df = df) %>%
-        dplyr::filter(best_model == TRUE) %>%
-        purrr::pluck("mod_anova", 1) 
-    )    
+
+# params ----
+table_richness_and_occurence_params <-
+  list(
+    mod_richness,
+    mod_occurences
+  ) %>%
+  rlang::set_names(
+    nm = c("Species richness", "Species occurences")
+  ) %>%
+  purrr::map(
+    .f = ~ .x %>%
+      dplyr::rename(model_df = df) %>%
+      dplyr::filter(best_model == TRUE) %>%
+      purrr::pluck("mod_anova", 1)
+  )
 
 # save ----
 # csv
 dplyr::bind_rows(
-  table_1,
+  table_richness_and_occurence_params,
   .id = "var"
 ) %>%
   readr::write_csv(
     file = here::here(
-      "Outputs/Table_1.csv"
+      "Outputs/table_richness_and_occurence_params.csv"
     )
   )
 
 # word
 arsenal::write2word(
-  object = table_1 %>%
+  object = table_richness_and_occurence_params %>%
     purrr::map(
       .f = ~ get_nice_table(.x)
     ) %>%
     knitr::kables(format = "simple"),
   file = here::here(
-    "Outputs/Table_1.docx"
+    "Outputs/table_richness_and_occurence_params.docx"
   )
 )
-}

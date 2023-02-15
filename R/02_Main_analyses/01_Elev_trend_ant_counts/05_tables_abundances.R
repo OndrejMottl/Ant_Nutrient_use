@@ -27,7 +27,7 @@ mod_abundnace <-
   ) %>%
   purrr::pluck("models")
 
-table_s1_models <-
+table_abundance_models <-
   mod_abundnace %>%
   dplyr::rename(model_df = df) %>%
   tidyr::unnest(anova_to_null) %>%
@@ -36,45 +36,42 @@ table_s1_models <-
 # save ----
 # csv
 readr::write_csv(
-  table_s1_models,
+  table_abundance_models,
   file = here::here(
-    "Outputs/Table_s1_models.csv"
+    "Outputs/table_abundance_models.csv"
   )
 )
 
 # word
 arsenal::write2word(
-  object = table_s1_models %>%
+  object = table_abundance_models %>%
     get_nice_table(),
   file = here::here(
-    "Outputs/Table_s1_models.docx"
+    "Outputs/table_abundance_models.docx"
   )
 )
 
-# do not use seletion based on predicotr deviance
-if (FALSE) {
-  # make table ----
-  table_s1 <-
-    mod_abundnace %>%
-    dplyr::rename(model_df = df) %>%
-    dplyr::filter(best_model == TRUE) %>%
-    purrr::pluck("mod_anova", 1)
+# params ----
+table_abundance_params <-
+  mod_abundnace %>%
+  dplyr::rename(model_df = df) %>%
+  dplyr::filter(best_model == TRUE) %>%
+  purrr::pluck("mod_anova", 1)
 
-  # save ----
-  # csv
-  readr::write_csv(
-    table_s1,
-    file = here::here(
-      "Outputs/Table_s1.csv"
-    )
+# save ----
+# csv
+readr::write_csv(
+  table_abundance_params,
+  file = here::here(
+    "Outputs/table_abundance_params.csv"
   )
+)
 
-  # word
-  arsenal::write2word(
-    object = table_s1 %>%
-      get_nice_table(),
-    file = here::here(
-      "Outputs/Table_s1.docx"
-    )
+# word
+arsenal::write2word(
+  object = table_abundance_params %>%
+    get_nice_table(),
+  file = here::here(
+    "Outputs/table_abundance_params.docx"
   )
-}
+)

@@ -3,7 +3,7 @@
 #
 #                Tropical ant nutrient use
 #
-#                        Figure 1
+#                Figure richness and occurences
 #
 #
 #             O. Mottl, J. Mosses, P. Klimes
@@ -91,7 +91,7 @@ data_pred_occurences_interaction <-
 
 # plot the figure -----
 
-figure_1a <-
+figure_richness_and_occurences_a <-
   plot_elev_trend(
     data_source = data_to_fit,
     data_pred_interaction = data_pred_richness_interaction,
@@ -109,7 +109,7 @@ figure_1a <-
     legend_position = "top"
   )
 
-figure_1b <-
+figure_richness_and_occurences_b <-
   plot_elev_trend(
     data_source = data_to_fit,
     data_pred_interaction = data_pred_occurences_interaction,
@@ -127,25 +127,25 @@ figure_1b <-
     legend_position = "top"
   )
 
-figure_1_legend <-
-  cowplot::get_legend(figure_1b)
+figure_richness_and_occurences_legend <-
+  cowplot::get_legend(figure_richness_and_occurences_b)
 
-figure_1 <-
+figure_richness_and_occurences <-
   ggpubr::ggarrange(
-    figure_1_legend,
-    figure_1a + ggpubr::rremove("legend"),
-    figure_1b + ggpubr::rremove("legend"),
+    figure_richness_and_occurences_legend,
+    figure_richness_and_occurences_a + ggpubr::rremove("legend"),
+    figure_richness_and_occurences_b + ggpubr::rremove("legend"),
     nrow = 3,
     heights = c(0.1, 1, 1),
-    align = "hv",
+    align = "v",
     labels = c("", "(a)", "(b)")
   )
 
 # save ----
 save_figure(
-  filename = "figure_1",
+  filename = "figure_richness_and_occurences",
   dir = here::here("Outputs"),
-  plot = figure_1,
+  plot = figure_richness_and_occurences,
   width = 168,
   height = 150
 )

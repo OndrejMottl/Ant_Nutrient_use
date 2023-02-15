@@ -115,5 +115,5 @@ list(
   RUtilpol::save_latest_file(
     object_to_save = .,
     file_name = "food_pref_models_abundance",
-    dir = here::here("Data/Supplementary/Models/")
+    dir = here::here("Data/Processed/Models/")
   )

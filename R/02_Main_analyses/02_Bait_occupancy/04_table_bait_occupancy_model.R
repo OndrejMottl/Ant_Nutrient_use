@@ -38,7 +38,7 @@ table_bait_occupancy_models <-
 readr::write_csv(
   table_bait_occupancy_models,
   file = here::here(
-    "Outputs/Table_bait_occupancy_models.csv"
+    "Outputs/table_bait_occupancy_models.csv"
   )
 )
 
@@ -47,34 +47,31 @@ arsenal::write2word(
   object = table_bait_occupancy_models %>%
     get_nice_table(),
   file = here::here(
-    "Outputs/Table_bait_occupancy_models.docx"
+    "Outputs/table_bait_occupancy_models.docx"
   )
 )
 
-# do not use seletion based on predicotr deviance
-if (FALSE) {
-  # make table ----
-  table_bait_occupancy <-
-    mod_bait_occupancy %>%
-    dplyr::rename(model_df = df) %>%
-    dplyr::filter(best_model == TRUE) %>%
-    purrr::pluck("mod_anova", 1)
+# params ----
+table_bait_occupancy_params <-
+  mod_bait_occupancy %>%
+  dplyr::rename(model_df = df) %>%
+  dplyr::filter(best_model == TRUE) %>%
+  purrr::pluck("mod_anova", 1)
 
-  # save ----
-  # csv
-  readr::write_csv(
-    table_bait_occupancy,
-    file = here::here(
-      "Outputs/Table_bait_occupancy.csv"
-    )
+# save ----
+# csv
+readr::write_csv(
+  table_bait_occupancy_params,
+  file = here::here(
+    "Outputs/table_bait_occupancy_params.csv"
   )
+)
 
-  # word
-  arsenal::write2word(
-    object = table_bait_occupancy %>%
-      get_nice_table(),
-    file = here::here(
-      "Outputs/Table_bait_occupancy.docx"
-    )
+# word
+arsenal::write2word(
+  object = table_bait_occupancy_params %>%
+    get_nice_table(),
+  file = here::here(
+    "Outputs/table_bait_occupancy_params.docx"
   )
-}
+)

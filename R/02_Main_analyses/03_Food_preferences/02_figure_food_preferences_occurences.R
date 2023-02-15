@@ -37,7 +37,7 @@ food_pref_models_individual %>%
   purrr::pluck("mod_name") %>%
   unique()
 
-data_food_pref_individual_plot <-
+data_food_pref_individual_plots <-
   food_pref_models_individual %>%
   purrr::pluck("models") %>%
   dplyr::filter(best_model == TRUE) %>%
@@ -189,9 +189,9 @@ data_food_pref_individual_plot <-
     )
   )
 
-figure_3 <-
+figure_food_preferences_occurence <-
   ggpubr::ggarrange(
-    plotlist = data_food_pref_individual_plot$indiv_plot,
+    plotlist = data_food_pref_individual_plots$indiv_plot,
     ncol = 3,
     nrow = 6,
     common.legend = TRUE,
@@ -212,9 +212,9 @@ figure_3 <-
   )
 
 save_figure(
-  filename = "figure_3",
+  filename = "figure_food_preferences_occurence",
   dir = here::here("Outputs"),
-  plot = figure_3,
+  plot = figure_food_preferences_occurence,
   width = 168,
   height = 250
 )
