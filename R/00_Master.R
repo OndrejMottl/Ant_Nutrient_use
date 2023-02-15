@@ -19,15 +19,19 @@
 #----------------------------------------------------------#
 
 # Load configuration
-source("R/00_Config_file.R")
+source(
+  here::here("R/00_Config_file.R")
+)
 
 
 #----------------------------------------------------------#
 # 2. Run individual parts -----
 #----------------------------------------------------------#
 
-source("R/01_Data_processing/Run_01.R")
+source(
+  here::here("R/01_Data_processing/Run_01.R")
+)
 
-source("R/02_Main_analyses/Run_02.R")
-
-source("R/03_Supplementary_analyses/Run_03.R")
+source(
+  here::here("R/02_Main_analyses/Run_02.R")
+)
