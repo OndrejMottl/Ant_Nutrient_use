@@ -28,15 +28,48 @@ source("R/00_Config_file.R")
 #----------------------------------------------------------#
 
 working_dir <-
-  paste0(current_dir, "/R/01_Data_processing/")
+  here::here(
+    "R/01_Data_processing/"
+  )
 
-# examples
-# source(
-#   paste0(
-#     working_dir,
-#     "/01_Neotoma_source/Run_01_01.R"))
+source(
+  paste0(
+    working_dir,
+    "/01_Neotoma_source/01_full_data_process.R"
+  )
+)
 
-# source(
-#   paste0(
-#     working_dir,
-#     "/02_Private_source/Run_01_02.R"))
+source(
+  paste0(
+    working_dir,
+    "/01_Neotoma_source/02_dataset_overview.R"
+  )
+)
+
+source(
+  paste0(
+    working_dir,
+    "/01_Neotoma_source/03_data_ant_counts.R"
+  )
+)
+
+source(
+  paste0(
+    working_dir,
+    "/01_Neotoma_source/04_data_guild_occurences.R"
+  )
+)
+
+source(
+  paste0(
+    working_dir,
+    "/01_Neotoma_source/05_data_guild_abundances.R"
+  )
+)
+
+source(
+  paste0(
+    working_dir,
+    "/01_Neotoma_source/06_data_food_preferences.R"
+  )
+)

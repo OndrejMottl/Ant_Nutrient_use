@@ -1,0 +1,37 @@
+regions,sel_bait_type,mod_name,term,chisq,df,pr_chisq,signif
+ecuador,amino_acid,elevation + season,(Intercept),0.09566015710447082,1,0.757101117906143,
+ecuador,amino_acid,elevation + season,"poly(elevation_mean, 1)",1.0830525446486778,1,0.29801568324307953,
+ecuador,amino_acid,elevation + season,seasons,8.743638818001909,1,0.00310683925641907,**
+png,amino_acid,season,(Intercept),11.162941891928572,1,8.344749082613591e-4,***
+png,amino_acid,season,seasons,9.084151946472662,1,0.0025783401670665235,**
+tanzania,amino_acid,elevation,(Intercept),0.00999520610409419,1,0.9203633572418555,
+tanzania,amino_acid,elevation,"poly(elevation_mean, 1)",3.622753430563363,1,0.05699447245247916,
+ecuador,cho,elevation * season,(Intercept),0.36389899597963793,1,0.5463487665571691,
+ecuador,cho,elevation * season,"poly(elevation_mean, 1)",5.684883630515307,1,0.01711167431189281,*
+ecuador,cho,elevation * season,seasons,5.51851222006936,1,0.018816254993293736,*
+ecuador,cho,elevation * season,"poly(elevation_mean, 1):seasons",6.847494048682121,1,0.00887656927548183,**
+png,cho,season,(Intercept),6.666693235033068,1,0.009823128064404657,**
+png,cho,season,seasons,1.5978701815791672,1,0.20620529837091592,
+tanzania,cho,null,(Intercept),16.656324648395653,1,4.4800681531755596e-5,***
+ecuador,cho_amino_acid,elevation-poly,(Intercept),5.829988117854589,1,0.015755229916978204,*
+ecuador,cho_amino_acid,elevation-poly,"poly(elevation_mean, 2)",5.062811322131433,2,0.07954712536414078,
+png,cho_amino_acid,season,(Intercept),0.06435417064778694,1,0.7997418297074169,
+png,cho_amino_acid,season,seasons,3.5848955190378526,1,0.058307083154044106,
+tanzania,cho_amino_acid,null,(Intercept),5.712781362041173,1,0.016841834926603044,*
+ecuador,h2o,null,(Intercept),22.02963483541992,1,2.68473099518488e-6,***
+png,h2o,season,(Intercept),8.823357387228185,1,0.0029739897822337364,**
+png,h2o,season,seasons,1.4280648105563636,1,0.23208052220853417,
+tanzania,h2o,elevation,(Intercept),4.500947011036332,1,0.03387608757260233,*
+tanzania,h2o,elevation,"poly(elevation_mean, 1)",4.770040577353924,1,0.028959143139531223,*
+ecuador,lipid,elevation-poly,(Intercept),2.3420123649147784,1,0.1259267846387138,
+ecuador,lipid,elevation-poly,"poly(elevation_mean, 2)",15.593693601263029,2,4.110289941284638e-4,***
+png,lipid,elevation-poly + season,(Intercept),0.9699280455480815,1,0.3246981247846921,
+png,lipid,elevation-poly + season,"poly(elevation_mean, 2)",5.531240432838657,2,0.06293705264712836,
+png,lipid,elevation-poly + season,seasons,8.1087973593943925,1,0.004405094255636261,**
+tanzania,lipid,null,(Intercept),0.5185917302978071,1,0.4714430287132806,
+ecuador,nacl,season,(Intercept),3.1508812151474235,1,0.07588597119169654,
+ecuador,nacl,season,seasons,6.699699187354989,1,0.00964291787459703,**
+png,nacl,season,(Intercept),0.38992857249099505,1,0.5323369494558862,
+png,nacl,season,seasons,4.0678306745009625,1,0.04370737161432193,*
+tanzania,nacl,elevation,(Intercept),0.0011619061013091478,1,0.9728079792768073,
+tanzania,nacl,elevation,"poly(elevation_mean, 1)",3.5416786823375346,1,0.05984486545631416,

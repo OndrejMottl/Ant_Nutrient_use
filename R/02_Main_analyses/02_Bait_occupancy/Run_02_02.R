@@ -1,9 +1,9 @@
 #----------------------------------------------------------#
 #
 #
-#                Tropical ant nutrient use
+#                 Tropical ant nutrient use
 #
-#                       Master file
+#           Run all ant count analyses
 #
 #
 #             O. Mottl, J. Mosses, P. Klimes
@@ -11,12 +11,13 @@
 #
 #----------------------------------------------------------#
 
-# Will run the whole project and automatically output data
-
+# Run all scripts in `/R/01_Data_processing/02_Bait_occupancy/`
 
 #----------------------------------------------------------#
 # 1. Set up run -----
 #----------------------------------------------------------#
+
+library(here)
 
 # Load configuration
 source(
@@ -28,10 +29,7 @@ source(
 # 2. Run individual parts -----
 #----------------------------------------------------------#
 
-source(
-  here::here("R/01_Data_processing/Run_01.R")
-)
-
-source(
-  here::here("R/02_Main_analyses/Run_02.R")
-)
+working_dir <-
+  here::here(
+    "R/01_Data_processing/01_Neotoma_source/"
+  )
