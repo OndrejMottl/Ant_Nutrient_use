@@ -54,23 +54,27 @@ get_model_details <- function(
       )
     )
 
-  data_partial <-
-    data_anova %>%
-    dplyr::mutate(
-      mod_r2_partial = purrr::map(
-        .x = mod,
-        .f = purrr::possibly(
-          .f = ~ get_r2_partial(.x),
-          otherwise = NA_real_
+  if (
+    isTRUE(est_r2)
+  ) {
+    data_partial <-
+      data_anova %>%
+      dplyr::mutate(
+        mod_r2_partial = purrr::map(
+          .x = mod,
+          .f = purrr::possibly(
+            .f = ~ get_r2_partial(.x),
+            otherwise = NA_real_
+          )
         )
       )
-    )
+  } else {
+    data_partial <-
+      data_anova
+  }
 
   mod_null <-
     data_partial %>%
-    dplyr::filter(
-      mod_name == "null"
-    ) %>%
     purrr::pluck("mod", 1)
 
   data_deviance <-
@@ -136,8 +140,8 @@ get_model_details <- function(
         )
     )
 
+    # several models have delta < min_delta_aic
     if (
-      # several models have delta < min_delta_aic
       sum(mod_comp$best_model_candidate, na.rm = TRUE) > 1
     ) {
       RUtilpol::output_warning(
@@ -155,7 +159,7 @@ get_model_details <- function(
         ) %>%
         dplyr::inner_join(
           data_to_compare,
-          by = dplyr::join_by(mod_name)
+          by = dplyr::join_by(mod_name == mod_formula)
         ) %>%
         dplyr::mutate(
           model_id = dplyr::row_number()
@@ -185,7 +189,7 @@ get_model_details <- function(
           dplyr::any_of(
             c(
               "mod_name", "AICc", "delta", "weight",
-              "r2", "d2",
+              "r2", "deviance", "d2",
               "p_value_chisq", "lr_signif"
             )
           )
@@ -231,11 +235,14 @@ get_model_details <- function(
       dplyr::inner_join(
         data_to_compare,
         mod_with_best_model,
-        by = dplyr::join_by(mod_name)
+        by = dplyr::join_by(mod_formula == mod_name)
       ) %>%
       dplyr::relocate(
-        dplyr::all_of(
-          names(mod_comp)
+        dplyr::any_of(
+          c(
+            "mod_formula",
+            names(mod_comp)
+          )
         )
       )
   } else {
