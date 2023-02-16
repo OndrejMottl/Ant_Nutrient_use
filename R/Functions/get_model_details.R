@@ -88,13 +88,13 @@ get_model_details <- function(
       )
     )
 
-  data_anova_to_null <-
+  data_test_to_null <-
     data_deviance %>%
     dplyr::mutate(
-      anova_to_null = purrr::map(
+      test_to_null = purrr::map(
         .x = mod,
         .f = purrr::possibly(
-          .f = ~ get_anova_to_null(
+          .f = ~ get_test_to_null(
             data_source = .x,
             null_model = mod_null
           ),
@@ -104,7 +104,7 @@ get_model_details <- function(
     )
 
   data_to_compare <-
-    data_anova_to_null
+    data_test_to_null
 
   if (
     isTRUE(compare_aic)
@@ -180,13 +180,13 @@ get_model_details <- function(
         print()
 
       data_all_best_model_candidates %>%
-        tidyr::unnest(anova_to_null) %>%
+        tidyr::unnest(test_to_null) %>%
         dplyr::select(
           dplyr::any_of(
             c(
               "mod_name", "AICc", "delta", "weight",
               "r2", "d2",
-              "lr_pr_chisq", "lr_signif"
+              "p_value_chisq", "lr_signif"
             )
           )
         ) %>%
@@ -240,7 +240,7 @@ get_model_details <- function(
       )
   } else {
     res <-
-      data_anova_to_null[nrow(data_anova_to_null), ]
+      data_test_to_null[nrow(data_test_to_null), ]
   }
 
   return(res)

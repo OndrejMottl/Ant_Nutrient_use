@@ -43,10 +43,7 @@ table_richness_and_occurence_models <-
     nm = c("Species richness", "Species occurences")
   ) %>%
   purrr::map(
-    .f = ~ .x %>%
-      dplyr::rename(model_df = df) %>%
-      tidyr::unnest(anova_to_null) %>%
-      dplyr::select(-c(mod, mod_anova))
+    .f = ~ get_table_models(.x)
   )
 
 # save ----
@@ -73,7 +70,6 @@ arsenal::write2word(
   )
 )
 
-
 # params ----
 table_richness_and_occurence_params <-
   list(
@@ -84,10 +80,7 @@ table_richness_and_occurence_params <-
     nm = c("Species richness", "Species occurences")
   ) %>%
   purrr::map(
-    .f = ~ .x %>%
-      dplyr::rename(model_df = df) %>%
-      dplyr::filter(best_model == TRUE) %>%
-      purrr::pluck("mod_anova", 1)
+    .f = ~ get_table_params(.x)
   )
 
 # save ----

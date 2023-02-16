@@ -32,6 +32,6 @@ print_model_summary <- function(data_source) {
     dplyr::filter(
       best_model == TRUE
     ) %>%
-    purrr::pluck("anova_to_null") %>%
+    purrr::pluck("test_to_null") %>%
     print()
 }

@@ -30,10 +30,9 @@ food_pref_models_occurences <-
 # make table ----
 table_food_preferences_occurences_models <-
   food_pref_models_occurences %>%
-  dplyr::arrange(regions, sel_bait_type) %>%
-  dplyr::rename(model_df = df) %>%
-  tidyr::unnest("anova_to_null") %>%
-  dplyr::select(-c(mod, mod_anova))
+  get_table_models(.,
+    add_first_cols = c("regions", "sel_bait_type")
+  )
 
 # save ----
 # csv
@@ -56,21 +55,11 @@ arsenal::write2word(
 # params ----
 table_food_preferences_occurences_params <-
   food_pref_models_occurences %>%
-  dplyr::rename(model_df = df) %>%
-  dplyr::filter(best_model == TRUE) %>%
-  tidyr::unnest("mod_anova") %>%
-  dplyr::select(
-    dplyr::any_of(
-      c(
-        "regions",
-        "sel_bait_type",
-        "mod_name",
-        "term",
-        "chisq",
-        "df",
-        "pr_chisq",
-        "signif"
-      )
+  get_table_params(.,
+    add_first_cols = c(
+      "regions",
+      "sel_bait_type",
+      "mod_name"
     )
   )
 

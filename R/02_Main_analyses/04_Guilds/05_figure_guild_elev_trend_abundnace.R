@@ -85,8 +85,8 @@ figure_guilds_proportions_abundances <-
     p_value = mod_guilds_proportions_abund %>%
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
-      tidyr::unnest(anova_to_null) %>%
-      purrr::pluck("lr_pr_chisq", 1),
+      tidyr::unnest(test_to_null) %>%
+      purrr::pluck("p_value_chisq", 1),
     legend_position = "top"
   )
 

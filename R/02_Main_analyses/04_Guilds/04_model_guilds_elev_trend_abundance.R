@@ -61,6 +61,8 @@ data_to_fit <-
     by = dplyr::join_by(regions, seasons, et_pcode)
   )
 
+summary(data_to_fit)
+
 # fit model ----
 mod_guilds_proportions_abund <-
   fit_guild_elev_region_season(

@@ -41,7 +41,7 @@ data_food_pref_individual_plots <-
   food_pref_models_individual %>%
   purrr::pluck("models") %>%
   dplyr::filter(best_model == TRUE) %>%
-  tidyr::unnest(anova_to_null) %>%
+  tidyr::unnest(test_to_null) %>%
   dplyr::mutate(
     indiv_plot = purrr::pmap(
       .l = list(
@@ -49,7 +49,7 @@ data_food_pref_individual_plots <-
         sel_bait_type, # ..2
         mod_name, # ..3
         mod, # ..4
-        lr_pr_chisq # ..5
+        p_value_chisq # ..5
       ),
       .f = ~ {
         message(
