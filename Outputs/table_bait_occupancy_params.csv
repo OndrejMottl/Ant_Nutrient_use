@@ -1,13 +1,13 @@
 term,chisq,df,pr_chisq,signif
-(Intercept),5.226255233880584,1,0.022248383108611075,*
-bait_type,21.634638226312223,5,6.142936331832283e-4,***
-"poly(elevation_mean, 2)",71.92725640954336,2,2.4054410683188837e-16,***
-regions,7.828028343217528,2,0.01996021629751345,*
-seasons,12.318863779174725,1,4.4840356541284816e-4,***
-bait_type:regions,17.48280704080111,10,0.06434033324271479,
-"poly(elevation_mean, 2):regions",9.172514786208588,4,0.05692914535197651,
-bait_type:seasons,19.30512793112051,5,0.0016861012945261753,**
-"poly(elevation_mean, 2):seasons",7.702004698927673,2,0.02125841739231972,*
-regions:seasons,21.896945076314484,2,1.7584854992596778e-5,***
-bait_type:regions:seasons,30.772347550697294,10,6.397217051614365e-4,***
-"poly(elevation_mean, 2):regions:seasons",18.635815070978655,4,9.265648184058734e-4,***
+(Intercept),5.226,1,0.022,*
+bait_type,21.635,5,0.001,***
+"poly(elevation_mean, 2)",71.927,2,0,***
+regions,7.828,2,0.02,*
+seasons,12.319,1,0,***
+bait_type:regions,17.483,10,0.064,
+"poly(elevation_mean, 2):regions",9.173,4,0.057,
+bait_type:seasons,19.305,5,0.002,**
+"poly(elevation_mean, 2):seasons",7.702,2,0.021,*
+regions:seasons,21.897,2,0,***
+bait_type:regions:seasons,30.772,10,0.001,***
+"poly(elevation_mean, 2):regions:seasons",18.636,4,0.001,***

@@ -1,36 +1,37 @@
 regions,sel_bait_type,mod_name,term,chisq,df,pr_chisq,signif
-ecuador,amino_acid,elevation * season,(Intercept),0.11917868806686685,1,0.7299269811751323,
-ecuador,amino_acid,elevation * season,"poly(elevation_mean, 1)",1.0329647400905029,1,0.3094633512824176,
-ecuador,amino_acid,elevation * season,seasons,2.9536607805658153,1,0.08568326541438237,
-ecuador,amino_acid,elevation * season,"poly(elevation_mean, 1):seasons",1.7350555662986311,1,0.1877665406164848,
-png,amino_acid,season,(Intercept),4.758329999228843,1,0.029156824331838214,*
-png,amino_acid,season,seasons,3.306425357673805,1,0.06900945255550503,
-tanzania,amino_acid,elevation,(Intercept),0.7818422908641397,1,0.3765782933372605,
-tanzania,amino_acid,elevation,"poly(elevation_mean, 1)",2.9182288823893505,1,0.08758394865324286,
-ecuador,cho,elevation,(Intercept),3.0151716151493893,1,0.08248872342684314,
-ecuador,cho,elevation,"poly(elevation_mean, 1)",1.6545439820511683,1,0.19834159750324729,
-png,cho,null,(Intercept),3.8649802592885485,1,0.04930377376411855,*
-tanzania,cho,null,(Intercept),6.464864798302533,1,0.011002801257320038,*
-ecuador,cho_amino_acid,season,(Intercept),4.268012039558719,1,0.03883634049299377,*
-ecuador,cho_amino_acid,season,seasons,1.36729709721455,1,0.24227682315620291,
-png,cho_amino_acid,season,(Intercept),0.0010530476174835262,1,0.974112634848544,
-png,cho_amino_acid,season,seasons,1.4559821447161987,1,0.22757048703919885,
-tanzania,cho_amino_acid,null,(Intercept),3.9454146910519476,1,0.046999268407917176,*
-ecuador,h2o,null,(Intercept),13.264612554300472,1,2.704633505389503e-4,***
-png,h2o,elevation,(Intercept),5.366739141400925,1,0.020524312451369528,*
-png,h2o,elevation,"poly(elevation_mean, 1)",1.1008090217845417,1,0.2940886263919938,
-tanzania,h2o,elevation,(Intercept),1.6305492490470614,1,0.20162709652658375,
-tanzania,h2o,elevation,"poly(elevation_mean, 1)",3.5463733379192166,1,0.05967574736768992,
-ecuador,lipid,elevation,(Intercept),6.959068280142171,1,0.00833954501337962,**
-ecuador,lipid,elevation,"poly(elevation_mean, 1)",8.0082812867203,1,0.004656391076157761,**
-png,lipid,elevation + season,(Intercept),4.1888433365943865,1,0.04069085083117471,*
-png,lipid,elevation + season,"poly(elevation_mean, 1)",2.078241745412216,1,0.149412195399366,
-png,lipid,elevation + season,seasons,2.160317379436196,1,0.14161543708549115,
-tanzania,lipid,null,(Intercept),4.89534578631045,1,0.026929180064939856,*
-ecuador,nacl,elevation + season,(Intercept),0.648017604227193,1,0.4208223306236661,
-ecuador,nacl,elevation + season,"poly(elevation_mean, 1)",2.274428543882446,1,0.13152359595437368,
-ecuador,nacl,elevation + season,seasons,2.231103219503681,1,0.13525724088144475,
-png,nacl,season,(Intercept),0.16800216678762037,1,0.6818934829802954,
-png,nacl,season,seasons,1.1017530781288791,1,0.29388169862191504,
-tanzania,nacl,elevation,(Intercept),0.2611330789279819,1,0.6093427809819786,
-tanzania,nacl,elevation,"poly(elevation_mean, 1)",2.8110014521048936,1,0.0936199161027011,
+ecuador,amino_acid,elevation + season,(Intercept),0.096,1,0.757,
+ecuador,amino_acid,elevation + season,"poly(elevation_mean, 1)",1.083,1,0.298,
+ecuador,amino_acid,elevation + season,seasons,8.744,1,0.003,**
+png,amino_acid,season,(Intercept),11.163,1,0.001,***
+png,amino_acid,season,seasons,9.084,1,0.003,**
+tanzania,amino_acid,elevation,(Intercept),0.01,1,0.92,
+tanzania,amino_acid,elevation,"poly(elevation_mean, 1)",3.623,1,0.057,
+ecuador,cho,elevation * season,(Intercept),0.364,1,0.546,
+ecuador,cho,elevation * season,"poly(elevation_mean, 1)",5.685,1,0.017,*
+ecuador,cho,elevation * season,seasons,5.519,1,0.019,*
+ecuador,cho,elevation * season,"poly(elevation_mean, 1):seasons",6.847,1,0.009,**
+png,cho,season,(Intercept),6.667,1,0.01,**
+png,cho,season,seasons,1.598,1,0.206,
+tanzania,cho,null,(Intercept),16.656,1,0,***
+ecuador,cho_amino_acid,elevation-poly,(Intercept),5.83,1,0.016,*
+ecuador,cho_amino_acid,elevation-poly,"poly(elevation_mean, 2)",5.063,2,0.08,
+png,cho_amino_acid,season,(Intercept),0.064,1,0.8,
+png,cho_amino_acid,season,seasons,3.585,1,0.058,
+tanzania,cho_amino_acid,null,(Intercept),5.713,1,0.017,*
+ecuador,h2o,null,(Intercept),22.03,1,0,***
+png,h2o,season,(Intercept),8.823,1,0.003,**
+png,h2o,season,seasons,1.428,1,0.232,
+tanzania,h2o,elevation,(Intercept),4.501,1,0.034,*
+tanzania,h2o,elevation,"poly(elevation_mean, 1)",4.77,1,0.029,*
+ecuador,lipid,elevation-poly,(Intercept),2.342,1,0.126,
+ecuador,lipid,elevation-poly,"poly(elevation_mean, 2)",15.594,2,0,***
+png,lipid,elevation-poly + season,(Intercept),0.97,1,0.325,
+png,lipid,elevation-poly + season,"poly(elevation_mean, 2)",5.531,2,0.063,
+png,lipid,elevation-poly + season,seasons,8.109,1,0.004,**
+tanzania,lipid,null,(Intercept),0.519,1,0.471,
+ecuador,nacl,season,(Intercept),3.151,1,0.076,
+ecuador,nacl,season,seasons,6.7,1,0.01,**
+png,nacl,season,(Intercept),0.39,1,0.532,
+png,nacl,season,seasons,4.068,1,0.044,*
+tanzania,nacl,elevation,(Intercept),0.001,1,0.973,
+tanzania,nacl,elevation,"poly(elevation_mean, 1)",3.542,1,0.06,

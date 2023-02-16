@@ -1,15 +1,15 @@
 var,term,chisq,df,pr_chisq,signif
-Species richness,(Intercept),58.492317195173,1,2.0408634811548297e-14,***
-Species richness,"poly(elevation_mean, 2)",78.63003990584134,2,8.427597362172676e-18,***
-Species richness,regions,15.9813777787454,2,3.386007445458322e-4,***
-Species richness,seasons,2.1285836947239574,1,0.1445742861432463,
-Species richness,"poly(elevation_mean, 2):seasons",0.44146135351786275,2,0.8019326303038233,
-Species richness,regions:seasons,7.040585996241146,2,0.02959076385941837,*
-Species occurences,(Intercept),43.53649967379994,1,4.1612506506957237e-11,***
-Species occurences,"poly(elevation_mean, 2)",70.33878492752103,2,5.322637888380357e-16,***
-Species occurences,regions,1.9557012167185277,2,0.37611865695836644,
-Species occurences,seasons,0.5025780264326989,1,0.47836954473055393,
-Species occurences,"poly(elevation_mean, 2):regions",6.941371312322912,4,0.13901911064336236,
-Species occurences,"poly(elevation_mean, 2):seasons",7.730652538735919,2,0.020956083993245615,*
-Species occurences,regions:seasons,3.805508846183989,2,0.14915721082051966,
-Species occurences,"poly(elevation_mean, 2):regions:seasons",23.671230544552856,4,9.295532821060163e-5,***
+Species richness,(Intercept),58.492,1,0,***
+Species richness,"poly(elevation_mean, 2)",78.63,2,0,***
+Species richness,regions,15.981,2,0,***
+Species richness,seasons,2.129,1,0.145,
+Species richness,"poly(elevation_mean, 2):seasons",0.441,2,0.802,
+Species richness,regions:seasons,7.041,2,0.03,*
+Species occurences,(Intercept),43.536,1,0,***
+Species occurences,"poly(elevation_mean, 2)",70.339,2,0,***
+Species occurences,regions,1.956,2,0.376,
+Species occurences,seasons,0.503,1,0.478,
+Species occurences,"poly(elevation_mean, 2):regions",6.941,4,0.139,
+Species occurences,"poly(elevation_mean, 2):seasons",7.731,2,0.021,*
+Species occurences,regions:seasons,3.806,2,0.149,
+Species occurences,"poly(elevation_mean, 2):regions:seasons",23.671,4,0,***
