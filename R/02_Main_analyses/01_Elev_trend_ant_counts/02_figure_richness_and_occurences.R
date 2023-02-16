@@ -104,8 +104,8 @@ figure_richness_and_occurences_a <-
     p_value = mod_richness %>%
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
-      tidyr::unnest(anova_to_null) %>%
-      purrr::pluck(stringr::str_subset(names(.), "pr_chi"), 1),
+      tidyr::unnest(test_to_null) %>%
+      purrr::pluck(stringr::str_subset(names(.), "p_value_chisq"), 1),
     legend_position = "top"
   )
 
@@ -122,8 +122,8 @@ figure_richness_and_occurences_b <-
     p_value = mod_occurences %>%
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
-      tidyr::unnest(anova_to_null) %>%
-      purrr::pluck(stringr::str_subset(names(.), "pr_chi"), 1),
+      tidyr::unnest(test_to_null) %>%
+      purrr::pluck(stringr::str_subset(names(.), "p_value_chisq"), 1),
     legend_position = "top"
   )
 

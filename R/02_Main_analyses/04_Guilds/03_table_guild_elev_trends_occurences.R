@@ -29,9 +29,7 @@ mod_guilds_proportions_occurences <-
 
 table_guilds_proportions_occurences <-
   mod_guilds_proportions_occurences %>%
-  dplyr::rename(model_df = df) %>%
-  tidyr::unnest(anova_to_null) %>%
-  dplyr::select(-c(mod, mod_anova))
+  get_table_models()
 
 # save ----
 # csv
@@ -54,9 +52,7 @@ arsenal::write2word(
 # params ----
 table_guilds_proportions_occurences_params <-
   mod_guilds_proportions_occurences %>%
-  dplyr::rename(model_df = df) %>%
-  dplyr::filter(best_model == TRUE) %>%
-  purrr::pluck("mod_anova", 1)
+  get_table_params()
 
 # save ----
 # csv

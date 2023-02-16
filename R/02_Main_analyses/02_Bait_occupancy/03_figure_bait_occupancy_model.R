@@ -68,8 +68,8 @@ figure_bait_occupancy_model <-
     p_value = mod_bait_occupancy %>%
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
-      tidyr::unnest(anova_to_null) %>%
-      purrr::pluck(stringr::str_subset(names(.), "pr_chi"), 1),
+      tidyr::unnest(test_to_null) %>%
+      purrr::pluck(stringr::str_subset(names(.), "p_value_chisq"), 1),
     x_breaks = seq(0, 4e3, 1e3),
     x_lim = c(0, 4e3),
     legend_position = "top"

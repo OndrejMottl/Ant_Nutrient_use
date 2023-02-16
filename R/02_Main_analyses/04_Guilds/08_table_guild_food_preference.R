@@ -34,7 +34,7 @@ table_2 <-
   data_guild_models %>%
   dplyr::arrange(sel_nutrient, regions) %>%
   dplyr::rename(model_df = df) %>%
-  tidyr::unnest("anova_to_null") %>%
+  tidyr::unnest("test_to_null") %>%
     dplyr::filter(best_model == TRUE)  %>% 
   dplyr::select(-c(mod, mod_anova, best_model)) %>%
   get_nice_table()

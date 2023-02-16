@@ -75,6 +75,8 @@ data_to_fit <-
     )
   )
 
+summary(data_to_fit)
+
 # fit models  ----
 mod_bait_occupancy <-
   fit_food_elev_region_season(

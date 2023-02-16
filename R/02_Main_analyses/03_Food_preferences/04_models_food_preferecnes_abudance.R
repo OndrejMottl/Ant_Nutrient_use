@@ -56,6 +56,8 @@ data_to_fit <-
     )
   )
 
+summary(data_to_fit)
+
 # fit models ----
 # - individual models ----
 # create a table to apply model to
@@ -104,8 +106,8 @@ food_pref_models_individual <-
 food_pref_models_individual %>%
   dplyr::arrange(regions) %>%
   dplyr::filter(best_model == TRUE) %>%
-  tidyr::unnest(anova_to_null) %>%
-  dplyr::select(regions, sel_bait_type, mod_name, lr_pr_chisq)
+  tidyr::unnest(test_to_null) %>%
+  dplyr::select(regions, sel_bait_type, mod_name, p_value_chisq)
 
 # save
 list(

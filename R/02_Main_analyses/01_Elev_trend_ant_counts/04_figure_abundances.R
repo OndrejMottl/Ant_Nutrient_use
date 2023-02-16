@@ -71,8 +71,8 @@ figure_abundance <-
     p_value = mod_abundnace %>%
       purrr::pluck("models") %>%
       dplyr::filter(best_model == TRUE) %>%
-      tidyr::unnest(anova_to_null) %>%
-      purrr::pluck(stringr::str_subset(names(.), "pr_chi"), 1),
+      tidyr::unnest(test_to_null) %>%
+      purrr::pluck(stringr::str_subset(names(.), "p_value_chisq"), 1),
     y_trans = "log1p",
     y_breaks = c(0, 1, 10, 100, 500, 1500, 4000),
     legend_position = "top"
