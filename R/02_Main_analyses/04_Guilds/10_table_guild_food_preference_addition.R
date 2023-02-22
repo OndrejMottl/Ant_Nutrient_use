@@ -52,6 +52,35 @@ arsenal::write2word(
   )
 )
 
+# terms ----
+table_guild_addition_terms <-
+  mod_guild_models %>%
+  get_table_terms(
+    add_first_cols = c(
+      "regions",
+      "sel_nutrient",
+      "mod_name"
+    )
+  )
+
+# save ----
+# csv
+readr::write_csv(
+  table_guild_addition_terms,
+  file = here::here(
+    "Outputs/table_guild_addition_terms.csv"
+  )
+)
+
+# word
+arsenal::write2word(
+  object = table_guild_addition_terms %>%
+    get_nice_table(),
+  file = here::here(
+    "Outputs/table_guild_addition_terms.docx"
+  )
+)
+
 # params ----
 table_guild_addition_params <-
   mod_guild_models %>%
