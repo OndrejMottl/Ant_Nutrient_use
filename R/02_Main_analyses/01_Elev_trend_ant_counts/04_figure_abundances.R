@@ -55,11 +55,27 @@ data_pred_abundance_trend <-
       dplyr::filter(best_model == TRUE) %>%
       purrr::pluck("mod", 1),
     dummy_table = dummy_predict_table_trend
+  ) %>%
+  dplyr::mutate(
+    regions = forcats::fct_recode(
+      regions,
+      "Papua New Guinea" = "png",
+      "Ecuador" = "ecuador",
+      "Tanzania" = "tanzania"
+    )
   )
 
 figure_abundance <-
   plot_elev_trend(
-    data_source = data_to_fit,
+    data_source = data_to_fit %>%
+      dplyr::mutate(
+        regions = forcats::fct_recode(
+          regions,
+          "Papua New Guinea" = "png",
+          "Ecuador" = "ecuador",
+          "Tanzania" = "tanzania"
+        )
+      ),
     data_pred_trend = data_pred_abundance_trend,
     y_var = "n_abundance",
     y_var_name = "Ant worker abundance",
