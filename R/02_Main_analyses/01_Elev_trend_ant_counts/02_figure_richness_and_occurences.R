@@ -106,7 +106,8 @@ figure_richness_and_occurences_a <-
       dplyr::filter(best_model == TRUE) %>%
       tidyr::unnest(test_to_null) %>%
       purrr::pluck(stringr::str_subset(names(.), "p_value_chisq"), 1),
-    legend_position = "top"
+    legend_position = "top",
+    y_lim = c(0, 20)
   )
 
 figure_richness_and_occurences_b <-
