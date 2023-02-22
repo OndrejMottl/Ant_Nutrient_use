@@ -75,7 +75,7 @@ data_plots_headings <-
 data_plots_headings[1:3] <-
   purrr::map2(
     .x = data_plots_headings[1:3],
-    .y = c("ECUADOR", "PAPUA NEW GUINEA", "TANZANIA"),
+    .y = c("Ecuador", "Papue New Guinea", "Tanzania"),
     .f = ~ .x + ggplot2::labs(title = .y)
   )
 
@@ -128,3 +128,4 @@ save_figure(
   width = 168,
   height = 230
 )
+
