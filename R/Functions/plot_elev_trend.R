@@ -6,6 +6,7 @@ plot_elev_trend <- function(
     facet_by = NULL,
     facet_scales = "fixed",
     color_by = "seasons",
+    point_size = 5,
     y_var,
     y_var_name,
     y_trans = "identity",
@@ -77,7 +78,7 @@ plot_elev_trend <- function(
         shape = get(color_by),
         col = get(color_by)
       ),
-      size = 5
+      size = point_size
     )
 
   if (
