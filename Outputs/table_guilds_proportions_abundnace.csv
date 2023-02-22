@@ -1,21 +1,12 @@
 mod_name,AICc,delta,model_df,deviance,d2,residual_df,lr_chisq,chisq_df,p_value_chisq,lr_signif,best_model_candidate,best_model
 null,188.351,160.1,4,180.092,1,155,0,0,1,,FALSE,FALSE
 guild,65.55,37.298,6,52.997,0.706,153,127.095,2,0,***,FALSE,FALSE
-elevation,189.499,161.247,5,179.106,0.005,154,0.985,1,0.321,,FALSE,FALSE
-region,192.296,164.044,6,179.743,0.002,153,0.349,2,0.84,,FALSE,FALSE
-season,190.471,162.219,5,180.078,0,154,0.013,1,0.908,,FALSE,FALSE
 guild + elevation,64.432,36.181,7,49.691,0.724,152,130.401,3,0,***,FALSE,FALSE
 guild * elevation,60.564,32.313,9,41.356,0.77,150,138.736,5,0,***,FALSE,FALSE
 guild + region,66.211,37.96,8,49.251,0.727,151,130.84,4,0,***,FALSE,FALSE
 guild * region,46.188,17.936,12,20.051,0.889,147,160.041,8,0,***,FALSE,FALSE
 guild + season,67.393,39.142,7,52.651,0.708,152,127.44,3,0,***,FALSE,FALSE
 guild * season,67.458,39.207,9,48.25,0.732,150,131.841,5,0,***,FALSE,FALSE
-elevation + region,193.694,165.442,7,178.952,0.006,152,1.139,3,0.768,,FALSE,FALSE
-elevation * region,197.955,169.703,9,178.747,0.007,150,1.345,5,0.93,,FALSE,FALSE
-elevation + season,191.654,163.403,6,179.102,0.005,153,0.99,2,0.61,,FALSE,FALSE
-elevation * season,193.843,165.592,7,179.102,0.005,152,0.99,3,0.804,,FALSE,FALSE
-region + season,194.479,166.228,7,179.737,0.002,152,0.354,3,0.95,,FALSE,FALSE
-region * season,198.794,170.542,9,179.586,0.003,150,0.506,5,0.992,,FALSE,FALSE
 guild + elevation + region,67.126,38.875,9,47.918,0.734,150,132.174,5,0,***,FALSE,FALSE
 guild * elevation + region,63.995,35.743,11,40.199,0.777,148,139.893,7,0,***,FALSE,FALSE
 guild + elevation * region,51.36,23.109,15,18.004,0.9,144,162.088,11,0,***,FALSE,FALSE
@@ -24,10 +15,6 @@ guild + elevation + season,66.126,37.875,8,49.166,0.727,151,130.925,4,0,***,FALS
 guild * elevation + season,62.211,33.959,10,40.724,0.774,149,139.367,6,0,***,FALSE,FALSE
 guild + elevation * season,68.476,40.225,11,44.68,0.752,148,135.411,7,0,***,FALSE,FALSE
 guild * elevation * season,64.706,36.454,15,31.349,0.826,144,148.743,11,0,***,FALSE,FALSE
-elevation + region + season,195.909,167.658,8,178.949,0.006,151,1.143,4,0.887,,FALSE,FALSE
-elevation * region + season,200.233,171.981,10,178.746,0.007,149,1.345,6,0.969,,FALSE,FALSE
-elevation + region * season,202.542,174.29,11,178.746,0.007,148,1.346,7,0.987,,FALSE,FALSE
-elevation * region * season,211.726,183.475,15,178.37,0.01,144,1.722,11,0.999,,FALSE,FALSE
 guild + region + season,67.863,39.612,9,48.655,0.73,150,131.437,5,0,***,FALSE,FALSE
 guild * region + season,48.133,19.881,13,19.622,0.891,146,160.469,9,0,***,FALSE,FALSE
 guild + region * season,72.436,44.184,13,43.925,0.756,146,136.167,9,0,***,FALSE,FALSE
