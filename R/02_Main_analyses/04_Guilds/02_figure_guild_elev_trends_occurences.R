@@ -57,7 +57,18 @@ data_pred_guilds_proportions <-
     dummy_table = dummy_predict_table_interaction
   ) %>%
   dplyr::mutate(
-    guild = as.character(guild)
+    guild = as.character(guild),
+    guild = dplyr::case_when(
+      guild == "n_occ_generalistic_prop" ~ "G",
+      guild == "n_occ_herbivorous_trophobiotic_prop" ~ "HT",
+      guild == "n_occ_predator_scavenger_prop" ~ "PS"
+    ),
+    regions = forcats::fct_recode(
+      regions,
+      "Papua New Guinea" = "png",
+      "Ecuador" = "ecuador",
+      "Tanzania" = "tanzania"
+    )
   )
 
 # plot ----
@@ -65,7 +76,18 @@ figure_guilds_proportions_occurences <-
   plot_elev_trend(
     data_source = data_to_fit %>%
       dplyr::mutate(
-        guild = as.character(guild)
+        guild = as.character(guild),
+        guild = dplyr::case_when(
+          guild == "n_occ_generalistic_prop" ~ "G",
+          guild == "n_occ_herbivorous_trophobiotic_prop" ~ "HT",
+          guild == "n_occ_predator_scavenger_prop" ~ "PS"
+        ),
+       regions = forcats::fct_recode(
+         regions,
+         "Papua New Guinea" = "png",
+         "Ecuador" = "ecuador",
+         "Tanzania" = "tanzania"
+       )
       ),
     data_pred_interaction = data_pred_guilds_proportions,
     y_var = "n_occ_prop",
@@ -73,14 +95,14 @@ figure_guilds_proportions_occurences <-
     facet_by = ". ~ regions",
     color_by = "guild",
     shape_legend = c(
-      "n_occ_generalistic_prop" = 23,
-      "n_occ_herbivorous_trophobiotic_prop" = 24,
-      "n_occ_predator_scavenger_prop" = 25
+      "G" = 23,
+      "HT" = 24,
+      "PS" = 25
     ),
     color_legend = c(
-      "n_occ_generalistic_prop" = "#00FF8C",
-      "n_occ_herbivorous_trophobiotic_prop" = "#8C00FF",
-      "n_occ_predator_scavenger_prop" = "darkorange"
+      "G" = "#00FF8C",
+      "HT" = "#8C00FF",
+      "PS" = "darkorange"
     ),
     p_value = mod_guilds_proportions_occurences %>%
       purrr::pluck("models") %>%
@@ -96,5 +118,5 @@ save_figure(
   dir = here::here("Outputs"),
   plot = figure_guilds_proportions_occurences,
   width = 168,
-  height = 150
+  height = 100
 )
