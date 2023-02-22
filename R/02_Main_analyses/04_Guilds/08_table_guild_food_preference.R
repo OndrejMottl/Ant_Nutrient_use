@@ -3,7 +3,7 @@
 #
 #                Tropical ant nutrient use
 #
-#                        Table 2
+#             Table guild food preferecnes simple
 #
 #
 #             O. Mottl, J. Mosses, P. Klimes
@@ -19,30 +19,66 @@ source(
   )
 )
 
-
 # load models ----
-data_guild_models <-
+mod_guild_models <-
   RUtilpol::get_latest_file(
     file_name = "data_guild_models",
     dir = here::here("Data/Processed/Models/")
-  )  %>% 
+  ) %>%
   purrr::pluck("models")
 
 
 # make table ----
-table_2 <-
-  data_guild_models %>%
-  dplyr::arrange(sel_nutrient, regions) %>%
-  dplyr::rename(model_df = df) %>%
-  tidyr::unnest("test_to_null") %>%
-    dplyr::filter(best_model == TRUE)  %>% 
-  dplyr::select(-c(mod, mod_anova, best_model)) %>%
-  get_nice_table()
+table_guild_simple <-
+  mod_guild_models %>%
+  get_table_models(
+    add_first_cols = c("regions", "sel_nutrient")
+  )
 
-# save
-arsenal::write2word(
-  object = table_2,
+# save ----
+# csv
+readr::write_csv(
+  table_guild_simple,
   file = here::here(
-    "Outputs/Table_2.docx"
+    "Outputs/table_guild_simple.csv"
   )
 )
+
+# word
+arsenal::write2word(
+  object = table_guild_simple %>%
+    get_nice_table(),
+  file = here::here(
+    "Outputs/table_guild_simple.docx"
+  )
+)
+
+# params ----
+table_guild_simple_params <-
+  mod_guild_models %>%
+  get_table_params(
+    add_first_cols = c(
+      "regions",
+      "sel_nutrient",
+      "mod_name"
+    )
+  )
+
+# save ----
+# csv
+readr::write_csv(
+  table_guild_simple_params,
+  file = here::here(
+    "Outputs/table_guild_simple_params.csv"
+  )
+)
+
+# word
+arsenal::write2word(
+  object = table_guild_simple_params %>%
+    get_nice_table(),
+  file = here::here(
+    "Outputs/table_guild_simple_params.docx"
+  )
+)
+

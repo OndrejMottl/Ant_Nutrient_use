@@ -65,6 +65,8 @@ data_to_fit <-
     )
   )
 
+summary(data_to_fit)
+
 # fit model ----
 
 # create a table to apply model to
@@ -93,7 +95,11 @@ data_guild_models_all <-
             dplyr::filter(regions == .x) %>%
             dplyr::filter(bait_type == .y),
           sel_var = "cbind(n_occurecnes, max_occurecnes - n_occurecnes)",
-          sel_family = glmmTMB::betabinomial(link = "logit")
+          sel_family = glmmTMB::betabinomial(link = "logit"),
+           control = glmmTMBControl(
+             optimizer = optim,
+             optArgs = list(method = "BFGS")
+           )
         ) %>%
           return()
       }
