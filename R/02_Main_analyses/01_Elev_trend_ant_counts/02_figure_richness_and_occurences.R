@@ -48,6 +48,7 @@ dummy_predict_table_elev <-
   ) %>%
   tidyr::as_tibble()
 
+
 dummy_predict_table_interaction <-
   data_to_fit %>%
   dplyr::select(elevation_mean, regions, seasons) %>%
@@ -72,6 +73,14 @@ data_pred_richness_interaction <-
       dplyr::filter(best_model == TRUE) %>%
       purrr::pluck("mod", 1),
     dummy_table = dummy_predict_table_interaction
+  ) %>%
+  dplyr::mutate(
+    regions = forcats::fct_recode(
+      regions,
+      "Papua New Guinea" = "png",
+      "Ecuador" = "ecuador",
+      "Tanzania" = "tanzania"
+    )
   )
 
 # occurences
@@ -87,13 +96,29 @@ data_pred_occurences_interaction <-
       dplyr::filter(best_model == TRUE) %>%
       purrr::pluck("mod", 1),
     dummy_table = dummy_predict_table_interaction
+  ) %>%
+  dplyr::mutate(
+    regions = forcats::fct_recode(
+      regions,
+      "Papua New Guinea" = "png",
+      "Ecuador" = "ecuador",
+      "Tanzania" = "tanzania"
+    )
   )
 
 # plot the figure -----
 
 figure_richness_and_occurences_a <-
   plot_elev_trend(
-    data_source = data_to_fit,
+    data_source = data_to_fit %>%
+      dplyr::mutate(
+        regions = forcats::fct_recode(
+          regions,
+          "Papua New Guinea" = "png",
+          "Ecuador" = "ecuador",
+          "Tanzania" = "tanzania"
+        )
+      ),
     data_pred_interaction = data_pred_richness_interaction,
     y_var = "n_species",
     y_var_name = "Species richness",
@@ -106,12 +131,21 @@ figure_richness_and_occurences_a <-
       dplyr::filter(best_model == TRUE) %>%
       tidyr::unnest(test_to_null) %>%
       purrr::pluck(stringr::str_subset(names(.), "p_value_chisq"), 1),
-    legend_position = "top"
+    legend_position = "top",
+    y_lim = c(0, 20)
   )
 
 figure_richness_and_occurences_b <-
   plot_elev_trend(
-    data_source = data_to_fit,
+    data_source = data_to_fit %>%
+      dplyr::mutate(
+        regions = forcats::fct_recode(
+          regions,
+          "Papua New Guinea" = "png",
+          "Ecuador" = "ecuador",
+          "Tanzania" = "tanzania"
+        )
+      ),
     data_pred_interaction = data_pred_occurences_interaction,
     y_var = "n_occurecnes",
     y_var_name = "Species occurences",
