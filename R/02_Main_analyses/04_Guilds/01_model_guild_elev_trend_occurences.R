@@ -59,6 +59,12 @@ data_to_fit <-
   dplyr::left_join(
     data_mean_elevation,
     by = dplyr::join_by(regions, seasons, et_pcode)
+  ) %>%
+  dplyr::mutate(
+    dplyr::across(
+      tidyselect::where(is.character),
+      as.factor
+    )
   )
 
 summary(data_to_fit)

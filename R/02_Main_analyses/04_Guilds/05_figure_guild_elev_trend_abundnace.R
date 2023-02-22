@@ -87,7 +87,8 @@ figure_guilds_proportions_abundances <-
       dplyr::filter(best_model == TRUE) %>%
       tidyr::unnest(test_to_null) %>%
       purrr::pluck("p_value_chisq", 1),
-    legend_position = "top"
+    legend_position = "top",
+    y_lim = c(0, 1)
   )
 
 save_figure(
