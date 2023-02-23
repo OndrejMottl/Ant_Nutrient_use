@@ -133,8 +133,6 @@ plot_food_pref <- function(
       data_pred_season = data_pred_season,
       data_pred_interaction = data_pred_interaction,
       p_value = sel_p_value,
-      y_lim = c(0, 1),
-      x_breaks = seq(0, 3e3, 500),
       ...
     )
 

@@ -51,75 +51,23 @@ food_pref_abundance_individual_plots <-
         sel_mod_name = ..3,
         sel_mod = ..4,
         sel_p_value = ..5,
-        point_size = 3
-      )
+        point_size = 3,
+        y_lim = c(-0.1, 1.1),
+        x_breaks = seq(-500, 3.5e3, 500),
+        y_breaks = seq(0, 1, 0.25)
+      ) +
+        ggplot2::theme(
+          plot.margin = unit(c(0, 0.3, 0, 0), "cm"),
+          axis.text.x = ggplot2::element_text(size = 9),
+          plot.title = ggplot2::element_text(hjust = 0.5, vjust = 0, size = 10)
+        )
     )
   )
 
-# maunal edit of headings
-data_plots_headings <-
-  food_pref_abundance_individual_plots$indiv_plot %>%
-  purrr::map(
-    .f = ~ .x + ggplot2::labs(
-      x = "",
-      y = ""
-    ) +
-      ggplot2::theme(
-        plot.margin = unit(c(0, 0.3, 0, 0), "cm"),
-        axis.text.x = ggplot2::element_text(size = 7),
-        plot.title = ggplot2::element_text(hjust = 0.5, vjust = 0, size = 10)
-      )
-  )
-
-# add column heading
-data_plots_headings[1:3] <-
-  purrr::map2(
-    .x = data_plots_headings[1:3],
-    .y = c("Ecuador", "Papue New Guinea", "Tanzania"),
-    .f = ~ .x + ggplot2::labs(title = .y)
-  )
-
-# add row heading
-data_plots_headings[seq(0, 17, 3) + 1] <-
-  purrr::map2(
-    .x = data_plots_headings[seq(0, 17, 3) + 1],
-    .y = c("Amino Acid", "CHO", "CHO + Amino Acid", "H20", "Lipid", "NaCl"),
-    .f = ~ .x +
-      ggplot2::labs(y = .y)
-  )
-
-# tanzania x-asis breaks
-data_plots_headings[seq(3, 18, 3)] <-
-  purrr::map(
-    .x = data_plots_headings[seq(3, 18, 3)],
-    .f = ~ .x +
-      ggplot2::scale_x_continuous(
-        breaks = seq(800, 2500, 400),
-        limits = c(600, 2500)
-      )
-  )
 
 figure_food_preferences_abundance <-
-  ggpubr::ggarrange(
-    plotlist = data_plots_headings,
-    ncol = 3,
-    nrow = 6,
-    common.legend = TRUE,
-    legend = "right"
-  ) %>%
-  ggpubr::annotate_figure(
-    left = ggpubr::text_grob(
-      "Relative nutrient use",
-      family = "sans",
-      size = 12,
-      rot = 90
-    ),
-    bottom = ggpubr::text_grob(
-      "Elevation (m.a.s.l.)",
-      family = "sans",
-      size = 12
-    )
-  )
+  figure_food_preferences_occurence <-
+  get_figures_to_grid(food_pref_abundance_individual_plots$indiv_plot)
 
 save_figure(
   filename = "figure_food_preferences_abundance",
