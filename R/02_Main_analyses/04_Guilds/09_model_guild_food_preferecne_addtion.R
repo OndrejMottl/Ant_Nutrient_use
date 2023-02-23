@@ -79,21 +79,10 @@ data_to_fit <-
 summary(data_to_fit)
 
 # fit model ----
-data_source <-
-  data_to_fit %>%
-  dplyr::filter(regions == "ecuador") %>%
-  dplyr::filter(bait_type == "amino_acid")
-
-mod_sel <- food_pref_models_individual_models$mod[[1]]
-
-data_sel <-
-  data_to_fit %>%
-  dplyr::filter(regions == "ecuador") %>%
-  dplyr::filter(bait_type == "amino_acid")
-
-
 data_guild_models_all <-
   food_pref_models_individual_models %>%
+  # limit to only include model which are not null models
+  dplyr::filter(mod_name != "null") %>%
   dplyr::select(regions, sel_bait_type, mod) %>%
   dplyr::mutate(
     models = purrr::pmap(
@@ -139,16 +128,16 @@ data_guild_models_all <-
 
 data_guild_models <-
   data_guild_models_all %>%
-  dplyr::select(-mod)  %>% 
+  dplyr::select(-mod) %>%
   tidyr::unnest(models)
 
 data_guild_models %>%
   dplyr::arrange(sel_bait_type, regions) %>%
   dplyr::filter(best_model == TRUE) %>%
-  dplyr::select(regions, sel_bait_type, mod_name)
+  tidyr::unnest(test_to_null) %>%
+  dplyr::select(regions, sel_bait_type, mod_name, p_value_chisq)
 
 # save ----
-# save
 list(
   data_to_fit = data_to_fit,
   models = data_guild_models
