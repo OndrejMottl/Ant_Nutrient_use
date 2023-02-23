@@ -2,48 +2,32 @@ regions,mod_name,parameter,coefficient,se,ci_low,ci_high
 ecuador,null,(Intercept),-0.121,0.391,-0.887,0.645
 ecuador,null,"poly(elevation_mean, 1)",1.611,1.548,-1.423,4.646
 ecuador,null,seasonswet,-2.192,0.741,-3.644,-0.739
-png,ps,(Intercept),-3.62,1.275,-6.119,-1.12
-png,ps,seasonswet,3.119,1.509,0.161,6.076
-png,ps,n_occ_predator_scavenger,0.415,0.205,0.014,0.817
-png,ps,seasonswet:n_occ_predator_scavenger,-0.306,0.24,-0.777,0.165
+png,null,(Intercept),-1.345,0.402,-2.134,-0.556
+png,null,seasonswet,1.492,0.495,0.522,2.463
 tanzania,null,(Intercept),-0.053,0.533,-1.097,0.991
 tanzania,null,"poly(elevation_mean, 1)",-3.27,1.718,-6.638,0.097
-ecuador,ps,(Intercept),0.611,0.737,-0.833,2.054
-ecuador,ps,"poly(elevation_mean, 1)",-17.427,4.682,-26.604,-8.25
-ecuador,ps,seasonswet,2.699,1.371,0.011,5.387
-ecuador,ps,n_occ_predator_scavenger,-1.52,0.639,-2.772,-0.268
-ecuador,ps,"poly(elevation_mean, 1):seasonswet",29.127,7.632,14.167,44.086
-ecuador,ps,"poly(elevation_mean, 1):n_occ_predator_scavenger",10.075,3.011,4.175,15.976
-ecuador,ps,seasonswet:n_occ_predator_scavenger,1.215,0.729,-0.214,2.644
-ecuador,ps,"poly(elevation_mean, 1):seasonswet:n_occ_predator_scavenger",-12.798,4.371,-21.365,-4.231
+ecuador,null,(Intercept),0.218,0.362,-0.491,0.927
+ecuador,null,"poly(elevation_mean, 1)",-4.274,1.792,-7.787,-0.761
+ecuador,null,seasonswet,1.706,0.726,0.283,3.13
+ecuador,null,"poly(elevation_mean, 1):seasonswet",8.978,3.431,2.254,15.703
 png,null,(Intercept),1.429,0.553,0.344,2.513
 png,null,seasonswet,-0.866,0.685,-2.209,0.477
-tanzania,null,(Intercept),1.584,0.388,0.823,2.345
-ecuador,ps,(Intercept),-0.818,0.531,-1.857,0.222
-ecuador,ps,"poly(elevation_mean, 2)1",-3.241,2.614,-8.365,1.883
-ecuador,ps,"poly(elevation_mean, 2)2",-3.212,2.45,-8.014,1.59
-ecuador,ps,n_occ_predator_scavenger,1.38,0.441,0.515,2.245
-ecuador,ps,"poly(elevation_mean, 2)1:n_occ_predator_scavenger",-3.139,2.097,-7.248,0.97
-ecuador,ps,"poly(elevation_mean, 2)2:n_occ_predator_scavenger",3.637,1.512,0.674,6.601
+ecuador,null,(Intercept),0.664,0.275,0.125,1.203
+ecuador,null,"poly(elevation_mean, 2)1",-2.253,1.394,-4.986,0.48
+ecuador,null,"poly(elevation_mean, 2)2",2.025,1.312,-0.547,4.597
 png,null,(Intercept),-0.111,0.436,-0.965,0.744
 png,null,seasonswet,1.247,0.658,-0.044,2.537
-tanzania,null,(Intercept),1.097,0.459,0.197,1.996
-ecuador,null,(Intercept),-1.633,0.348,-2.315,-0.951
 png,null,(Intercept),-1.271,0.428,-2.109,-0.432
 png,null,seasonswet,0.673,0.563,-0.431,1.777
 tanzania,null,(Intercept),-1.016,0.479,-1.954,-0.077
 tanzania,null,"poly(elevation_mean, 1)",-3.395,1.554,-6.442,-0.348
-ecuador,ps,(Intercept),1.81,0.792,0.257,3.363
-ecuador,ps,"poly(elevation_mean, 2)1",-15.324,4.717,-24.57,-6.078
-ecuador,ps,"poly(elevation_mean, 2)2",8.386,4.214,0.127,16.645
-ecuador,ps,n_occ_predator_scavenger,-1.89,0.88,-3.614,-0.165
-ecuador,ps,"poly(elevation_mean, 2)1:n_occ_predator_scavenger",10.63,4.75,1.319,19.94
-ecuador,ps,"poly(elevation_mean, 2)2:n_occ_predator_scavenger",-7.425,2.974,-13.255,-1.595
+ecuador,null,(Intercept),0.419,0.274,-0.118,0.957
+ecuador,null,"poly(elevation_mean, 2)1",-5.604,1.427,-8.4,-2.807
+ecuador,null,"poly(elevation_mean, 2)2",-1.603,1.345,-4.24,1.035
 png,null,(Intercept),0.351,0.356,-0.348,1.05
 png,null,"poly(elevation_mean, 2)1",-2.953,1.344,-5.587,-0.319
 png,null,"poly(elevation_mean, 2)2",-1.624,1.283,-4.139,0.892
 png,null,seasonswet,1.814,0.637,0.566,3.063
-tanzania,null,(Intercept),0.233,0.323,-0.401,0.866
 ecuador,g,(Intercept),1.834,3.426,-4.88,8.548
 ecuador,g,seasonswet,-10.084,5.141,-20.16,-0.008
 ecuador,g,n_occ_generalistic_prop,-1.375,4.451,-10.099,7.349

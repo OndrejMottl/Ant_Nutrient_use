@@ -90,16 +90,16 @@ data_guild_models_all <-
           paste(.x, .y, sep = " - ")
         )
 
-        fit_guild_addtion(
+        fit_guild(
           data_source = data_to_fit %>%
             dplyr::filter(regions == .x) %>%
             dplyr::filter(bait_type == .y),
           sel_var = "cbind(n_occurecnes, max_occurecnes - n_occurecnes)",
           sel_family = glmmTMB::betabinomial(link = "logit"),
-           control = glmmTMBControl(
-             optimizer = optim,
-             optArgs = list(method = "BFGS")
-           )
+          control = glmmTMBControl(
+            optimizer = optim,
+            optArgs = list(method = "BFGS")
+          )
         ) %>%
           return()
       }

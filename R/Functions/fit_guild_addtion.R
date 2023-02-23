@@ -2,32 +2,17 @@ fit_guild_addtion <-
   function(data_source,
            sel_var = "n_occ_prop",
            sel_family = glmmTMB::betabinomial(link = "logit"),
-           mod_null = NULL,
+           mod_null,
            ...) {
-    if (
-      isTRUE(is.null(mod_null))
-    ) {
-      mod_null <-
-        glmmTMB::glmmTMB(
-          formula = as.formula(
-            paste0(sel_var, "  ~ 1")
-          ),
-          family = sel_family,
-          data = data_source,
-          ziformula = ~0,
-          ...
-        )
-    }
-
     suppressWarnings({
       mod_g <-
-        stats::update(mod_null, . ~ . * n_occ_generalistic_prop)
+        stats::update(mod_null, . ~  . * n_occ_generalistic_prop)
 
       mod_ht <-
-        stats::update(mod_null, . ~ . * n_occ_herbivorous_trophobiotic)
+        stats::update(mod_null, . ~ . * n_occ_herbivorous_trophobiotic_prop)
 
       mod_ps <-
-        stats::update(mod_null, . ~ . * n_occ_predator_scavenger)
+        stats::update(mod_null, . ~ . * n_occ_predator_scavenger_prop)
     })
 
     mod_table <-
