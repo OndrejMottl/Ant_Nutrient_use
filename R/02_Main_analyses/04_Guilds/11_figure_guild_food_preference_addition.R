@@ -1,3 +1,17 @@
+#----------------------------------------------------------#
+#
+#
+#                Tropical ant nutrient use
+#
+#           Figure guild food preferences addition
+#
+#
+#             O. Mottl, J. Mosses, P. Klimes
+#                         2023
+#
+#----------------------------------------------------------#
+
+
 # Load configuration ----
 library(here)
 source(
