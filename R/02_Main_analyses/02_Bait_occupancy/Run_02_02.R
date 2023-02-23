@@ -3,7 +3,7 @@
 #
 #                 Tropical ant nutrient use
 #
-#           Run all ant count analyses
+#               Run all bait occupancy analyses
 #
 #
 #             O. Mottl, J. Mosses, P. Klimes
@@ -11,7 +11,7 @@
 #
 #----------------------------------------------------------#
 
-# Run all scripts in `/R/01_Data_processing/02_Bait_occupancy/`
+# Run all scripts in `/R/02_Main_analyses/02_Bait_occupancy/`
 
 #----------------------------------------------------------#
 # 1. Set up run -----
@@ -31,5 +31,21 @@ source(
 
 working_dir <-
   here::here(
-    "R/01_Data_processing/01_Neotoma_source/"
+    "R/02_Main_analyses/02_Bait_occupancy/"
   )
+
+source(
+  paste0(working_dir, "01_figure_bait_occupancy_data.R")
+)
+
+source(
+  paste0(working_dir, "02_model_bait_occupancy.R")
+)
+
+source(
+  paste0(working_dir, "03_figure_bait_occupancy_model.R")
+)
+
+source(
+  paste0(working_dir, "04_table_bait_occupancy_model.R")
+)
