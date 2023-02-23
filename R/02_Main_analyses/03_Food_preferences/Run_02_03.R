@@ -3,7 +3,7 @@
 #
 #                 Tropical ant nutrient use
 #
-#           Run all ant count analyses
+#               Run all food preferecne analyses
 #
 #
 #             O. Mottl, J. Mosses, P. Klimes
@@ -11,7 +11,7 @@
 #
 #----------------------------------------------------------#
 
-# Run all scripts in `/R/02_Main_analyses/01_Elev_trend_ant_counts/`
+# Run all scripts in `R/02_Main_analyses/03_Food_preferences/`
 
 #----------------------------------------------------------#
 # 1. Set up run -----
@@ -31,25 +31,29 @@ source(
 
 working_dir <-
   here::here(
-    "R/02_Main_analyses/01_Elev_trend_ant_counts/"
+    "R/02_Main_analyses/03_Food_preferences/"
   )
 
 source(
-  paste0(working_dir, "01_models_ant_counts.R")
+  paste0(working_dir, "01_models_food_preferecnes_occurences.R")
 )
 
 source(
-  paste0(working_dir, "02_figure_richness_and_occurences.R")
+  paste0(working_dir, "02_figure_food_preferences_occurences.R")
 )
 
 source(
-  paste0(working_dir, "03_tables_richness_and_occurences.R")
+  paste0(working_dir, "03_table_food_preferences_occurences.R")
 )
 
 source(
-  paste0(working_dir, "04_figure_abundances.R")
+  paste0(working_dir, "04_models_food_preferecnes_abundnace.R")
 )
 
 source(
-  paste0(working_dir, "05_tables_abundances.R")
+  paste0(working_dir, "05_figure_food_preferences_abundnace.R")
+)
+
+source(
+  paste0(working_dir, "06_table_food_preferences_abundnace.R")
 )

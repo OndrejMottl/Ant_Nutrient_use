@@ -35,41 +35,41 @@ working_dir <-
 source(
   paste0(
     working_dir,
-    "/01_Neotoma_source/01_full_data_process.R"
+    "/01_full_data_process.R"
   )
 )
 
 source(
   paste0(
     working_dir,
-    "/01_Neotoma_source/02_dataset_overview.R"
+    "/02_dataset_overview.R"
   )
 )
 
 source(
   paste0(
     working_dir,
-    "/01_Neotoma_source/03_data_ant_counts.R"
+    "/03_data_ant_counts.R"
   )
 )
 
 source(
   paste0(
     working_dir,
-    "/01_Neotoma_source/04_data_guild_occurences.R"
+    "/04_data_guild_occurences.R"
   )
 )
 
 source(
   paste0(
     working_dir,
-    "/01_Neotoma_source/05_data_guild_abundances.R"
+    "/05_data_guild_abundances.R"
   )
 )
 
 source(
   paste0(
     working_dir,
-    "/01_Neotoma_source/06_data_food_preferences.R"
+    "/06_data_food_preferences.R"
   )
 )
