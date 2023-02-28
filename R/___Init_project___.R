@@ -37,11 +37,8 @@ renv::deactivate()
 package_list <-
   c(
     "aods3",
-    "assertthat",
     "car",
     "effectsize",
-    "emmeans",
-    "ggbeeswarm",
     "ggpubr",
     "glmmTMB",
     "here",
@@ -50,16 +47,13 @@ package_list <-
     "janitor",
     "jsonlite",
     "knitr",
-    "marginaleffects",
     "MASS",
     "MuMIn",
     "languageserver",
-    "patchwork",
     "performance",
     "readxl",
     "remotes",
     "renv",
-    "roxygen2",
     "tidyverse",
     "usethis"
   )
