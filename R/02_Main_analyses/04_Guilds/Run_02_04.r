@@ -47,29 +47,21 @@ source(
 )
 
 source(
-  paste0(working_dir, "04_model_guild_elev_trend_abundance.R")
+  paste0(working_dir, "04_model_guild_food_preference.R")
 )
 
 source(
-  paste0(working_dir, "05_figure_guild_elev_trend_abundance.R")
+  paste0(working_dir, "05_table_guild_food_preference.R")
 )
 
 source(
-  paste0(working_dir, "06_table_guild_elev_trend_abundance.R")
+  paste0(working_dir, "06_model_guild_food_preferecne_addtion.R")
 )
 
 source(
-  paste0(working_dir, "07_model_guild_food_preference.R")
+  paste0(working_dir, "07_table_guild_food_preference_addition.R")
 )
 
 source(
-  paste0(working_dir, "08_table_guild_food_preference.R")
-)
-
-source(
-  paste0(working_dir, "09_model_guild_food_preferecne_addtion.R")
-)
-
-source(
-  paste0(working_dir, "10_table_guild_food_preference_addition.R")
+  paste0(working_dir, "08_figure_guild_food_preference_addition.R")
 )
