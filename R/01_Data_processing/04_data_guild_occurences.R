@@ -6,7 +6,7 @@
 #              Dataset for ant trophic groups
 #
 #
-#             O. Mottl, J. Mosses, P. Klimes
+#           --- authors are hidden for review ---
 #                         2023
 #
 #----------------------------------------------------------#

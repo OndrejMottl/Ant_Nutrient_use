@@ -6,7 +6,7 @@
 #                   Prepare full dataset
 #
 #
-#             O. Mottl, J. Mosses, P. Klimes
+#           --- authors are hidden for review ---
 #                         2023
 #
 #----------------------------------------------------------#

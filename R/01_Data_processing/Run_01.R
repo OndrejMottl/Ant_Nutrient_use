@@ -6,7 +6,7 @@
 #        Source all code for data processing steps
 #
 #
-#             O. Mottl, J. Mosses, P. Klimes
+#           --- authors are hidden for review ---
 #                         2023
 #
 #----------------------------------------------------------#

@@ -6,7 +6,7 @@
 #                       Figure 2
 #
 #
-#             O. Mottl, J. Mosses, P. Klimes
+#           --- authors are hidden for review ---
 #                         2023
 #
 #----------------------------------------------------------#

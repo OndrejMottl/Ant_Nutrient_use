@@ -6,7 +6,7 @@
 #            Source all code for main analyses
 #
 #
-#             O. Mottl, J. Mosses, P. Klimes
+#           --- authors are hidden for review ---
 #                         2023
 #
 #----------------------------------------------------------#
