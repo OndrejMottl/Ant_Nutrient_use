@@ -52,62 +52,63 @@ data_to_traps <-
   dplyr::mutate(
     trap_occupied = ifelse(total_abundance > 0, 1, 0)
   ) %>%
+  # make all characters into factors
+  dplyr::mutate(
+    dplyr::across(
+      tidyselect::where(
+        is.character
+      ),
+      as.factor
+    )
+  ) %>%
+  dplyr::mutate(
+    regions = forcats::fct_recode(
+      regions,
+      "Papua New Guinea" = "png",
+      "Ecuador" = "ecuador",
+      "Tanzania" = "tanzania"
+    ),
+    bait_type = forcats::fct_recode(
+      bait_type,
+      "Amino Acid" = "amino_acid",
+      "CHO" = "cho",
+      "CHO + Amino Acid" = "cho_amino_acid",
+      "H2O" = "h2o",
+      "Lipid" = "lipid",
+      "NaCl" = "nacl"
+    )
+  )
+
+data_traps_region <-
+  data_to_traps %>%
   dplyr::group_by(
-    regions, seasons, et_pcode, bait_type
+    regions, bait_type
   ) %>%
   dplyr::summarise(
     .groups = "drop",
     n = dplyr::n(),
     traps_occupied = sum(trap_occupied),
-    traps_empty = n - traps_occupied
-  )
-
-data_to_fit <-
-  dplyr::left_join(
-    data_to_traps,
-    data_mean_elevation,
-    by = dplyr::join_by(regions, seasons, et_pcode)
+    trap_occupancy = (traps_occupied / n) * 100
   ) %>%
-  dplyr::mutate(
-    prop_baits_occup = traps_occupied / n
-  ) %>%
-  dplyr::mutate(
-    dplyr::across(
-      tidyselect::where(is.character),
-      as.factor
-    )
-  )
-
-data_mean_season <-
-  data_to_fit %>%
-  dplyr::group_by(regions, seasons, bait_type) %>%
-  dplyr:::summarise(
-    .groups = "keep",
-    n = dplyr::n(),
-    mean_prop_baits_occup = mean(prop_baits_occup),
-    sd = sd(prop_baits_occup),
-    upper_q = stats::quantile(prop_baits_occup, 0.975),
-    lower_q = stats::quantile(prop_baits_occup, 0.025)
-  ) %>%
-  dplyr::mutate(
-    upper = mean_prop_baits_occup + sd,
-    lower = max(c(0, mean_prop_baits_occup - sd), na.rm = TRUE)
-  )
-
-data_mean <-
-  data_to_fit %>%
   dplyr::group_by(bait_type) %>%
-  dplyr:::summarise(
-    .groups = "keep",
-    n = dplyr::n(),
-    mean_prop_baits_occup = mean(prop_baits_occup),
-    sd = sd(prop_baits_occup),
-    upper_q = stats::quantile(prop_baits_occup, 0.975),
-    lower_q = stats::quantile(prop_baits_occup, 0.025)
+  dplyr::summarise(
+    .groups = "drop",
+    mean_trap_occupancy = mean(trap_occupancy),
+    sd_trap_occupancy = sd(trap_occupancy),
+    lower = mean_trap_occupancy - sd_trap_occupancy,
+    upper = mean_trap_occupancy + sd_trap_occupancy
+  )
+
+data_traps_seasons <-
+  data_to_traps %>%
+  dplyr::group_by(
+    regions, seasons, bait_type
   ) %>%
-  dplyr::mutate(
-    upper = mean_prop_baits_occup + sd,
-    lower = max(c(0, mean_prop_baits_occup - sd), na.rm = TRUE)
+  dplyr::summarise(
+    .groups = "drop",
+    n = dplyr::n(),
+    traps_occupied = sum(trap_occupied),
+    trap_occupancy = (traps_occupied / n) * 100
   )
 
 p_template <-
@@ -118,7 +119,7 @@ p_template <-
     )
   ) +
   ggplot2::coord_cartesian(
-    ylim = c(0, 1)
+    ylim = c(0, 100)
   ) +
   ggplot2::scale_fill_manual(
     values = c("dry" = "red", "wet" = "blue")
@@ -151,17 +152,19 @@ p_template <-
     panel.grid = ggplot2::element_blank()
   ) +
   ggplot2::labs(
-    y = "Proportion of occupied baits",
+    y = "% occupaby of baits",
     x = ""
   )
 
-figure_bait_occupancy_a <-
+plot_list <- vector("list", length = 4)
+
+plot_list[[1]] <-
   p_template +
-  ggplot2::facet_wrap(~"Average", nrow = 1) +
+  ggplot2::facet_wrap(~"Average per region", nrow = 1) +
   ggplot2::geom_bar(
-    data = data_mean,
+    data = data_traps_region,
     mapping = ggplot2::aes(
-      y = mean_prop_baits_occup
+      y = mean_trap_occupancy
     ),
     stat = "identity",
     col = "gray30",
@@ -169,9 +172,9 @@ figure_bait_occupancy_a <-
     position = ggplot2::position_dodge(0.9)
   ) +
   ggplot2::geom_errorbar(
-    data = data_mean,
+    data = data_traps_region,
     mapping = ggplot2::aes(
-      y = mean_prop_baits_occup,
+      y = mean_trap_occupancy,
       ymin = lower,
       ymax = upper
     ),
@@ -179,61 +182,51 @@ figure_bait_occupancy_a <-
     width = .5,
     position = ggplot2::position_dodge(0.9)
   ) +
-  ggplot2::geom_point(
-    data = data_mean,
-    mapping = ggplot2::aes(
-      y = mean_prop_baits_occup
-    ),
-    position = ggplot2::position_dodge(0.9)
+  ggplot2::geom_hline(
+    yintercept = mean(data_traps_region$mean_trap_occupancy),
+    lty = 2,
+    linewidth = .5,
+    col = "black",
+    alpha = .5
   )
 
-figure_bait_occupancy_b <-
-  p_template +
-  ggplot2::facet_wrap(~regions, nrow = 1) +
-  ggplot2::geom_bar(
-    data = data_mean_season,
-    mapping = ggplot2::aes(
-      y = mean_prop_baits_occup,
-      fill = seasons
-    ),
-    stat = "identity",
-    col = "gray30",
-    alpha = 0.75,
-    position = ggplot2::position_dodge(0.9)
-  ) +
-  ggplot2::geom_errorbar(
-    data = data_mean_season,
-    mapping = ggplot2::aes(
-      y = mean_prop_baits_occup,
-      ymin = lower,
-      ymax = upper,
-      group = seasons
-    ),
-    col = "gray30",
-    width = .5,
-    position = ggplot2::position_dodge(0.9)
-  ) +
-  ggplot2::geom_point(
-    data = data_mean_season,
-    mapping = ggplot2::aes(
-      y = mean_prop_baits_occup,
-      col = seasons,
-      shape = seasons
-    ),
-    position = ggplot2::position_dodge(0.9)
+plot_list[2:4] <-
+  purrr::map(
+    .x = levels(data_traps_seasons$regions),
+    .f = ~ p_template +
+      ggplot2::facet_wrap(as.formula(paste0("~ '", .x, "'")), nrow = 1) +
+      ggplot2::geom_bar(
+        data = data_traps_seasons %>%
+          dplyr::filter(regions == .x),
+        mapping = ggplot2::aes(
+          y = trap_occupancy,
+          fill = seasons
+        ),
+        stat = "identity",
+        col = "gray30",
+        alpha = 0.75,
+        position = ggplot2::position_dodge(0.9)
+      ) +
+      ggplot2::geom_hline(
+        yintercept = data_traps_seasons %>%
+          dplyr::filter(regions == .x) %>%
+          purrr::pluck("trap_occupancy") %>%
+          mean(),
+        lty = 2,
+        linewidth = .5,
+        col = "black",
+        alpha = .5
+      )
   )
 
 figure_bait_occupancy_data <-
   ggpubr::ggarrange(
-    figure_bait_occupancy_a,
-    figure_bait_occupancy_b +
-      ggpubr::rremove("ylab") +
-      ggpubr::rremove("y.ticks") +
-      ggpubr::rremove("y.text"),
-    nrow = 1,
-    widths = c(0.3, 1),
+   plotlist = plot_list,
+    nrow = 2,
+    ncol = 2,
     common.legend = TRUE,
-    legend = "top"
+    legend = "bottom",
+    labels = c("(a)", "(b)", "(c)", "(d)")
   )
 
 save_figure(
@@ -241,5 +234,5 @@ save_figure(
   dir = here::here("Outputs"),
   plot = figure_bait_occupancy_data,
   width = 168,
-  height = 80
+  height = 180
 )
