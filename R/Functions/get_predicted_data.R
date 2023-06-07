@@ -33,7 +33,7 @@ get_predicted_data <- function(
     data_predicted %>%
       dplyr::mutate(
         !!mod$varnames[1] := v1,
-        !!mod$varnames[2] := v1,
+        !!mod$varnames[2] := v2,
         !!mod$varnames[3] := v3
       ) %>%
       tibble::as_tibble() %>%
