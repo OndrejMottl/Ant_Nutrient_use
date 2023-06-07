@@ -3,7 +3,7 @@ fit_elev_region_season <-
            sel_var,
            sel_family = NULL,
            compare_aic = FALSE,
-           sel_method = c("glmmTMB", "glm.nb"),
+           sel_method = c("glmmTMB", "glm.nb", "DirichReg"),
            test_overdispersion = FALSE,
            ...) {
     sel_method <- match.arg(sel_method)
@@ -27,6 +27,13 @@ fit_elev_region_season <-
             data = data_source,
             na.action = "na.fail",
             control = stats::glm.control(maxit = 100)
+          )
+      },
+      "DirichReg" = {
+        mod_null <-
+          DirichletReg::DirichReg(
+            formula = as.formula(paste0(sel_var, " ~ 1")),
+            data = data_source
           )
       }
     )
