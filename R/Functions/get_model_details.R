@@ -118,23 +118,48 @@ get_model_details <- function(
         as.data.frame() %>%
         tibble::rownames_to_column("mod_name") %>%
         tibble::as_tibble() %>%
-        dplyr::relocate(mod_name) %>%
-        dplyr::mutate(
-          best_model_candidate = delta < min_delta_aic
-        ) %>%
+        dplyr::relocate(mod_name)
+    )
+
+    if (
+      !exists("mod_comp")
+    ) {
+      mod_comp <-
+        data_to_compare %>%
         dplyr::select(
-          dplyr::any_of(
-            c(
-              "mod_name",
-              "df",
-              "AICc",
-              "delta",
-              "weight",
-              "best_model_candidate"
-            )
+          mod_name, mod
+        ) %>%
+        dplyr::mutate(
+          AICc = purrr::map_dbl(
+            .x = mod,
+            .f = ~ MuMIn::AICc(.x)
+          ),
+          df = purrr::map_dbl(
+            .x = mod,
+            .f = ~ insight::get_df(.x)
+          ),
+          delta = AICc - min(AICc),
+          weight = NA
+        )
+    }
+
+    mod_comp <-
+      mod_comp %>%
+      dplyr::mutate(
+        best_model_candidate = delta < min_delta_aic
+      ) %>%
+      dplyr::select(
+        dplyr::any_of(
+          c(
+            "mod_name",
+            "df",
+            "AICc",
+            "delta",
+            "weight",
+            "best_model_candidate"
           )
         )
-    )
+      )
 
     if (
       # several models have delta < min_delta_aic
@@ -167,17 +192,21 @@ get_model_details <- function(
       )
 
       # Therefoere, estimate the importance of predictors across models
-      data_all_best_model_candidates %>%
-        purrr::pluck("mod") %>%
-        MuMIn::model.avg() %>%
-        MuMIn::sw() %>%
-        as.data.frame() %>%
-        tibble::rownames_to_column("term") %>%
-        tibble::as_tibble() %>%
-        dplyr::rename(
-          importance = "."
-        ) %>%
-        print()
+      suppressWarnings(
+        try(
+         expr = data_all_best_model_candidates %>%
+            purrr::pluck("mod") %>%
+            MuMIn::model.avg() %>%
+            MuMIn::sw() %>%
+            as.data.frame() %>%
+            tibble::rownames_to_column("term") %>%
+            tibble::as_tibble() %>%
+            dplyr::rename(
+              importance = "."
+            ) %>%
+            print(.)
+        )
+      )
 
       data_all_best_model_candidates %>%
         tidyr::unnest(test_to_null) %>%
