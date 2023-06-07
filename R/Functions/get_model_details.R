@@ -111,14 +111,17 @@ get_model_details <- function(
   ) {
     # model comp
     suppressWarnings(
-      mod_comp <-
-        MuMIn::model.sel(
-          data_to_compare$mod
-        ) %>%
-        as.data.frame() %>%
-        tibble::rownames_to_column("mod_name") %>%
-        tibble::as_tibble() %>%
-        dplyr::relocate(mod_name)
+      try(
+        expr = mod_comp <-
+          MuMIn::model.sel(
+            data_to_compare$mod
+          ) %>%
+          as.data.frame() %>%
+          tibble::rownames_to_column("mod_name") %>%
+          tibble::as_tibble() %>%
+          dplyr::relocate(mod_name),
+        silent = TRUE
+      )
     )
 
     if (
@@ -194,7 +197,7 @@ get_model_details <- function(
       # Therefoere, estimate the importance of predictors across models
       suppressWarnings(
         try(
-         expr = data_all_best_model_candidates %>%
+          expr = data_all_best_model_candidates %>%
             purrr::pluck("mod") %>%
             MuMIn::model.avg() %>%
             MuMIn::sw() %>%
@@ -204,7 +207,8 @@ get_model_details <- function(
             dplyr::rename(
               importance = "."
             ) %>%
-            print(.)
+            print(.),
+            silent = TRUE
         )
       )
 
