@@ -78,7 +78,7 @@ mod_guilds_proportions_occurences <-
   ) %>%
   rlang::set_names()  %>% 
   purrr::map(
-    .f = ~ fit_elev_region_season(
+    .f = ~ fit_guild_elev_region_season(
       data_source = data_to_fit %>%
         dplyr::filter(guild == .x),
       sel_var = "n_occ_prop",
