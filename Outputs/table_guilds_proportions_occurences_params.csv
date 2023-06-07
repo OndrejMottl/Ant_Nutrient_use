@@ -1,9 +1,13 @@
-term,chisq,df,pr_chisq,signif
-(Intercept),46.854,1,0,***
-guild,153.095,2,0,***
-"poly(elevation_mean, elev_poly)",1.994,1,0.158,
-regions,16.261,2,0,***
-"guild:poly(elevation_mean, elev_poly)",25.287,2,0,***
-guild:regions,49.914,4,0,***
-"poly(elevation_mean, elev_poly):regions",3.987,2,0.136,
-"guild:poly(elevation_mean, elev_poly):regions",11.165,4,0.025,*
+guild,term,chisq,df,pr_chisq,signif
+n_occ_generalistic_prop,(Intercept),31.649,1,0,***
+n_occ_generalistic_prop,"poly(elevation_mean, elev_poly)",11.289,1,0.001,***
+n_occ_generalistic_prop,regions,17.902,2,0,***
+n_occ_generalistic_prop,seasons,4.8,1,0.028,*
+n_occ_herbivorous_trophobiotic_prop,(Intercept),33.572,1,0,***
+n_occ_herbivorous_trophobiotic_prop,"poly(elevation_mean, elev_poly)",9.449,1,0.002,**
+n_occ_herbivorous_trophobiotic_prop,regions,8.433,2,0.015,*
+n_occ_herbivorous_trophobiotic_prop,seasons,7.386,1,0.007,**
+n_occ_predator_scavenger_prop,(Intercept),76.498,1,0,***
+n_occ_predator_scavenger_prop,"poly(elevation_mean, elev_poly)",18.974,1,0,***
+n_occ_predator_scavenger_prop,regions,37.98,2,0,***
+n_occ_predator_scavenger_prop,"poly(elevation_mean, elev_poly):regions",12.208,2,0.002,**

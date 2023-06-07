@@ -29,7 +29,14 @@ mod_guilds_proportions_occurences <-
 
 table_guilds_proportions_occurences <-
   mod_guilds_proportions_occurences %>%
-  get_table_models()
+  purrr::map(
+    .f = ~ get_table_models(.x)
+  ) %>%
+  tibble::enframe(
+    name = "guild",
+    value = "data"
+  ) %>%
+  tidyr::unnest(data)
 
 # save ----
 # csv
@@ -52,7 +59,14 @@ arsenal::write2word(
 # params ----
 table_guilds_proportions_occurences_params <-
   mod_guilds_proportions_occurences %>%
-  get_table_params()
+    purrr::map(
+      .f = ~ get_table_params(.x)
+    ) %>%
+      tibble::enframe(
+        name = "guild",
+        value = "data"
+      ) %>%
+      tidyr::unnest(data)
 
 # save ----
 # csv
