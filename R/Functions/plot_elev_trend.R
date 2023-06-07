@@ -6,6 +6,7 @@ plot_elev_trend <- function(
     facet_by = NULL,
     facet_scales = "fixed",
     color_by = "seasons",
+    line_type_by = NULL,
     point_size = 5,
     y_var,
     y_var_name,
@@ -18,6 +19,7 @@ plot_elev_trend <- function(
     y_lim = c(NA, NA),
     shape_legend = c("dry" = 21, "wet" = 22),
     color_legend = c("dry" = "red", "wet" = "blue"),
+    line_type_legend = c("dry" = "solid", "wet" = "solid"),
     legend_position = "none") {
   use_elev_trend <- isFALSE(is.null(data_pred_trend))
   use_season <- isFALSE(is.null(data_pred_season))
@@ -41,6 +43,9 @@ plot_elev_trend <- function(
     ggplot2::scale_fill_manual(
       values = color_legend
     ) +
+    ggplot2::scale_linetype_manual(
+      values = line_type_legend
+    ) +
     ggplot2::scale_y_continuous(
       trans = y_trans,
       breaks = y_breaks
@@ -53,7 +58,8 @@ plot_elev_trend <- function(
       y = y_var_name,
       color = color_by,
       fill = color_by,
-      shape = color_by
+      shape = color_by,
+      linetype = line_type_by
     ) +
     ggplot2::coord_cartesian(
       xlim = x_lim,
@@ -103,7 +109,8 @@ plot_elev_trend <- function(
           x = elevation_mean,
           y = estimate,
           ymax = conf_high,
-          ymin = conf_low
+          ymin = conf_low,
+          lty = lget(line_type_by)
         ),
         color = NA,
         fill = "gray50",
@@ -135,42 +142,82 @@ plot_elev_trend <- function(
   if (
     isTRUE(use_interaction)
   ) {
-    p_0 <-
-      p_0 +
-      ggplot2::geom_ribbon(
-        data = data_pred_interaction,
-        mapping = ggplot2::aes(
-          x = elevation_mean,
-          y = estimate,
-          ymax = conf_high,
-          ymin = conf_low,
-          fill = get(color_by)
-        ),
-        color = NA,
-        alpha = dplyr::case_when(
-          p_value < 0.05 ~ 0.15,
-          p_value < 0.1 ~ 0.10,
-          .default = 0
-        )
-      ) +
-      ggplot2::geom_line(
-        data = data_pred_interaction,
-        ggplot2::aes(
-          x = elevation_mean,
-          y = estimate,
-          col = get(color_by)
-        ),
-        lty = dplyr::case_when(
-          p_value < 0.05 ~ 1,
-          p_value < 0.1 ~ 2,
-          .default = 0
-        ),
-        alpha = dplyr::case_when(
-          p_value < 0.1 ~ 1,
-          .default = 0
-        ),
-        linewidth = 1.5
+    if (
+      isTRUE(
+        is.null(line_type_by)
       )
+    ) {
+      p_0 <-
+        p_0 +
+        ggplot2::geom_ribbon(
+          data = data_pred_interaction,
+          mapping = ggplot2::aes(
+            x = elevation_mean,
+            y = estimate,
+            ymax = conf_high,
+            ymin = conf_low,
+            fill = get(color_by),
+          ),
+          color = NA,
+          alpha = dplyr::case_when(
+            p_value < 0.05 ~ 0.15,
+            p_value < 0.1 ~ 0.10,
+            .default = 0
+          )
+        ) +
+        ggplot2::geom_line(
+          data = data_pred_interaction,
+          ggplot2::aes(
+            x = elevation_mean,
+            y = estimate,
+            col = get(color_by)
+          ),
+          lty = dplyr::case_when(
+            p_value < 0.05 ~ 1,
+            p_value < 0.1 ~ 2,
+            .default = 0
+          ),
+          alpha = dplyr::case_when(
+            p_value < 0.1 ~ 1,
+            .default = 0
+          ),
+          linewidth = 1.5
+        )
+    } else {
+      p_0 <-
+        p_0 +
+        ggplot2::geom_ribbon(
+          data = data_pred_interaction,
+          mapping = ggplot2::aes(
+            x = elevation_mean,
+            y = estimate,
+            ymax = conf_high,
+            ymin = conf_low,
+            fill = get(color_by),
+            lty = get(line_type_by)
+          ),
+          color = NA,
+          alpha = dplyr::case_when(
+            p_value < 0.05 ~ 0.15,
+            p_value < 0.1 ~ 0.10,
+            .default = 0
+          )
+        ) +
+        ggplot2::geom_line(
+          data = data_pred_interaction,
+          ggplot2::aes(
+            x = elevation_mean,
+            y = estimate,
+            col = get(color_by),
+            lty = get(line_type_by)
+          ),
+          alpha = dplyr::case_when(
+            p_value < 0.1 ~ 1,
+            .default = 0
+          ),
+          linewidth = 1.5
+        )
+    }
   }
 
   if (
