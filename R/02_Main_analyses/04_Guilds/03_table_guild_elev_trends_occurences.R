@@ -50,24 +50,4 @@ arsenal::write2word(
 )
 
 # params ----
-table_guilds_proportions_occurences_params <-
-  mod_guilds_proportions_occurences %>%
-  get_table_params()
-
-# save ----
-# csv
-readr::write_csv(
-  table_guilds_proportions_occurences_params,
-  file = here::here(
-    "Outputs/table_guilds_proportions_occurences_params.csv"
-  )
-)
-
-# word
-arsenal::write2word(
-  object = table_guilds_proportions_occurences_params %>%
-    get_nice_table(),
-  file = here::here(
-    "Outputs/table_guilds_proportions_occurences_params.docx"
-  )
-)
+# Not possible for <DrchltRM> models
