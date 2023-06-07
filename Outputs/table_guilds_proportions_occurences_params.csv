@@ -1,9 +1,0 @@
-term,chisq,df,pr_chisq,signif
-(Intercept),46.854,1,0,***
-guild,153.095,2,0,***
-"poly(elevation_mean, elev_poly)",1.994,1,0.158,
-regions,16.261,2,0,***
-"guild:poly(elevation_mean, elev_poly)",25.287,2,0,***
-guild:regions,49.914,4,0,***
-"poly(elevation_mean, elev_poly):regions",3.987,2,0.136,
-"guild:poly(elevation_mean, elev_poly):regions",11.165,4,0.025,*

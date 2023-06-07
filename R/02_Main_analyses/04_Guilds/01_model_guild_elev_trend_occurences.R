@@ -51,11 +51,6 @@ data_to_fit <-
       )
     )
   ) %>%
-  tidyr::pivot_longer(
-    cols = -c(regions, seasons, et_pcode),
-    names_to = "guild",
-    values_to = "n_occ_prop"
-  ) %>%
   dplyr::left_join(
     data_mean_elevation,
     by = dplyr::join_by(regions, seasons, et_pcode)
@@ -67,14 +62,22 @@ data_to_fit <-
     )
   )
 
+# update the data so that it can be fitted as multinomial
+data_to_fit$Y <-
+  DirichletReg::DR_data(data_to_fit[, c(
+    "n_occ_generalistic_prop",
+    "n_occ_herbivorous_trophobiotic_prop",
+    "n_occ_predator_scavenger_prop"
+  )])
+
 summary(data_to_fit)
 
 # fit model ----
 mod_guilds_proportions_occurences <-
-  fit_guild_elev_region_season(
+  fit_elev_region_season(
     data_source = data_to_fit,
-    sel_var = "n_occ_prop",
-    sel_family = glmmTMB::ordbeta(link = "logit")
+    sel_var = "Y",
+    sel_method = "DirichReg"
   )
 
 print_model_summary(mod_guilds_proportions_occurences)

@@ -40,9 +40,9 @@ mod_guilds_proportions_occurences %>%
 # dummy tables to predict upon
 dummy_predict_table_interaction <-
   data_to_fit %>%
-  dplyr::select(guild, elevation_mean, regions) %>%
+  dplyr::select(elevation_mean, regions, seasons) %>%
   modelbased::visualisation_matrix(
-    at = c("guild", "elevation_mean", "regions"),
+    at = c("elevation_mean", "regions", "seasons"),
     length = 100,
     preserve_range = TRUE
   ) %>%
@@ -55,6 +55,57 @@ data_pred_guilds_proportions <-
       dplyr::filter(best_model == TRUE) %>%
       purrr::pluck("mod", 1),
     dummy_table = dummy_predict_table_interaction
+  ) %>%
+  dplyr::select(-c(v1, v2, v3)) %>%
+  tidyr::pivot_longer(
+    cols = c(
+      "n_occ_generalistic_prop",
+      "n_occ_herbivorous_trophobiotic_prop",
+      "n_occ_predator_scavenger_prop"
+    ),
+    names_to = "guild",
+    values_to = "estimate"
+  ) %>%
+  dplyr::mutate(
+    guild = as.character(guild),
+    guild = dplyr::case_when(
+      guild == "n_occ_generalistic_prop" ~ "G",
+      guild == "n_occ_herbivorous_trophobiotic_prop" ~ "HT",
+      guild == "n_occ_predator_scavenger_prop" ~ "PS"
+    ),
+    regions = forcats::fct_recode(
+      regions,
+      "Papua New Guinea" = "png",
+      "Ecuador" = "ecuador",
+      "Tanzania" = "tanzania"
+    ),
+    conf_high = estimate,
+    conf_low = estimate
+  )
+
+data_to_plot <-
+  data_to_fit %>%
+  dplyr::select(
+    dplyr::any_of(
+      c(
+        "regions",
+        "seasons",
+        "elevation_mean",
+        "et_pcode",
+        "n_occ_generalistic_prop",
+        "n_occ_herbivorous_trophobiotic_prop",
+        "n_occ_predator_scavenger_prop"
+      )
+    )
+  ) %>%
+  tidyr::pivot_longer(
+    cols = c(
+      "n_occ_generalistic_prop",
+      "n_occ_herbivorous_trophobiotic_prop",
+      "n_occ_predator_scavenger_prop"
+    ),
+    names_to = "guild",
+    values_to = "n_occ_prop"
   ) %>%
   dplyr::mutate(
     guild = as.character(guild),
@@ -74,25 +125,11 @@ data_pred_guilds_proportions <-
 # plot ----
 figure_guilds_proportions_occurences <-
   plot_elev_trend(
-    data_source = data_to_fit %>%
-      dplyr::mutate(
-        guild = as.character(guild),
-        guild = dplyr::case_when(
-          guild == "n_occ_generalistic_prop" ~ "G",
-          guild == "n_occ_herbivorous_trophobiotic_prop" ~ "HT",
-          guild == "n_occ_predator_scavenger_prop" ~ "PS"
-        ),
-       regions = forcats::fct_recode(
-         regions,
-         "Papua New Guinea" = "png",
-         "Ecuador" = "ecuador",
-         "Tanzania" = "tanzania"
-       )
-      ),
+    data_source = data_to_plot,
     data_pred_interaction = data_pred_guilds_proportions,
     y_var = "n_occ_prop",
     y_var_name = "Proportion of species occurences",
-    facet_by = ". ~ regions",
+    facet_by = "seasons ~ regions",
     color_by = "guild",
     shape_legend = c(
       "G" = 23,
@@ -118,5 +155,5 @@ save_figure(
   dir = here::here("Outputs"),
   plot = figure_guilds_proportions_occurences,
   width = 168,
-  height = 100
+  height = 180
 )
