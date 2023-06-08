@@ -1,42 +1,42 @@
 mod_name,AICc,delta,model_df,deviance,d2,residual_df,lr_chisq,chisq_df,p_value_chisq,lr_signif,best_model_candidate,best_model
-null,1340.683,267.598,2,1336.653,1,394,0,0,1,,FALSE,FALSE
-bait type,1309.98,236.894,7,1295.691,0.031,389,40.962,5,0,***,FALSE,FALSE
-elevation,1146.657,73.571,4,1138.554,0.148,392,198.098,2,0,***,FALSE,FALSE
-region,1336.479,263.394,4,1328.377,0.006,392,8.276,2,0.016,*,FALSE,FALSE
-season,1342.34,269.255,3,1336.279,0,393,0.374,1,0.541,,FALSE,FALSE
-bait type + elevation,1083.45,10.364,9,1064.983,0.203,387,271.669,7,0,***,FALSE,FALSE
-bait type * elevation,1101.937,28.851,19,1061.915,0.206,377,274.737,17,0,***,FALSE,FALSE
-bait type + region,1305.605,232.519,9,1287.138,0.037,387,49.514,7,0,***,FALSE,FALSE
-bait type * region,1323.576,250.49,19,1283.554,0.04,377,53.098,17,0,***,FALSE,FALSE
-bait type + season,1311.729,238.643,8,1295.356,0.031,388,41.296,6,0,***,FALSE,FALSE
-bait type * season,1320.679,247.593,13,1293.726,0.032,383,42.927,11,0,***,FALSE,FALSE
-elevation + region,1150.284,77.199,6,1138.068,0.149,390,198.584,4,0,***,FALSE,FALSE
-elevation * region,1152.005,78.919,10,1131.433,0.154,386,205.22,8,0,***,FALSE,FALSE
-elevation + season,1148.708,75.623,5,1138.554,0.148,391,198.098,3,0,***,FALSE,FALSE
-elevation * season,1145.758,72.673,7,1131.47,0.154,389,205.183,5,0,***,FALSE,FALSE
-region + season,1338.18,265.095,5,1328.027,0.006,391,8.626,3,0.035,*,FALSE,FALSE
-region * season,1331.592,258.507,7,1317.303,0.014,389,19.349,5,0.002,**,FALSE,FALSE
-bait type + elevation + region,1087.265,14.18,11,1064.578,0.204,385,272.075,9,0,***,FALSE,FALSE
-bait type * elevation + region,1105.968,32.883,21,1061.497,0.206,375,275.155,19,0,***,FALSE,FALSE
-bait type + elevation * region,1102.798,29.713,25,1049.284,0.215,371,287.368,23,0,***,FALSE,FALSE
-bait type * elevation * region,1148.823,75.738,55,1020.706,0.236,341,315.947,53,0,***,FALSE,FALSE
-bait type + elevation + season,1085.55,12.465,10,1064.979,0.203,386,271.674,8,0,***,FALSE,FALSE
-bait type * elevation + season,1104.152,31.066,20,1061.912,0.206,376,274.741,18,0,***,FALSE,FALSE
-bait type + elevation * season,1089.786,16.701,17,1054.167,0.211,379,282.486,15,0,***,FALSE,FALSE
-bait type * elevation * season,1116.643,43.558,37,1034.789,0.226,359,301.864,35,0,***,FALSE,FALSE
-elevation + region + season,1152.351,79.266,7,1138.063,0.149,389,198.59,5,0,***,FALSE,FALSE
-elevation * region + season,1154.121,81.035,11,1131.433,0.154,385,205.22,9,0,***,FALSE,FALSE
-elevation + region * season,1138.351,65.266,11,1115.664,0.165,385,220.989,9,0,***,FALSE,FALSE
-elevation * region * season,1131.047,57.962,19,1091.026,0.184,377,245.627,17,0,***,FALSE,FALSE
-bait type + region + season,1307.348,234.263,10,1286.777,0.037,386,49.876,8,0,***,FALSE,FALSE
-bait type * region + season,1325.415,252.33,20,1283.175,0.04,376,53.478,18,0,***,FALSE,FALSE
-bait type + region * season,1308.852,235.767,17,1273.233,0.047,379,63.419,15,0,***,FALSE,FALSE
-bait type * region * season,1334.831,261.746,37,1252.976,0.063,359,83.677,35,0,***,FALSE,FALSE
-bait type + elevation + region + season,1089.38,16.294,12,1064.565,0.204,384,272.087,10,0,***,FALSE,FALSE
-bait type * elevation + region + season,1108.2,35.114,22,1061.486,0.206,374,275.166,20,0,***,FALSE,FALSE
-bait type + elevation * region + season,1105.083,31.997,26,1049.278,0.215,370,287.375,24,0,***,FALSE,FALSE
-bait type + elevation + region * season,1077.2,4.114,21,1032.729,0.227,375,303.924,19,0,***,FALSE,FALSE
-bait type * elevation * region + season,1151.532,78.447,56,1020.7,0.236,340,315.952,54,0,***,FALSE,FALSE
-bait type * elevation + region * season,1103.772,30.687,41,1012.043,0.243,355,324.609,39,0,***,FALSE,FALSE
-bait type + elevation * region * season,1073.085,0,49,960.923,0.281,347,375.729,47,0,***,TRUE,TRUE
-bait type * elevation * region * season,1182.875,109.789,109,881.029,0.341,287,455.624,107,0,***,FALSE,FALSE
+null,1204.273,141.657,3,1198.212,1,393,0,0,1,,FALSE,FALSE
+bait type,1133.969,71.353,8,1117.596,0.067,388,80.615,5,0,***,FALSE,FALSE
+elevation,1145.261,82.645,5,1135.107,0.053,391,63.105,2,0,***,FALSE,FALSE
+region,1207.024,144.408,5,1196.87,0.001,391,1.342,2,0.511,,FALSE,FALSE
+season,1205.478,142.862,4,1197.375,0.001,392,0.837,1,0.36,,FALSE,FALSE
+bait type + elevation,1075.753,13.137,10,1055.182,0.119,386,143.03,7,0,***,FALSE,FALSE
+bait type * elevation,1094.185,31.569,20,1051.945,0.122,376,146.266,17,0,***,FALSE,FALSE
+bait type + region,1136.788,74.173,10,1116.217,0.068,386,81.995,7,0,***,FALSE,FALSE
+bait type * region,1149.825,87.209,20,1107.585,0.076,376,90.627,17,0,***,FALSE,FALSE
+bait type + season,1134.869,72.253,9,1116.403,0.068,387,81.809,6,0,***,FALSE,FALSE
+bait type * season,1142.537,79.921,14,1113.435,0.071,382,84.777,11,0,***,FALSE,FALSE
+elevation + region,1148.946,86.33,7,1134.657,0.053,389,63.555,4,0,***,FALSE,FALSE
+elevation * region,1152.357,89.741,11,1129.669,0.057,385,68.542,8,0,***,FALSE,FALSE
+elevation + season,1147.245,84.629,6,1135.029,0.053,390,63.183,3,0,***,FALSE,FALSE
+elevation * season,1144.455,81.839,8,1128.083,0.059,388,70.129,5,0,***,FALSE,FALSE
+region + season,1208.281,145.666,6,1196.065,0.002,390,2.146,3,0.543,,FALSE,FALSE
+region * season,1191.439,128.823,8,1175.067,0.019,388,23.145,5,0,***,FALSE,FALSE
+bait type + elevation + region,1079.616,17,12,1054.802,0.12,384,143.41,9,0,***,FALSE,FALSE
+bait type * elevation + region,1098.283,35.667,22,1051.57,0.122,374,146.642,19,0,***,FALSE,FALSE
+bait type + elevation * region,1097.109,34.493,26,1041.304,0.131,370,156.908,23,0,***,FALSE,FALSE
+bait type * elevation * region,1139.065,76.449,56,1008.233,0.159,340,189.979,53,0,***,FALSE,FALSE
+bait type + elevation + season,1077.564,14.948,11,1054.877,0.12,385,143.335,8,0,***,FALSE,FALSE
+bait type * elevation + season,1096.115,33.499,21,1051.644,0.122,375,146.567,18,0,***,FALSE,FALSE
+bait type + elevation * season,1082.062,19.446,18,1044.248,0.128,378,153.964,15,0,***,FALSE,FALSE
+bait type * elevation * season,1106.461,43.845,38,1022.158,0.147,358,176.054,35,0,***,FALSE,FALSE
+elevation + region + season,1150.925,88.309,8,1134.553,0.053,388,63.659,5,0,***,FALSE,FALSE
+elevation * region + season,1154.459,91.843,12,1129.645,0.057,384,68.567,9,0,***,FALSE,FALSE
+elevation + region * season,1135.725,73.109,12,1110.91,0.073,384,87.302,9,0,***,FALSE,FALSE
+elevation * region * season,1130.791,68.175,20,1088.551,0.092,376,109.66,17,0,***,FALSE,FALSE
+bait type + region + season,1137.738,75.122,11,1115.051,0.069,385,83.161,8,0,***,FALSE,FALSE
+bait type * region + season,1150.693,88.077,21,1106.222,0.077,375,91.99,18,0,***,FALSE,FALSE
+bait type + region * season,1120.798,58.182,18,1082.984,0.096,378,115.228,15,0,***,FALSE,FALSE
+bait type * region * season,1119.596,56.98,38,1035.293,0.136,358,162.918,35,0,***,FALSE,FALSE
+bait type + elevation + region + season,1081.42,18.804,13,1054.467,0.12,383,143.745,10,0,***,FALSE,FALSE
+bait type * elevation + region + season,1100.208,37.592,23,1051.24,0.123,373,146.971,20,0,***,FALSE,FALSE
+bait type + elevation * region + season,1099.152,36.536,27,1041.043,0.131,369,157.169,24,0,***,FALSE,FALSE
+bait type + elevation + region * season,1066.062,3.446,22,1019.348,0.149,374,178.863,19,0,***,FALSE,FALSE
+bait type * elevation * region + season,1141.426,78.81,57,1007.864,0.159,339,190.348,54,0,***,FALSE,FALSE
+bait type * elevation + region * season,1089.397,26.781,42,995.164,0.169,354,203.047,39,0,***,FALSE,FALSE
+bait type + elevation * region * season,1062.616,0,50,947.833,0.209,346,250.379,47,0,***,TRUE,TRUE
+bait type * elevation * region * season,NA,NA,110,NA,NA,286,NA,107,NA,,NA,NA
