@@ -7,7 +7,8 @@ get_predicted_data <- function(
           object = mod,
           newdata = dummy_table,
           type = "response",
-          se.fit = TRUE
+          se.fit = TRUE,
+           re.form = ~0
         ) %>%
           as.data.frame() %>%
           janitor::clean_names()
