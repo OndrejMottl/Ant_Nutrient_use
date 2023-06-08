@@ -6,6 +6,7 @@ plot_elev_trend <- function(
     facet_by = NULL,
     facet_scales = "fixed",
     color_by = "seasons",
+    color_by_name = "Season",
     line_type_by = NULL,
     point_size = 5,
     y_var,
@@ -56,9 +57,9 @@ plot_elev_trend <- function(
     ggplot2::labs(
       x = "Elevation (m.a.s.l.)",
       y = y_var_name,
-      color = color_by,
-      fill = color_by,
-      shape = color_by,
+      color = color_by_name,
+      fill = color_by_name,
+      shape = color_by_name,
       linetype = line_type_by
     ) +
     ggplot2::coord_cartesian(
@@ -70,9 +71,13 @@ plot_elev_trend <- function(
       base_family = "sans"
     ) +
     ggplot2::guides(
-      fill = "none"
+      fill = "none",
+      linetype = ggplot2::guide_legend(
+        override.aes = list(linewidth = 0.5))
     ) +
-    ggplot2::theme(legend.position = legend_position) +
+    ggplot2::theme(
+      legend.position = legend_position,
+      legend.key.width = ggplot2::unit(0.5, "cm")) +
     ggplot2::geom_vline(
       xintercept = x_line,
       linetype = "dashed",
@@ -201,7 +206,8 @@ plot_elev_trend <- function(
             p_value < 0.05 ~ 0.15,
             p_value < 0.1 ~ 0.10,
             .default = 0
-          )
+          ),
+          show.legend = FALSE
         ) +
         ggplot2::geom_line(
           data = data_pred_interaction,
@@ -215,7 +221,8 @@ plot_elev_trend <- function(
             p_value < 0.1 ~ 1,
             .default = 0
           ),
-          linewidth = 1.5
+          linewidth = 1.5,
+          show.legend = c(linetype = TRUE)
         )
     }
   }
