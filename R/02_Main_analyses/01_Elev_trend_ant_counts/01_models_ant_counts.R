@@ -50,18 +50,28 @@ data_to_fit <-
 
 summary(data_to_fit)
 
+
 # fit models ----
 # - occurences ----
 mod_occurences <-
   fit_elev_region_season(
     data_source = data_to_fit,
     sel_var = "n_occurecnes",
+    sel_var_random = "et_pcode",
     sel_method = "glmmTMB",
     sel_family = glmmTMB::nbinom2(link = "log"),
     compare_aic = TRUE
   )
 
 print_model_summary(mod_occurences)
+
+mod_occurences %>%
+  dplyr::filter(
+    best_model == TRUE
+  ) %>%
+  purrr::pluck("mod", 1) %>%
+  summary()
+
 
 # save
 list(
@@ -79,16 +89,20 @@ mod_richness <-
   fit_elev_region_season(
     data_source = data_to_fit,
     sel_var = "n_species",
+    sel_var_random = "et_pcode",
     sel_method = "glmmTMB",
     sel_family = glmmTMB::nbinom2(link = "log"),
-    compare_aic = TRUE,
-    control = glmmTMBControl(
-      optimizer = optim,
-      optArgs = list(method = "BFGS")
-    )
+    compare_aic = TRUE
   )
 
 print_model_summary(mod_richness)
+
+mod_richness %>%
+  dplyr::filter(
+    best_model == TRUE
+  ) %>%
+  purrr::pluck("mod", 1) %>%
+  summary()
 
 # save
 list(
@@ -106,12 +120,20 @@ mod_abundnace <-
   fit_elev_region_season(
     data_source = data_to_fit,
     sel_var = "n_abundance",
+    sel_var_random = "et_pcode",
     sel_method = "glmmTMB",
     sel_family = glmmTMB::nbinom2(link = "log"),
     compare_aic = TRUE
   )
 
 print_model_summary(mod_abundnace)
+
+mod_abundnace %>%
+  dplyr::filter(
+    best_model == TRUE
+  ) %>%
+  purrr::pluck("mod", 1) %>%
+  summary()
 
 # save
 list(

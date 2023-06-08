@@ -1,5 +1,5 @@
 term,chisq,df,pr_chisq,signif
-(Intercept),57.558,1,0,***
+(Intercept),57.559,1,0,***
 "poly(elevation_mean, 2)",77.785,2,0,***
 regions,0.644,2,0.725,
 "poly(elevation_mean, 2):regions",23.083,4,0,***
