@@ -118,6 +118,10 @@ data_pred_guilds_proportions <-
     seasons = dplyr::case_when(
       is.na(seasons) ~ "both",
       TRUE ~ seasons
+    ),
+    guil_season_label = paste(
+      guild, seasons,
+      sep = "-"
     )
   )
 
@@ -137,6 +141,10 @@ data_to_plot <-
       "Papua New Guinea" = "png",
       "Ecuador" = "ecuador",
       "Tanzania" = "tanzania"
+    ),
+    guil_season_label = paste(
+      guild, seasons,
+      sep = "-"
     )
   )
 
@@ -158,17 +166,32 @@ figure_guilds_proportions_occurences <-
     y_var = "n_occ_prop",
     y_var_name = "Proportion of species occurences",
     facet_by = ". ~ regions",
-    color_by = "guild",
+    color_by = "guil_season_label",
+    color_by_name = "Guild-Season",
     line_type_by = "seasons",
     shape_legend = c(
       "G" = 23,
+      "G-dry" = 23,
+      "G-wet" = 23, # 18
       "HT" = 24,
-      "PS" = 25
+      "HT-dry" = 24,
+      "HT-wet" = 24, # 17
+      "PS" = 22,
+      "PS-dry" = 22,
+      "PS-wet" = 22, # 15
+      "PS-both" = 22
     ),
     color_legend = c(
       "G" = "#00FF8C",
+      "G-dry" = "#00FF8C",
+      "G-wet" = "#009753",
       "HT" = "#8C00FF",
-      "PS" = "darkorange"
+      "HT-dry" = "#8C00FF",
+      "HT-wet" = "#5c00a7",
+      "PS" = "darkorange",
+      "PS-dry" = "darkorange",
+      "PS-wet" = "#9b5500",
+      "PS-both" = "darkorange"
     ),
     line_type_legend = c(
       "both" = "solid",
@@ -183,7 +206,20 @@ figure_guilds_proportions_occurences <-
 save_figure(
   filename = "figure_guilds_proportions_occurences",
   dir = here::here("Outputs"),
-  plot = figure_guilds_proportions_occurences,
+  plot = figure_guilds_proportions_occurences +
+    ggplot2::theme(legend.position = "none"),
   width = 168,
-  height = 100
+  height = 80
+)
+
+figure_guilds_proportions_occurences_legend <-
+  cowplot::get_legend(figure_guilds_proportions_occurences)
+
+
+save_figure(
+  filename = "figure_guilds_proportions_occurences_legend",
+  dir = here::here("Outputs"),
+  plot = figure_guilds_proportions_occurences_legend,
+  width = 350,
+  height = 50
 )
