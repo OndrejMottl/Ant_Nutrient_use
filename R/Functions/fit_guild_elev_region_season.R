@@ -3,8 +3,7 @@ fit_guild_elev_region_season <-
            sel_var = "n_occ_prop",
            elev_poly = 1,
            sel_family = glmmTMB::ordbeta(link = "logit"),
-           compare_aic = TRUE,
-           ...) {
+           compare_aic = TRUE) {
     # singl pred
     mod_null <-
       glmmTMB::glmmTMB(
@@ -12,8 +11,7 @@ fit_guild_elev_region_season <-
         family = sel_family,
         data = data_source,
         ziformula = ~0,
-        na.action = "na.fail",
-        ...
+        na.action = "na.fail"
       )
 
     # single pred
