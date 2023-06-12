@@ -1,5 +1,15 @@
 # Nutrient use by tropical ant communities varies among three extensive elevational gradients: a cross-continental comparison
 
+**Table of content:**
+
+- [Manuscript details](#manuscript-details)
+  - [Authors](#authors)
+  - [Abstract](#abstract)
+- [Project details](#project-details)
+- [Getting the code](#getting-the-code)
+  - [Set up](#set-up)
+  - [Cascade of R scripts](#cascade-of-r-scripts)
+
 ## Manuscript details
 
 ### Authors
