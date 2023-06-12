@@ -4,11 +4,11 @@
 
 ### Authors
 
---- TO BE ADDED ---
+Jimmy Moses, Marcell K. Peters, Yvonne Tiede, Ondrej Mottl, David A. Donoso, Nina Farwig, Tom M. Fayle, Vojtech Novotny, Nathan J. Sanders, Petr Klimes
 
 #### Corresponding authors
 
---- TO BE ADDED ---
+Petr Klimes, Biology Centre of the Czech Academy of Sciences, Institute of Entomology, Department of Ecology, Branisovska 31/1160, 370 05 Ceske Budejovice, Czech Republic. Email: <peta.klimes@gmail.com>
 
 #### Running title
 
