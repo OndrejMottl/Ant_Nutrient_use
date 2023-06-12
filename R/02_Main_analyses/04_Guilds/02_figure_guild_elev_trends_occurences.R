@@ -34,28 +34,74 @@ data_to_fit <-
 # check the final model
 mod_guilds_proportions_occurences %>%
   purrr::pluck("models") %>%
-  dplyr::filter(best_model == TRUE) %>%
-  purrr::pluck("mod_name", 1)
+  purrr::map(
+    .f = ~ .x %>%
+      dplyr::filter(best_model == TRUE) %>%
+      purrr::pluck("mod_name", 1)
+  )
+
+mod_guilds_proportions_occurences %>%
+  purrr::pluck("models") %>%
+  purrr::map(
+    .f = ~ .x %>%
+      dplyr::filter(best_model == TRUE) %>%
+      purrr::pluck("mod", 1) %>%
+      summary()
+  )
 
 # dummy tables to predict upon
-dummy_predict_table_interaction <-
+dummy_predict_table_full <-
   data_to_fit %>%
-  dplyr::select(guild, elevation_mean, regions) %>%
+  dplyr::select(elevation_mean, regions, seasons) %>%
   modelbased::visualisation_matrix(
-    at = c("guild", "elevation_mean", "regions"),
+    at = c("elevation_mean", "regions", "seasons"),
+    length = 100,
+    preserve_range = TRUE
+  ) %>%
+  tidyr::as_tibble()
+
+dummy_predict_table_elev_region <-
+  data_to_fit %>%
+  dplyr::select(elevation_mean, regions) %>%
+  modelbased::visualisation_matrix(
+    at = c("elevation_mean", "regions"),
     length = 100,
     preserve_range = TRUE
   ) %>%
   tidyr::as_tibble()
 
 data_pred_guilds_proportions <-
-  get_predicted_data(
-    mod = mod_guilds_proportions_occurences %>%
-      purrr::pluck("models") %>%
-      dplyr::filter(best_model == TRUE) %>%
-      purrr::pluck("mod", 1),
-    dummy_table = dummy_predict_table_interaction
+  list(
+    "n_occ_generalistic_prop" = get_predicted_data(
+      mod = mod_guilds_proportions_occurences %>%
+        purrr::pluck("models") %>%
+        purrr::pluck("n_occ_generalistic_prop") %>%
+        dplyr::filter(best_model == TRUE) %>%
+        purrr::pluck("mod", 1),
+      dummy_table = dummy_predict_table_full
+    ),
+    "n_occ_herbivorous_trophobiotic_prop" = get_predicted_data(
+      mod = mod_guilds_proportions_occurences %>%
+        purrr::pluck("models") %>%
+        purrr::pluck("n_occ_herbivorous_trophobiotic_prop") %>%
+        dplyr::filter(best_model == TRUE) %>%
+        purrr::pluck("mod", 1),
+      dummy_table = dummy_predict_table_full
+    ),
+    "n_occ_predator_scavenger_prop" = get_predicted_data(
+      mod = mod_guilds_proportions_occurences %>%
+        purrr::pluck("models") %>%
+        purrr::pluck("n_occ_predator_scavenger_prop") %>%
+        dplyr::filter(best_model == TRUE) %>%
+        purrr::pluck("mod", 1),
+      dummy_table = dummy_predict_table_elev_region
+    )
   ) %>%
+  tibble::enframe(
+    name = "guild",
+    value = "data_pred"
+  ) %>%
+  tidyr::unnest(data_pred) %>%
   dplyr::mutate(
     guild = as.character(guild),
     guild = dplyr::case_when(
@@ -68,47 +114,91 @@ data_pred_guilds_proportions <-
       "Papua New Guinea" = "png",
       "Ecuador" = "ecuador",
       "Tanzania" = "tanzania"
+    ),
+    seasons = dplyr::case_when(
+      is.na(seasons) ~ "both",
+      TRUE ~ seasons
+    ),
+    guil_season_label = paste(
+      guild, seasons,
+      sep = "-"
     )
+  )
+
+summary(data_pred_guilds_proportions)
+
+data_to_plot <-
+  data_to_fit %>%
+  dplyr::mutate(
+    guild = as.character(guild),
+    guild = dplyr::case_when(
+      guild == "n_occ_generalistic_prop" ~ "G",
+      guild == "n_occ_herbivorous_trophobiotic_prop" ~ "HT",
+      guild == "n_occ_predator_scavenger_prop" ~ "PS"
+    ),
+    regions = forcats::fct_recode(
+      regions,
+      "Papua New Guinea" = "png",
+      "Ecuador" = "ecuador",
+      "Tanzania" = "tanzania"
+    ),
+    guil_season_label = paste(
+      guild, seasons,
+      sep = "-"
+    )
+  )
+
+p_values <-
+  mod_guilds_proportions_occurences %>%
+  purrr::pluck("models") %>%
+  purrr::map_dbl(
+    .f = ~ .x %>%
+      dplyr::filter(best_model == TRUE) %>%
+      tidyr::unnest(test_to_null) %>%
+      purrr::pluck("p_value_chisq", 1)
   )
 
 # plot ----
 figure_guilds_proportions_occurences <-
   plot_elev_trend(
-    data_source = data_to_fit %>%
-      dplyr::mutate(
-        guild = as.character(guild),
-        guild = dplyr::case_when(
-          guild == "n_occ_generalistic_prop" ~ "G",
-          guild == "n_occ_herbivorous_trophobiotic_prop" ~ "HT",
-          guild == "n_occ_predator_scavenger_prop" ~ "PS"
-        ),
-       regions = forcats::fct_recode(
-         regions,
-         "Papua New Guinea" = "png",
-         "Ecuador" = "ecuador",
-         "Tanzania" = "tanzania"
-       )
-      ),
+    data_source = data_to_plot,
     data_pred_interaction = data_pred_guilds_proportions,
     y_var = "n_occ_prop",
     y_var_name = "Proportion of species occurences",
     facet_by = ". ~ regions",
-    color_by = "guild",
+    color_by = "guil_season_label",
+    color_by_name = "Guild-Season",
+    line_type_by = "seasons",
     shape_legend = c(
       "G" = 23,
+      "G-dry" = 23,
+      "G-wet" = 23, # 18
       "HT" = 24,
-      "PS" = 25
+      "HT-dry" = 24,
+      "HT-wet" = 24, # 17
+      "PS" = 22,
+      "PS-dry" = 22,
+      "PS-wet" = 22, # 15
+      "PS-both" = 22
     ),
     color_legend = c(
       "G" = "#00FF8C",
+      "G-dry" = "#00FF8C",
+      "G-wet" = "#009753",
       "HT" = "#8C00FF",
-      "PS" = "darkorange"
+      "HT-dry" = "#8C00FF",
+      "HT-wet" = "#5c00a7",
+      "PS" = "darkorange",
+      "PS-dry" = "darkorange",
+      "PS-wet" = "#9b5500",
+      "PS-both" = "darkorange"
     ),
-    p_value = mod_guilds_proportions_occurences %>%
-      purrr::pluck("models") %>%
-      dplyr::filter(best_model == TRUE) %>%
-      tidyr::unnest(test_to_null) %>%
-      purrr::pluck("p_value_chisq", 1),
+    line_type_legend = c(
+      "both" = "solid",
+      "dry" = "dotted",
+      "wet" = "dashed"
+    ),
+    p_value = 0.0001, # all of them are significant,
     legend_position = "top",
     y_lim = c(0, 1)
   )
@@ -116,7 +206,20 @@ figure_guilds_proportions_occurences <-
 save_figure(
   filename = "figure_guilds_proportions_occurences",
   dir = here::here("Outputs"),
-  plot = figure_guilds_proportions_occurences,
+  plot = figure_guilds_proportions_occurences +
+    ggplot2::theme(legend.position = "none"),
   width = 168,
-  height = 100
+  height = 80
+)
+
+figure_guilds_proportions_occurences_legend <-
+  cowplot::get_legend(figure_guilds_proportions_occurences)
+
+
+save_figure(
+  filename = "figure_guilds_proportions_occurences_legend",
+  dir = here::here("Outputs"),
+  plot = figure_guilds_proportions_occurences_legend,
+  width = 350,
+  height = 50
 )

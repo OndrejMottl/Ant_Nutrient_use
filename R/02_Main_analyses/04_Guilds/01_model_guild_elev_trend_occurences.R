@@ -71,13 +71,26 @@ summary(data_to_fit)
 
 # fit model ----
 mod_guilds_proportions_occurences <-
-  fit_guild_elev_region_season(
-    data_source = data_to_fit,
-    sel_var = "n_occ_prop",
-    sel_family = glmmTMB::ordbeta(link = "logit")
+  c(
+    "n_occ_generalistic_prop",
+    "n_occ_herbivorous_trophobiotic_prop",
+    "n_occ_predator_scavenger_prop"
+  ) %>%
+  rlang::set_names()  %>% 
+  purrr::map(
+    .f = ~ fit_guild_elev_region_season(
+      data_source = data_to_fit %>%
+        dplyr::filter(guild == .x),
+      sel_var = "n_occ_prop",
+      sel_family = glmmTMB::ordbeta(link = "logit"),
+      compare_aic = TRUE
+    )
   )
 
-print_model_summary(mod_guilds_proportions_occurences)
+mod_guilds_proportions_occurences %>%
+  purrr::map(
+    .f = ~ print_model_summary(.x)
+  )
 
 # save ----
 list(
