@@ -1,24 +1,24 @@
 mod_name,AICc,delta,model_df,deviance,d2,residual_df,lr_chisq,chisq_df,p_value_chisq,lr_signif,best_model_candidate,best_model
-null,826.991,122.254,2,822.833,1,77,0,0,1,,FALSE,FALSE
-elevation,729.851,25.114,3,723.531,0.121,76,99.301,1,0,***,FALSE,FALSE
-elevation-poly,713.645,8.908,4,705.105,0.143,75,117.728,2,0,***,FALSE,FALSE
-region,825.11,120.373,4,816.57,0.008,75,6.263,2,0.044,*,FALSE,FALSE
-season,829.049,124.312,3,822.729,0,76,0.104,1,0.747,,FALSE,FALSE
-elevation + region,730.453,25.716,5,719.631,0.125,74,103.201,3,0,***,FALSE,FALSE
-elevation * region,725.006,20.269,7,709.429,0.138,72,113.404,5,0,***,FALSE,FALSE
-elevation + season,732.07,27.333,4,723.53,0.121,75,99.303,2,0,***,FALSE,FALSE
-elevation * season,733.718,28.981,5,722.897,0.121,74,99.936,3,0,***,FALSE,FALSE
-elevation-poly + region,716.498,11.761,6,703.331,0.145,73,119.502,4,0,***,FALSE,FALSE
-elevation-poly * region,704.737,0,10,681.502,0.172,69,141.331,8,0,***,TRUE,TRUE
-elevation-poly + season,715.921,11.184,5,705.1,0.143,74,117.733,3,0,***,FALSE,FALSE
-elevation-poly * season,719.474,14.737,7,703.896,0.145,72,118.937,5,0,***,FALSE,FALSE
-region + season,827.371,122.634,5,816.549,0.008,74,6.283,3,0.099,,FALSE,FALSE
-region * season,829.9,125.163,7,814.323,0.01,72,8.51,5,0.13,,FALSE,FALSE
-elevation + region + season,732.789,28.052,6,719.622,0.125,73,103.211,4,0,***,FALSE,FALSE
-elevation + region * season,735.265,30.528,9,714.657,0.131,70,108.176,7,0,***,FALSE,FALSE
-elevation * region + season,727.486,22.749,8,709.428,0.138,71,113.405,6,0,***,FALSE,FALSE
-elevation * region * season,727.358,22.621,13,695.758,0.154,66,127.075,11,0,***,FALSE,FALSE
-elevation-poly + region + season,718.909,14.172,7,703.331,0.145,72,119.502,5,0,***,FALSE,FALSE
-elevation-poly + region * season,722.629,17.892,11,696.688,0.153,68,126.144,9,0,***,FALSE,FALSE
-elevation-poly * region + season,707.13,2.393,11,681.19,0.172,68,141.643,9,0,***,FALSE,FALSE
-elevation-poly * region * season,711.213,6.476,19,660.331,0.197,60,162.502,17,0,***,FALSE,FALSE
+null,806.013,98.571,3,799.693,1,76,0,0,1,,FALSE,FALSE
+elevation,729.046,21.604,4,720.505,0.099,75,79.187,1,0,***,FALSE,FALSE
+elevation-poly,713.313,5.87,5,702.491,0.122,74,97.202,2,0,***,FALSE,FALSE
+region,809.586,102.144,5,798.765,0.001,74,0.928,2,0.629,,FALSE,FALSE
+season,806.097,98.655,4,797.556,0.003,75,2.137,1,0.144,,FALSE,FALSE
+elevation + region,729.241,21.799,6,716.074,0.105,73,83.618,3,0,***,FALSE,FALSE
+elevation * region,725.056,17.614,8,706.999,0.116,71,92.694,5,0,***,FALSE,FALSE
+elevation + season,731.098,23.656,5,720.276,0.099,74,79.417,2,0,***,FALSE,FALSE
+elevation * season,733.439,25.997,6,720.272,0.099,73,79.421,3,0,***,FALSE,FALSE
+elevation-poly + region,717.003,9.561,7,701.425,0.123,72,98.268,4,0,***,FALSE,FALSE
+elevation-poly * region,707.442,0,11,681.502,0.148,68,118.191,8,0,***,TRUE,TRUE
+elevation-poly + season,715.563,8.121,6,702.396,0.122,73,97.297,3,0,***,FALSE,FALSE
+elevation-poly * season,719.609,12.167,8,701.552,0.123,71,98.141,5,0,***,FALSE,FALSE
+region + season,809.719,102.277,6,796.552,0.004,73,3.141,3,0.37,,FALSE,FALSE
+region * season,813.102,105.66,8,795.045,0.006,71,4.648,5,0.46,,FALSE,FALSE
+elevation + region + season,731.281,23.839,7,715.704,0.105,72,83.989,4,0,***,FALSE,FALSE
+elevation + region * season,733.381,25.939,10,710.146,0.112,69,89.547,7,0,***,FALSE,FALSE
+elevation * region + season,727.323,19.881,9,706.715,0.116,70,92.978,6,0,***,FALSE,FALSE
+elevation * region * season,721.651,14.209,14,687.089,0.141,65,112.604,11,0,***,FALSE,FALSE
+elevation-poly + region + season,719.357,11.915,8,701.3,0.123,71,98.393,5,0,***,FALSE,FALSE
+elevation-poly + region * season,723.845,16.403,12,695.117,0.131,67,104.575,9,0,***,FALSE,FALSE
+elevation-poly * region + season,709.917,2.475,12,681.19,0.148,67,118.503,9,0,***,FALSE,FALSE
+elevation-poly * region * season,712.324,4.882,20,657.841,0.177,59,141.852,17,0,***,FALSE,FALSE

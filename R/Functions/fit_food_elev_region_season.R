@@ -1,6 +1,7 @@
 fit_food_elev_region_season <-
   function(data_source,
            sel_var = "cbind(total_occurrence, max occurrence - total_occurrence)",
+           sel_var_random = NULL,
            sel_family = glmmTMB::betabinomial(link = "logit"),
            ...) {
     # singl pred
@@ -238,6 +239,28 @@ fit_food_elev_region_season <-
             nm = mod_name
           )
       )
+
+    if (
+      isFALSE(is.null(sel_var_random))
+    ) {
+      random_formula <-
+        paste(
+          ". ~ . + (1 |", sel_var_random, ")"
+        ) %>%
+        as.formula()
+
+      mod_table <-
+        mod_table %>%
+        dplyr::mutate(
+          mod = purrr::map(
+            .progress = TRUE,
+            .x = mod,
+            .f = purrr::possibly(
+              ~ stats::update(.x, random_formula)
+            )
+          )
+        )
+    }
 
     res <-
       get_model_details(

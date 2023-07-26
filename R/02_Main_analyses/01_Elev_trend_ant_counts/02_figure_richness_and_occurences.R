@@ -46,6 +46,13 @@ dummy_predict_table_elev <-
     length = 100,
     preserve_range = TRUE
   ) %>%
+  # we selected only one site as there needs to be a valid value.
+  # However, the function `get_predicted_data()` is set to ignore random effects
+  dplyr::mutate(
+    et_pcode = data_to_fit$et_pcode %>%
+      unique() %>%
+      .[[1]]
+  ) %>%
   tidyr::as_tibble()
 
 
@@ -56,6 +63,13 @@ dummy_predict_table_interaction <-
     at = c("elevation_mean", "regions", "seasons"),
     length = 100,
     preserve_range = TRUE
+  ) %>%
+  # we selected only one site as there needs to be a valid value.
+  # However, the function `get_predicted_data()` is set to ignore random effects
+  dplyr::mutate(
+    et_pcode = data_to_fit$et_pcode %>%
+      unique() %>%
+      .[[1]]
   ) %>%
   tidyr::as_tibble()
 
