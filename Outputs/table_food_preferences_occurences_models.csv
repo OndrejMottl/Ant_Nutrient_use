@@ -1,145 +1,145 @@
-regions,sel_bait_type,mod_name,AICc,delta,model_df,deviance,d2,residual_df,lr_chisq,chisq_df,p_value_chisq,lr_signif,best_model_candidate,best_model
-ecuador,amino_acid,null,73.299,6.748,2,68.699,1,21,0,0,1,,FALSE,FALSE
-ecuador,amino_acid,elevation,75.264,8.713,3,68,0.01,20,0.699,1,0.403,,FALSE,FALSE
-ecuador,amino_acid,elevation-poly,78.122,11.571,4,67.9,0.012,19,0.799,2,0.671,,FALSE,FALSE
-ecuador,amino_acid,season,66.551,0,3,59.288,0.137,20,9.411,1,0.002,**,TRUE,FALSE
-ecuador,amino_acid,elevation + season,68.404,1.853,4,58.182,0.153,19,10.517,2,0.005,**,TRUE,TRUE
-ecuador,amino_acid,elevation * season,71.045,4.494,5,57.515,0.163,18,11.183,3,0.011,*,FALSE,FALSE
-ecuador,amino_acid,elevation-poly + season,71.71,5.159,5,58.18,0.153,18,10.519,3,0.015,*,FALSE,FALSE
-ecuador,amino_acid,elevation-poly * season,70.275,3.724,7,48.808,0.29,16,19.891,5,0.001,**,FALSE,FALSE
-png,amino_acid,null,70.441,5.781,2,65.735,1,18,0,0,1,,FALSE,FALSE
-png,amino_acid,elevation,72.968,8.308,3,65.468,0.004,17,0.268,1,0.605,,FALSE,FALSE
-png,amino_acid,elevation-poly,76.097,11.437,4,65.431,0.005,16,0.305,2,0.859,,FALSE,FALSE
-png,amino_acid,season,64.66,0,3,57.16,0.13,17,8.575,1,0.003,**,TRUE,TRUE
-png,amino_acid,elevation + season,67.433,2.773,4,56.766,0.136,16,8.969,2,0.011,*,FALSE,FALSE
-png,amino_acid,elevation * season,70.787,6.127,5,56.501,0.14,15,9.234,3,0.026,*,FALSE,FALSE
-png,amino_acid,elevation-poly + season,71.011,6.351,5,56.726,0.137,15,9.01,3,0.029,*,FALSE,FALSE
-png,amino_acid,elevation-poly * season,79.78,15.12,7,56.446,0.141,13,9.289,5,0.098,,FALSE,FALSE
-tanzania,amino_acid,null,38.045,0,2,32.33,1,8,0,0,1,,TRUE,FALSE
-tanzania,amino_acid,elevation,38.446,0.401,3,28.446,0.12,7,3.885,1,0.049,*,TRUE,TRUE
-tanzania,amino_acid,elevation-poly,43.989,5.944,4,27.989,0.134,6,4.341,2,0.114,,FALSE,FALSE
-tanzania,amino_acid,season,42.307,4.263,3,32.307,0.001,7,0.023,1,0.879,,FALSE,FALSE
-tanzania,amino_acid,elevation + season,44.37,6.325,4,28.37,0.123,6,3.961,2,0.138,,FALSE,FALSE
-tanzania,amino_acid,elevation * season,53.131,15.087,5,28.131,0.13,5,4.199,3,0.241,,FALSE,FALSE
-tanzania,amino_acid,elevation-poly + season,52.784,14.74,5,27.784,0.141,5,4.546,3,0.208,,FALSE,FALSE
-tanzania,amino_acid,elevation-poly * season,84.433,46.388,7,14.433,0.554,3,17.897,5,0.003,**,FALSE,FALSE
-ecuador,cho,null,77.389,3.806,2,72.789,1,21,0,0,1,,FALSE,FALSE
-ecuador,cho,elevation,79.576,5.993,3,72.313,0.007,20,0.476,1,0.49,,FALSE,FALSE
-ecuador,cho,elevation-poly,82.233,8.65,4,72.011,0.011,19,0.778,2,0.678,,FALSE,FALSE
-ecuador,cho,season,76.201,2.618,3,68.938,0.053,20,3.851,1,0.05,*,FALSE,FALSE
-ecuador,cho,elevation + season,78.479,4.895,4,68.257,0.062,19,4.533,2,0.104,,FALSE,FALSE
-ecuador,cho,elevation * season,73.583,0,5,60.054,0.175,18,12.735,3,0.005,**,TRUE,TRUE
-ecuador,cho,elevation-poly + season,81.696,8.113,5,68.167,0.064,18,4.622,3,0.202,,FALSE,FALSE
-ecuador,cho,elevation-poly * season,81.502,7.919,7,60.036,0.175,16,12.754,5,0.026,*,FALSE,FALSE
-png,cho,null,68.081,0,2,63.376,1,18,0,0,1,,TRUE,FALSE
-png,cho,elevation,70.495,2.414,3,62.995,0.006,17,0.38,1,0.537,,FALSE,FALSE
-png,cho,elevation-poly,73.661,5.58,4,62.995,0.006,16,0.381,2,0.827,,FALSE,FALSE
-png,cho,season,69.22,1.139,3,61.72,0.026,17,1.655,1,0.198,,TRUE,TRUE
-png,cho,elevation + season,71.941,3.859,4,61.274,0.033,16,2.101,2,0.35,,FALSE,FALSE
-png,cho,elevation * season,75.546,7.465,5,61.261,0.033,15,2.115,3,0.549,,FALSE,FALSE
-png,cho,elevation-poly + season,75.557,7.476,5,61.271,0.033,15,2.104,3,0.551,,FALSE,FALSE
-png,cho,elevation-poly * season,84.275,16.193,7,60.941,0.038,13,2.434,5,0.786,,FALSE,FALSE
-tanzania,cho,null,28.412,0,2,22.698,1,8,0,0,1,,TRUE,TRUE
-tanzania,cho,elevation,32.69,4.278,3,22.69,0,7,0.008,1,0.93,,FALSE,FALSE
-tanzania,cho,elevation-poly,37.275,8.863,4,21.275,0.063,6,1.422,2,0.491,,FALSE,FALSE
-tanzania,cho,season,32.359,3.947,3,22.359,0.015,7,0.339,1,0.56,,FALSE,FALSE
-tanzania,cho,elevation + season,38.301,9.889,4,22.301,0.017,6,0.396,2,0.82,,FALSE,FALSE
-tanzania,cho,elevation * season,45.618,17.206,5,20.618,0.092,5,2.08,3,0.556,,FALSE,FALSE
-tanzania,cho,elevation-poly + season,46.168,17.756,5,21.168,0.067,5,1.53,3,0.675,,FALSE,FALSE
-tanzania,cho,elevation-poly * season,86.033,57.621,7,16.033,0.294,3,6.664,5,0.247,,FALSE,FALSE
-ecuador,cho_amino_acid,null,79.196,0.309,2,74.596,1,21,0,0,1,,TRUE,FALSE
-ecuador,cho_amino_acid,elevation,78.886,0,3,71.623,0.04,20,2.973,1,0.085,,TRUE,FALSE
-ecuador,cho_amino_acid,elevation-poly,79.485,0.598,4,69.262,0.071,19,5.333,2,0.069,,TRUE,TRUE
-ecuador,cho_amino_acid,season,81.405,2.519,3,74.142,0.006,20,0.454,1,0.501,,FALSE,FALSE
-ecuador,cho_amino_acid,elevation + season,81.32,2.434,4,71.098,0.047,19,3.498,2,0.174,,FALSE,FALSE
-ecuador,cho_amino_acid,elevation * season,83.408,4.522,5,69.878,0.063,18,4.717,3,0.194,,FALSE,FALSE
-ecuador,cho_amino_acid,elevation-poly + season,82.534,3.648,5,69.005,0.075,18,5.591,3,0.133,,FALSE,FALSE
-ecuador,cho_amino_acid,elevation-poly * season,85.944,7.058,7,64.477,0.136,16,10.119,5,0.072,,FALSE,FALSE
-png,cho_amino_acid,null,73.573,0.785,2,68.867,1,18,0,0,1,,TRUE,FALSE
-png,cho_amino_acid,elevation,76.226,3.438,3,68.726,0.002,17,0.141,1,0.707,,FALSE,FALSE
-png,cho_amino_acid,elevation-poly,78.133,5.345,4,67.466,0.02,16,1.401,2,0.496,,FALSE,FALSE
-png,cho_amino_acid,season,72.788,0,3,65.288,0.052,17,3.579,1,0.059,,TRUE,TRUE
-png,cho_amino_acid,elevation + season,75.8,3.012,4,65.133,0.054,16,3.734,2,0.155,,FALSE,FALSE
-png,cho_amino_acid,elevation * season,78.097,5.309,5,63.812,0.073,15,5.055,3,0.168,,FALSE,FALSE
-png,cho_amino_acid,elevation-poly + season,77.485,4.697,5,63.199,0.082,15,5.668,3,0.129,,FALSE,FALSE
-png,cho_amino_acid,elevation-poly * season,83.429,10.641,7,60.095,0.127,13,8.772,5,0.119,,FALSE,FALSE
-tanzania,cho_amino_acid,null,33.6,0,2,27.885,1,8,0,0,1,,TRUE,TRUE
-tanzania,cho_amino_acid,elevation,37.873,4.273,3,27.873,0,7,0.013,1,0.91,,FALSE,FALSE
-tanzania,cho_amino_acid,elevation-poly,43.873,10.273,4,27.873,0,6,0.013,2,0.994,,FALSE,FALSE
-tanzania,cho_amino_acid,season,37.532,3.933,3,27.532,0.013,7,0.353,1,0.552,,FALSE,FALSE
-tanzania,cho_amino_acid,elevation + season,43.532,9.933,4,27.532,0.013,6,0.353,2,0.838,,FALSE,FALSE
-tanzania,cho_amino_acid,elevation * season,50.614,17.015,5,25.614,0.081,5,2.271,3,0.518,,FALSE,FALSE
-tanzania,cho_amino_acid,elevation-poly + season,52.497,18.897,5,27.497,0.014,5,0.389,3,0.943,,FALSE,FALSE
-tanzania,cho_amino_acid,elevation-poly * season,95.344,61.744,7,25.344,0.091,3,2.542,5,0.77,,FALSE,FALSE
-ecuador,h2o,null,61.307,0,2,56.707,1,21,0,0,1,,TRUE,TRUE
-ecuador,h2o,elevation,63.854,2.547,3,56.591,0.002,20,0.116,1,0.734,,FALSE,FALSE
-ecuador,h2o,elevation-poly,66.813,5.506,4,56.591,0.002,19,0.116,2,0.944,,FALSE,FALSE
-ecuador,h2o,season,63.902,2.596,3,56.639,0.001,20,0.067,1,0.795,,FALSE,FALSE
-ecuador,h2o,elevation + season,66.757,5.45,4,56.535,0.003,19,0.172,2,0.918,,FALSE,FALSE
-ecuador,h2o,elevation * season,66.48,5.174,5,52.951,0.066,18,3.756,3,0.289,,FALSE,FALSE
-ecuador,h2o,elevation-poly + season,70.061,8.754,5,56.532,0.003,18,0.175,3,0.982,,FALSE,FALSE
-ecuador,h2o,elevation-poly * season,73.397,12.091,7,51.931,0.084,16,4.776,5,0.444,,FALSE,FALSE
-png,h2o,null,65.965,0,2,61.259,1,18,0,0,1,,TRUE,FALSE
-png,h2o,elevation,67.972,2.007,3,60.472,0.013,17,0.787,1,0.375,,FALSE,FALSE
-png,h2o,elevation-poly,70.609,4.644,4,59.942,0.021,16,1.316,2,0.518,,FALSE,FALSE
-png,h2o,season,67.374,1.41,3,59.874,0.023,17,1.384,1,0.239,,TRUE,TRUE
-png,h2o,elevation + season,69.592,3.628,4,58.926,0.038,16,2.333,2,0.311,,FALSE,FALSE
-png,h2o,elevation * season,72.989,7.024,5,58.703,0.042,15,2.556,3,0.465,,FALSE,FALSE
-png,h2o,elevation-poly + season,72.759,6.795,5,58.474,0.045,15,2.785,3,0.426,,FALSE,FALSE
-png,h2o,elevation-poly * season,79.526,13.561,7,56.192,0.083,13,5.066,5,0.408,,FALSE,FALSE
-tanzania,h2o,null,35.789,2.161,2,30.075,1,8,0,0,1,,FALSE,FALSE
-tanzania,h2o,elevation,33.628,0,3,23.628,0.214,7,6.447,1,0.011,*,TRUE,TRUE
-tanzania,h2o,elevation-poly,36.958,3.33,4,20.958,0.303,6,9.116,2,0.01,*,FALSE,FALSE
-tanzania,h2o,season,38.005,4.377,3,28.005,0.069,7,2.07,1,0.15,,FALSE,FALSE
-tanzania,h2o,elevation + season,37.94,4.312,4,21.94,0.27,6,8.134,2,0.017,*,FALSE,FALSE
-tanzania,h2o,elevation * season,45.567,11.939,5,20.567,0.316,5,9.507,3,0.023,*,FALSE,FALSE
-tanzania,h2o,elevation-poly + season,44.935,11.307,5,19.935,0.337,5,10.139,3,0.017,*,FALSE,FALSE
-tanzania,h2o,elevation-poly * season,88.656,55.028,7,18.656,0.38,3,11.419,5,0.044,*,FALSE,FALSE
-ecuador,lipid,null,81.635,12.627,2,77.035,1,21,0,0,1,,FALSE,FALSE
-ecuador,lipid,elevation,69.007,0,3,61.744,0.198,20,15.291,1,0,***,TRUE,FALSE
-ecuador,lipid,elevation-poly,70.563,1.555,4,60.34,0.217,19,16.694,2,0,***,TRUE,TRUE
-ecuador,lipid,season,84.09,15.083,3,76.827,0.003,20,0.208,1,0.648,,FALSE,FALSE
-ecuador,lipid,elevation + season,71.827,2.819,4,61.604,0.2,19,15.43,2,0,***,FALSE,FALSE
-ecuador,lipid,elevation * season,75.133,6.126,5,61.604,0.2,18,15.431,3,0.001,**,FALSE,FALSE
-ecuador,lipid,elevation-poly + season,73.729,4.722,5,60.2,0.219,18,16.835,3,0.001,***,FALSE,FALSE
-ecuador,lipid,elevation-poly * season,81.196,12.189,7,59.73,0.225,16,17.305,5,0.004,**,FALSE,FALSE
-png,lipid,null,65.058,4.116,2,60.352,1,18,0,0,1,,FALSE,FALSE
-png,lipid,elevation,65.625,4.683,3,58.125,0.037,17,2.227,1,0.136,,FALSE,FALSE
-png,lipid,elevation-poly,67.742,6.8,4,57.075,0.054,16,3.277,2,0.194,,FALSE,FALSE
-png,lipid,season,61.47,0.528,3,53.97,0.106,17,6.383,1,0.012,*,TRUE,FALSE
-png,lipid,elevation + season,60.942,0,4,50.275,0.167,16,10.077,2,0.006,**,TRUE,FALSE
-png,lipid,elevation * season,63.369,2.427,5,49.083,0.187,15,11.269,3,0.01,*,FALSE,FALSE
-png,lipid,elevation-poly + season,62.917,1.975,5,48.631,0.194,15,11.721,3,0.008,**,TRUE,TRUE
-png,lipid,elevation-poly * season,68.891,7.949,7,45.558,0.245,13,14.795,5,0.011,*,FALSE,FALSE
-tanzania,lipid,null,36.087,0,2,30.373,1,8,0,0,1,,TRUE,TRUE
-tanzania,lipid,elevation,38.542,2.455,3,28.542,0.06,7,1.83,1,0.176,,FALSE,FALSE
-tanzania,lipid,elevation-poly,41.823,5.736,4,25.823,0.15,6,4.55,2,0.103,,FALSE,FALSE
-tanzania,lipid,season,39.957,3.87,3,29.957,0.014,7,0.416,1,0.519,,FALSE,FALSE
-tanzania,lipid,elevation + season,43.412,7.325,4,27.412,0.097,6,2.961,2,0.228,,FALSE,FALSE
-tanzania,lipid,elevation * season,51.532,15.445,5,26.532,0.126,5,3.841,3,0.279,,FALSE,FALSE
-tanzania,lipid,elevation-poly + season,50.245,14.158,5,25.245,0.169,5,5.128,3,0.163,,FALSE,FALSE
-tanzania,lipid,elevation-poly * season,90.103,54.016,7,20.103,0.338,3,10.269,5,0.068,,FALSE,FALSE
-ecuador,nacl,null,83.397,4.028,2,78.797,1,21,0,0,1,,FALSE,FALSE
-ecuador,nacl,elevation,86.045,6.676,3,78.782,0,20,0.015,1,0.903,,FALSE,FALSE
-ecuador,nacl,elevation-poly,89.003,9.634,4,78.781,0,19,0.016,2,0.992,,FALSE,FALSE
-ecuador,nacl,season,79.369,0,3,72.105,0.085,20,6.691,1,0.01,**,TRUE,TRUE
-ecuador,nacl,elevation + season,82.243,2.874,4,72.02,0.086,19,6.776,2,0.034,*,FALSE,FALSE
-ecuador,nacl,elevation * season,83.746,4.378,5,70.217,0.109,18,8.58,3,0.035,*,FALSE,FALSE
-ecuador,nacl,elevation-poly + season,85.507,6.138,5,71.978,0.087,18,6.819,3,0.078,,FALSE,FALSE
-ecuador,nacl,elevation-poly * season,85.931,6.563,7,64.465,0.182,16,14.332,5,0.014,*,FALSE,FALSE
-png,nacl,null,75.015,1.11,2,70.309,1,18,0,0,1,,TRUE,FALSE
-png,nacl,elevation,76.535,2.631,3,69.035,0.018,17,1.274,1,0.259,,FALSE,FALSE
-png,nacl,elevation-poly,78.743,4.839,4,68.076,0.032,16,2.232,2,0.328,,FALSE,FALSE
-png,nacl,season,73.904,0,3,66.404,0.056,17,3.904,1,0.048,*,TRUE,TRUE
-png,nacl,elevation + season,75.936,2.031,4,65.269,0.072,16,5.04,2,0.08,,FALSE,FALSE
-png,nacl,elevation * season,78.264,4.359,5,63.978,0.09,15,6.331,3,0.097,,FALSE,FALSE
-png,nacl,elevation-poly + season,78.23,4.326,5,63.945,0.091,15,6.364,3,0.095,,FALSE,FALSE
-png,nacl,elevation-poly * season,85.126,11.222,7,61.793,0.121,13,8.516,5,0.13,,FALSE,FALSE
-tanzania,nacl,null,32.257,0,2,26.542,1,8,0,0,1,,TRUE,FALSE
-tanzania,nacl,elevation,32.795,0.538,3,22.795,0.141,7,3.748,1,0.053,,TRUE,TRUE
-tanzania,nacl,elevation-poly,38.208,5.951,4,22.208,0.163,6,4.335,2,0.114,,FALSE,FALSE
-tanzania,nacl,season,36.373,4.116,3,26.373,0.006,7,0.169,1,0.681,,FALSE,FALSE
-tanzania,nacl,elevation + season,38.792,6.536,4,22.792,0.141,6,3.75,2,0.153,,FALSE,FALSE
-tanzania,nacl,elevation * season,46.932,14.675,5,21.932,0.174,5,4.61,3,0.203,,FALSE,FALSE
-tanzania,nacl,elevation-poly + season,47.19,14.934,5,22.19,0.164,5,4.352,3,0.226,,FALSE,FALSE
-tanzania,nacl,elevation-poly * season,89.432,57.175,7,19.432,0.268,3,7.111,5,0.213,,FALSE,FALSE
+regions,sel_bait_type,mod_name,mod_formula,AICc,delta,model_df,deviance,d2,residual_df,lr_chisq,chisq_df,p_value_chisq,lr_signif,best_model_candidate,best_model
+ecuador,amino_acid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",73.299,6.748,2,68.699,1,21,0,0,1,,FALSE,FALSE
+ecuador,amino_acid,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",75.264,8.713,3,68,0.01,20,0.699,1,0.403,,FALSE,FALSE
+ecuador,amino_acid,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",78.122,11.571,4,67.9,0.012,19,0.799,2,0.671,,FALSE,FALSE
+ecuador,amino_acid,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",66.551,0,3,59.288,0.137,20,9.411,1,0.002,**,TRUE,FALSE
+ecuador,amino_acid,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",68.404,1.853,4,58.182,0.153,19,10.517,2,0.005,**,TRUE,TRUE
+ecuador,amino_acid,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",71.045,4.494,5,57.515,0.163,18,11.183,3,0.011,*,FALSE,FALSE
+ecuador,amino_acid,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",71.71,5.159,5,58.18,0.153,18,10.519,3,0.015,*,FALSE,FALSE
+ecuador,amino_acid,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",70.275,3.724,7,48.808,0.29,16,19.891,5,0.001,**,FALSE,FALSE
+png,amino_acid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",70.441,5.781,2,65.735,1,18,0,0,1,,FALSE,FALSE
+png,amino_acid,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",72.968,8.308,3,65.468,0.004,17,0.268,1,0.605,,FALSE,FALSE
+png,amino_acid,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",76.097,11.437,4,65.431,0.005,16,0.305,2,0.859,,FALSE,FALSE
+png,amino_acid,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",64.66,0,3,57.16,0.13,17,8.575,1,0.003,**,TRUE,TRUE
+png,amino_acid,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",67.433,2.773,4,56.766,0.136,16,8.969,2,0.011,*,FALSE,FALSE
+png,amino_acid,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",70.787,6.127,5,56.501,0.14,15,9.234,3,0.026,*,FALSE,FALSE
+png,amino_acid,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",71.011,6.351,5,56.726,0.137,15,9.01,3,0.029,*,FALSE,FALSE
+png,amino_acid,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",79.78,15.12,7,56.446,0.141,13,9.289,5,0.098,,FALSE,FALSE
+tanzania,amino_acid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",38.045,0,2,32.33,1,8,0,0,1,,TRUE,FALSE
+tanzania,amino_acid,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",38.446,0.401,3,28.446,0.12,7,3.885,1,0.049,*,TRUE,TRUE
+tanzania,amino_acid,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",43.989,5.944,4,27.989,0.134,6,4.341,2,0.114,,FALSE,FALSE
+tanzania,amino_acid,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",42.307,4.263,3,32.307,0.001,7,0.023,1,0.879,,FALSE,FALSE
+tanzania,amino_acid,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",44.37,6.325,4,28.37,0.123,6,3.961,2,0.138,,FALSE,FALSE
+tanzania,amino_acid,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",53.131,15.087,5,28.131,0.13,5,4.199,3,0.241,,FALSE,FALSE
+tanzania,amino_acid,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",52.784,14.74,5,27.784,0.141,5,4.546,3,0.208,,FALSE,FALSE
+tanzania,amino_acid,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",84.433,46.388,7,14.433,0.554,3,17.897,5,0.003,**,FALSE,FALSE
+ecuador,cho,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",77.389,3.806,2,72.789,1,21,0,0,1,,FALSE,FALSE
+ecuador,cho,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",79.576,5.993,3,72.313,0.007,20,0.476,1,0.49,,FALSE,FALSE
+ecuador,cho,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",82.233,8.65,4,72.011,0.011,19,0.778,2,0.678,,FALSE,FALSE
+ecuador,cho,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",76.201,2.618,3,68.938,0.053,20,3.851,1,0.05,*,FALSE,FALSE
+ecuador,cho,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",78.479,4.895,4,68.257,0.062,19,4.533,2,0.104,,FALSE,FALSE
+ecuador,cho,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",73.583,0,5,60.054,0.175,18,12.735,3,0.005,**,TRUE,TRUE
+ecuador,cho,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",81.696,8.113,5,68.167,0.064,18,4.622,3,0.202,,FALSE,FALSE
+ecuador,cho,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",81.502,7.919,7,60.036,0.175,16,12.754,5,0.026,*,FALSE,FALSE
+png,cho,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",68.081,0,2,63.376,1,18,0,0,1,,TRUE,FALSE
+png,cho,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",70.495,2.414,3,62.995,0.006,17,0.38,1,0.537,,FALSE,FALSE
+png,cho,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",73.661,5.58,4,62.995,0.006,16,0.381,2,0.827,,FALSE,FALSE
+png,cho,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",69.22,1.139,3,61.72,0.026,17,1.655,1,0.198,,TRUE,TRUE
+png,cho,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",71.941,3.859,4,61.274,0.033,16,2.101,2,0.35,,FALSE,FALSE
+png,cho,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",75.546,7.465,5,61.261,0.033,15,2.115,3,0.549,,FALSE,FALSE
+png,cho,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",75.557,7.476,5,61.271,0.033,15,2.104,3,0.551,,FALSE,FALSE
+png,cho,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",84.275,16.193,7,60.941,0.038,13,2.434,5,0.786,,FALSE,FALSE
+tanzania,cho,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",28.412,0,2,22.698,1,8,0,0,1,,TRUE,TRUE
+tanzania,cho,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",32.69,4.278,3,22.69,0,7,0.008,1,0.93,,FALSE,FALSE
+tanzania,cho,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",37.275,8.863,4,21.275,0.063,6,1.422,2,0.491,,FALSE,FALSE
+tanzania,cho,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",32.359,3.947,3,22.359,0.015,7,0.339,1,0.56,,FALSE,FALSE
+tanzania,cho,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",38.301,9.889,4,22.301,0.017,6,0.396,2,0.82,,FALSE,FALSE
+tanzania,cho,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",45.618,17.206,5,20.618,0.092,5,2.08,3,0.556,,FALSE,FALSE
+tanzania,cho,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",46.168,17.756,5,21.168,0.067,5,1.53,3,0.675,,FALSE,FALSE
+tanzania,cho,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",86.033,57.621,7,16.033,0.294,3,6.664,5,0.247,,FALSE,FALSE
+ecuador,cho_amino_acid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",79.196,0.309,2,74.596,1,21,0,0,1,,TRUE,FALSE
+ecuador,cho_amino_acid,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",78.886,0,3,71.623,0.04,20,2.973,1,0.085,,TRUE,FALSE
+ecuador,cho_amino_acid,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",79.485,0.598,4,69.262,0.071,19,5.333,2,0.069,,TRUE,TRUE
+ecuador,cho_amino_acid,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",81.405,2.519,3,74.142,0.006,20,0.454,1,0.501,,FALSE,FALSE
+ecuador,cho_amino_acid,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",81.32,2.434,4,71.098,0.047,19,3.498,2,0.174,,FALSE,FALSE
+ecuador,cho_amino_acid,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",83.408,4.522,5,69.878,0.063,18,4.717,3,0.194,,FALSE,FALSE
+ecuador,cho_amino_acid,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",82.534,3.648,5,69.005,0.075,18,5.591,3,0.133,,FALSE,FALSE
+ecuador,cho_amino_acid,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",85.944,7.058,7,64.477,0.136,16,10.119,5,0.072,,FALSE,FALSE
+png,cho_amino_acid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",73.573,0.785,2,68.867,1,18,0,0,1,,TRUE,FALSE
+png,cho_amino_acid,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",76.226,3.438,3,68.726,0.002,17,0.141,1,0.707,,FALSE,FALSE
+png,cho_amino_acid,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",78.133,5.345,4,67.466,0.02,16,1.401,2,0.496,,FALSE,FALSE
+png,cho_amino_acid,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",72.788,0,3,65.288,0.052,17,3.579,1,0.059,,TRUE,TRUE
+png,cho_amino_acid,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",75.8,3.012,4,65.133,0.054,16,3.734,2,0.155,,FALSE,FALSE
+png,cho_amino_acid,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",78.097,5.309,5,63.812,0.073,15,5.055,3,0.168,,FALSE,FALSE
+png,cho_amino_acid,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",77.485,4.697,5,63.199,0.082,15,5.668,3,0.129,,FALSE,FALSE
+png,cho_amino_acid,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",83.429,10.641,7,60.095,0.127,13,8.772,5,0.119,,FALSE,FALSE
+tanzania,cho_amino_acid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",33.6,0,2,27.885,1,8,0,0,1,,TRUE,TRUE
+tanzania,cho_amino_acid,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",37.873,4.273,3,27.873,0,7,0.013,1,0.91,,FALSE,FALSE
+tanzania,cho_amino_acid,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",43.873,10.273,4,27.873,0,6,0.013,2,0.994,,FALSE,FALSE
+tanzania,cho_amino_acid,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",37.532,3.933,3,27.532,0.013,7,0.353,1,0.552,,FALSE,FALSE
+tanzania,cho_amino_acid,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",43.532,9.933,4,27.532,0.013,6,0.353,2,0.838,,FALSE,FALSE
+tanzania,cho_amino_acid,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",50.614,17.015,5,25.614,0.081,5,2.271,3,0.518,,FALSE,FALSE
+tanzania,cho_amino_acid,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",52.497,18.897,5,27.497,0.014,5,0.389,3,0.943,,FALSE,FALSE
+tanzania,cho_amino_acid,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",95.344,61.744,7,25.344,0.091,3,2.542,5,0.77,,FALSE,FALSE
+ecuador,h2o,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",61.307,0,2,56.707,1,21,0,0,1,,TRUE,TRUE
+ecuador,h2o,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",63.854,2.547,3,56.591,0.002,20,0.116,1,0.734,,FALSE,FALSE
+ecuador,h2o,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",66.813,5.506,4,56.591,0.002,19,0.116,2,0.944,,FALSE,FALSE
+ecuador,h2o,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",63.902,2.596,3,56.639,0.001,20,0.067,1,0.795,,FALSE,FALSE
+ecuador,h2o,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",66.757,5.45,4,56.535,0.003,19,0.172,2,0.918,,FALSE,FALSE
+ecuador,h2o,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",66.48,5.174,5,52.951,0.066,18,3.756,3,0.289,,FALSE,FALSE
+ecuador,h2o,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",70.061,8.754,5,56.532,0.003,18,0.175,3,0.982,,FALSE,FALSE
+ecuador,h2o,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",73.397,12.091,7,51.931,0.084,16,4.776,5,0.444,,FALSE,FALSE
+png,h2o,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",65.965,0,2,61.259,1,18,0,0,1,,TRUE,FALSE
+png,h2o,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",67.972,2.007,3,60.472,0.013,17,0.787,1,0.375,,FALSE,FALSE
+png,h2o,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",70.609,4.644,4,59.942,0.021,16,1.316,2,0.518,,FALSE,FALSE
+png,h2o,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",67.374,1.41,3,59.874,0.023,17,1.384,1,0.239,,TRUE,TRUE
+png,h2o,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",69.592,3.628,4,58.926,0.038,16,2.333,2,0.311,,FALSE,FALSE
+png,h2o,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",72.989,7.024,5,58.703,0.042,15,2.556,3,0.465,,FALSE,FALSE
+png,h2o,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",72.759,6.795,5,58.474,0.045,15,2.785,3,0.426,,FALSE,FALSE
+png,h2o,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",79.526,13.561,7,56.192,0.083,13,5.066,5,0.408,,FALSE,FALSE
+tanzania,h2o,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",35.789,2.161,2,30.075,1,8,0,0,1,,FALSE,FALSE
+tanzania,h2o,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",33.628,0,3,23.628,0.214,7,6.447,1,0.011,*,TRUE,TRUE
+tanzania,h2o,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",36.958,3.33,4,20.958,0.303,6,9.116,2,0.01,*,FALSE,FALSE
+tanzania,h2o,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",38.005,4.377,3,28.005,0.069,7,2.07,1,0.15,,FALSE,FALSE
+tanzania,h2o,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",37.94,4.312,4,21.94,0.27,6,8.134,2,0.017,*,FALSE,FALSE
+tanzania,h2o,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",45.567,11.939,5,20.567,0.316,5,9.507,3,0.023,*,FALSE,FALSE
+tanzania,h2o,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",44.935,11.307,5,19.935,0.337,5,10.139,3,0.017,*,FALSE,FALSE
+tanzania,h2o,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",88.656,55.028,7,18.656,0.38,3,11.419,5,0.044,*,FALSE,FALSE
+ecuador,lipid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",81.635,12.627,2,77.035,1,21,0,0,1,,FALSE,FALSE
+ecuador,lipid,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",69.007,0,3,61.744,0.198,20,15.291,1,0,***,TRUE,FALSE
+ecuador,lipid,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",70.563,1.555,4,60.34,0.217,19,16.694,2,0,***,TRUE,TRUE
+ecuador,lipid,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",84.09,15.083,3,76.827,0.003,20,0.208,1,0.648,,FALSE,FALSE
+ecuador,lipid,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",71.827,2.819,4,61.604,0.2,19,15.43,2,0,***,FALSE,FALSE
+ecuador,lipid,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",75.133,6.126,5,61.604,0.2,18,15.431,3,0.001,**,FALSE,FALSE
+ecuador,lipid,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",73.729,4.722,5,60.2,0.219,18,16.835,3,0.001,***,FALSE,FALSE
+ecuador,lipid,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",81.196,12.189,7,59.73,0.225,16,17.305,5,0.004,**,FALSE,FALSE
+png,lipid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",65.058,4.116,2,60.352,1,18,0,0,1,,FALSE,FALSE
+png,lipid,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",65.625,4.683,3,58.125,0.037,17,2.227,1,0.136,,FALSE,FALSE
+png,lipid,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",67.742,6.8,4,57.075,0.054,16,3.277,2,0.194,,FALSE,FALSE
+png,lipid,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",61.47,0.528,3,53.97,0.106,17,6.383,1,0.012,*,TRUE,FALSE
+png,lipid,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",60.942,0,4,50.275,0.167,16,10.077,2,0.006,**,TRUE,FALSE
+png,lipid,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",63.369,2.427,5,49.083,0.187,15,11.269,3,0.01,*,FALSE,FALSE
+png,lipid,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",62.917,1.975,5,48.631,0.194,15,11.721,3,0.008,**,TRUE,TRUE
+png,lipid,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",68.891,7.949,7,45.558,0.245,13,14.795,5,0.011,*,FALSE,FALSE
+tanzania,lipid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",36.087,0,2,30.373,1,8,0,0,1,,TRUE,TRUE
+tanzania,lipid,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",38.542,2.455,3,28.542,0.06,7,1.83,1,0.176,,FALSE,FALSE
+tanzania,lipid,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",41.823,5.736,4,25.823,0.15,6,4.55,2,0.103,,FALSE,FALSE
+tanzania,lipid,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",39.957,3.87,3,29.957,0.014,7,0.416,1,0.519,,FALSE,FALSE
+tanzania,lipid,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",43.412,7.325,4,27.412,0.097,6,2.961,2,0.228,,FALSE,FALSE
+tanzania,lipid,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",51.532,15.445,5,26.532,0.126,5,3.841,3,0.279,,FALSE,FALSE
+tanzania,lipid,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",50.245,14.158,5,25.245,0.169,5,5.128,3,0.163,,FALSE,FALSE
+tanzania,lipid,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",90.103,54.016,7,20.103,0.338,3,10.269,5,0.068,,FALSE,FALSE
+ecuador,nacl,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",83.397,4.028,2,78.797,1,21,0,0,1,,FALSE,FALSE
+ecuador,nacl,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",86.045,6.676,3,78.782,0,20,0.015,1,0.903,,FALSE,FALSE
+ecuador,nacl,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",89.003,9.634,4,78.781,0,19,0.016,2,0.992,,FALSE,FALSE
+ecuador,nacl,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",79.369,0,3,72.105,0.085,20,6.691,1,0.01,**,TRUE,TRUE
+ecuador,nacl,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",82.243,2.874,4,72.02,0.086,19,6.776,2,0.034,*,FALSE,FALSE
+ecuador,nacl,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",83.746,4.378,5,70.217,0.109,18,8.58,3,0.035,*,FALSE,FALSE
+ecuador,nacl,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",85.507,6.138,5,71.978,0.087,18,6.819,3,0.078,,FALSE,FALSE
+ecuador,nacl,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",85.931,6.563,7,64.465,0.182,16,14.332,5,0.014,*,FALSE,FALSE
+png,nacl,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",75.015,1.11,2,70.309,1,18,0,0,1,,TRUE,FALSE
+png,nacl,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",76.535,2.631,3,69.035,0.018,17,1.274,1,0.259,,FALSE,FALSE
+png,nacl,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",78.743,4.839,4,68.076,0.032,16,2.232,2,0.328,,FALSE,FALSE
+png,nacl,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",73.904,0,3,66.404,0.056,17,3.904,1,0.048,*,TRUE,TRUE
+png,nacl,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",75.936,2.031,4,65.269,0.072,16,5.04,2,0.08,,FALSE,FALSE
+png,nacl,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",78.264,4.359,5,63.978,0.09,15,6.331,3,0.097,,FALSE,FALSE
+png,nacl,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",78.23,4.326,5,63.945,0.091,15,6.364,3,0.095,,FALSE,FALSE
+png,nacl,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",85.126,11.222,7,61.793,0.121,13,8.516,5,0.13,,FALSE,FALSE
+tanzania,nacl,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",32.257,0,2,26.542,1,8,0,0,1,,TRUE,FALSE
+tanzania,nacl,elevation,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1)",32.795,0.538,3,22.795,0.141,7,3.748,1,0.053,,TRUE,TRUE
+tanzania,nacl,elevation-poly,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2)",38.208,5.951,4,22.208,0.163,6,4.335,2,0.114,,FALSE,FALSE
+tanzania,nacl,season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ seasons",36.373,4.116,3,26.373,0.006,7,0.169,1,0.681,,FALSE,FALSE
+tanzania,nacl,elevation + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons",38.792,6.536,4,22.792,0.141,6,3.75,2,0.153,,FALSE,FALSE
+tanzania,nacl,elevation * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",46.932,14.675,5,21.932,0.174,5,4.61,3,0.203,,FALSE,FALSE
+tanzania,nacl,elevation-poly + season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons",47.19,14.934,5,22.19,0.164,5,4.352,3,0.226,,FALSE,FALSE
+tanzania,nacl,elevation-poly * season,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",89.432,57.175,7,19.432,0.268,3,7.111,5,0.213,,FALSE,FALSE
