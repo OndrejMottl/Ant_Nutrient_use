@@ -103,12 +103,12 @@ fit_elev_region_season <-
           "region + season",
           "region * season",
           "elevation + region + season",
-          "elevation + region * season",
-          "elevation * region + season",
+          "(elevation + region) * season",
+          "(elevation * region) + season",
           "elevation * region * season",
           "elevation-poly + region + season",
-          "elevation-poly + region * season",
-          "elevation-poly * region + season",
+          "(elevation-poly + region) * season",
+          "(elevation-poly * region) + season",
           "elevation-poly * region * season"
         )
       ) %>%

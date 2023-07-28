@@ -1,73 +1,73 @@
-regions,sel_nutrient,mod_name,AICc,delta,model_df,deviance,d2,residual_df,lr_chisq,chisq_df,p_value_chisq,lr_signif,best_model_candidate,best_model
-ecuador,amino_acid,null,73.299,0,2,68.699,1,21,0,0,1,,TRUE,FALSE
-ecuador,amino_acid,g,75.156,1.858,3,67.893,0.012,20,0.806,1,0.369,,TRUE,TRUE
-ecuador,amino_acid,ht,75.454,2.155,3,68.191,0.007,20,0.508,1,0.476,,FALSE,FALSE
-ecuador,amino_acid,ps,75.897,2.598,3,68.634,0.001,20,0.065,1,0.798,,FALSE,FALSE
-png,amino_acid,null,70.441,0,2,65.735,1,18,0,0,1,,TRUE,FALSE
-png,amino_acid,g,73.071,2.63,3,65.571,0.003,17,0.164,1,0.685,,FALSE,FALSE
-png,amino_acid,ht,71.753,1.312,3,64.253,0.023,17,1.482,1,0.223,,TRUE,TRUE
-png,amino_acid,ps,73.23,2.789,3,65.73,0,17,0.005,1,0.942,,FALSE,FALSE
-tanzania,amino_acid,null,38.045,0,2,32.33,1,8,0,0,1,,TRUE,TRUE
-tanzania,amino_acid,g,42.226,4.182,3,32.226,0.003,7,0.104,1,0.747,,FALSE,FALSE
-tanzania,amino_acid,ht,41.941,3.896,3,31.941,0.012,7,0.39,1,0.532,,FALSE,FALSE
-tanzania,amino_acid,ps,42.327,4.282,3,32.327,0,7,0.004,1,0.952,,FALSE,FALSE
-ecuador,cho,null,77.389,0,2,72.789,1,21,0,0,1,,TRUE,TRUE
-ecuador,cho,g,80.029,2.64,3,72.766,0,20,0.023,1,0.879,,FALSE,FALSE
-ecuador,cho,ht,79.501,2.112,3,72.238,0.008,20,0.551,1,0.458,,FALSE,FALSE
-ecuador,cho,ps,79.89,2.5,3,72.627,0.002,20,0.163,1,0.687,,FALSE,FALSE
-png,cho,null,68.081,0,2,63.376,1,18,0,0,1,,TRUE,TRUE
-png,cho,g,70.843,2.762,3,63.343,0.001,17,0.032,1,0.857,,FALSE,FALSE
-png,cho,ht,70.728,2.646,3,63.228,0.002,17,0.148,1,0.701,,FALSE,FALSE
-png,cho,ps,70.869,2.787,3,63.369,0,17,0.007,1,0.933,,FALSE,FALSE
-tanzania,cho,null,28.412,0,2,22.698,1,8,0,0,1,,TRUE,TRUE
-tanzania,cho,g,31.817,3.405,3,21.817,0.039,7,0.881,1,0.348,,FALSE,FALSE
-tanzania,cho,ht,31.608,3.196,3,21.608,0.048,7,1.09,1,0.297,,FALSE,FALSE
-tanzania,cho,ps,32.611,4.199,3,22.611,0.004,7,0.087,1,0.768,,FALSE,FALSE
-ecuador,cho_amino_acid,null,79.196,2.669,2,74.596,1,21,0,0,1,,FALSE,FALSE
-ecuador,cho_amino_acid,g,77.984,1.457,3,70.721,0.052,20,3.875,1,0.049,*,TRUE,TRUE
-ecuador,cho_amino_acid,ht,76.527,0,3,69.264,0.071,20,5.332,1,0.021,*,TRUE,FALSE
-ecuador,cho_amino_acid,ps,81.858,5.331,3,74.595,0,20,0.001,1,0.978,,FALSE,FALSE
-png,cho_amino_acid,null,73.573,1.11,2,68.867,1,18,0,0,1,,TRUE,FALSE
-png,cho_amino_acid,g,74.215,1.752,3,66.715,0.031,17,2.152,1,0.142,,TRUE,FALSE
-png,cho_amino_acid,ht,72.463,0,3,64.963,0.057,17,3.904,1,0.048,*,TRUE,TRUE
-png,cho_amino_acid,ps,75.315,2.852,3,67.815,0.015,17,1.052,1,0.305,,FALSE,FALSE
-tanzania,cho_amino_acid,null,33.6,0,2,27.885,1,8,0,0,1,,TRUE,TRUE
-tanzania,cho_amino_acid,g,36.014,2.414,3,26.014,0.067,7,1.872,1,0.171,,FALSE,FALSE
-tanzania,cho_amino_acid,ht,37.545,3.945,3,27.545,0.012,7,0.34,1,0.56,,FALSE,FALSE
-tanzania,cho_amino_acid,ps,35.684,2.084,3,25.684,0.079,7,2.201,1,0.138,,FALSE,FALSE
-ecuador,h2o,null,61.307,0,2,56.707,1,21,0,0,1,,TRUE,FALSE
-ecuador,h2o,g,63.263,1.957,3,56,0.012,20,0.707,1,0.401,,TRUE,TRUE
-ecuador,h2o,ht,63.585,2.279,3,56.322,0.007,20,0.384,1,0.535,,FALSE,FALSE
-ecuador,h2o,ps,63.908,2.601,3,56.645,0.001,20,0.062,1,0.803,,FALSE,FALSE
-png,h2o,null,65.965,0,2,61.259,1,18,0,0,1,,TRUE,FALSE
-png,h2o,g,66.423,0.459,3,58.923,0.038,17,2.336,1,0.126,,TRUE,TRUE
-png,h2o,ht,68.286,2.321,3,60.786,0.008,17,0.473,1,0.492,,FALSE,FALSE
-png,h2o,ps,66.443,0.478,3,58.943,0.038,17,2.316,1,0.128,,TRUE,FALSE
-tanzania,h2o,null,35.789,0,2,30.075,1,8,0,0,1,,TRUE,TRUE
-tanzania,h2o,g,39.983,4.194,3,29.983,0.003,7,0.091,1,0.762,,FALSE,FALSE
-tanzania,h2o,ht,38.113,2.324,3,28.113,0.065,7,1.961,1,0.161,,FALSE,FALSE
-tanzania,h2o,ps,39.104,3.315,3,29.104,0.032,7,0.971,1,0.324,,FALSE,FALSE
-ecuador,lipid,null,81.635,2.846,2,77.035,1,21,0,0,1,,FALSE,FALSE
-ecuador,lipid,g,83.513,4.724,3,76.25,0.01,20,0.785,1,0.376,,FALSE,FALSE
-ecuador,lipid,ht,80.284,1.495,3,73.02,0.052,20,4.014,1,0.045,*,TRUE,FALSE
-ecuador,lipid,ps,78.788,0,3,71.525,0.072,20,5.509,1,0.019,*,TRUE,TRUE
-png,lipid,null,65.058,0,2,60.352,1,18,0,0,1,,TRUE,TRUE
-png,lipid,g,67.845,2.787,3,60.345,0,17,0.007,1,0.934,,FALSE,FALSE
-png,lipid,ht,67.635,2.577,3,60.135,0.004,17,0.218,1,0.641,,FALSE,FALSE
-png,lipid,ps,67.785,2.727,3,60.285,0.001,17,0.067,1,0.795,,FALSE,FALSE
-tanzania,lipid,null,36.087,0,2,30.373,1,8,0,0,1,,TRUE,FALSE
-tanzania,lipid,g,38.358,2.271,3,28.358,0.066,7,2.015,1,0.156,,FALSE,FALSE
-tanzania,lipid,ht,39.64,3.553,3,29.64,0.024,7,0.733,1,0.392,,FALSE,FALSE
-tanzania,lipid,ps,37.926,1.839,3,27.926,0.081,7,2.447,1,0.118,,TRUE,TRUE
-ecuador,nacl,null,83.397,0,2,78.797,1,21,0,0,1,,TRUE,FALSE
-ecuador,nacl,g,85.984,2.587,3,78.72,0.001,20,0.076,1,0.782,,FALSE,FALSE
-ecuador,nacl,ht,83.47,0.073,3,76.207,0.033,20,2.59,1,0.108,,TRUE,TRUE
-ecuador,nacl,ps,83.752,0.356,3,76.489,0.029,20,2.308,1,0.129,,TRUE,FALSE
-png,nacl,null,75.015,2.746,2,70.309,1,18,0,0,1,,FALSE,FALSE
-png,nacl,g,72.268,0,3,64.768,0.079,17,5.54,1,0.019,*,TRUE,TRUE
-png,nacl,ht,73.861,1.593,3,66.361,0.056,17,3.948,1,0.047,*,TRUE,FALSE
-png,nacl,ps,73.888,1.619,3,66.388,0.056,17,3.921,1,0.048,*,TRUE,FALSE
-tanzania,nacl,null,32.257,0,2,26.542,1,8,0,0,1,,TRUE,TRUE
-tanzania,nacl,g,35.75,3.493,3,25.75,0.03,7,0.793,1,0.373,,FALSE,FALSE
-tanzania,nacl,ht,34.649,2.393,3,24.649,0.071,7,1.893,1,0.169,,FALSE,FALSE
-tanzania,nacl,ps,34.719,2.463,3,24.719,0.069,7,1.823,1,0.177,,FALSE,FALSE
+regions,sel_nutrient,mod_name,mod_formula,AICc,delta,model_df,deviance,d2,residual_df,lr_chisq,chisq_df,p_value_chisq,lr_signif,best_model_candidate,best_model
+ecuador,amino_acid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",73.299,0,2,68.699,1,21,0,0,1,,TRUE,FALSE
+ecuador,amino_acid,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",75.156,1.858,3,67.893,0.012,20,0.806,1,0.369,,TRUE,TRUE
+ecuador,amino_acid,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",75.454,2.155,3,68.191,0.007,20,0.508,1,0.476,,FALSE,FALSE
+ecuador,amino_acid,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",75.897,2.598,3,68.634,0.001,20,0.065,1,0.798,,FALSE,FALSE
+png,amino_acid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",70.441,0,2,65.735,1,18,0,0,1,,TRUE,FALSE
+png,amino_acid,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",73.071,2.63,3,65.571,0.003,17,0.164,1,0.685,,FALSE,FALSE
+png,amino_acid,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",71.753,1.312,3,64.253,0.023,17,1.482,1,0.223,,TRUE,TRUE
+png,amino_acid,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",73.23,2.789,3,65.73,0,17,0.005,1,0.942,,FALSE,FALSE
+tanzania,amino_acid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",38.045,0,2,32.33,1,8,0,0,1,,TRUE,TRUE
+tanzania,amino_acid,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",42.226,4.182,3,32.226,0.003,7,0.104,1,0.747,,FALSE,FALSE
+tanzania,amino_acid,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",41.941,3.896,3,31.941,0.012,7,0.39,1,0.532,,FALSE,FALSE
+tanzania,amino_acid,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",42.327,4.282,3,32.327,0,7,0.004,1,0.952,,FALSE,FALSE
+ecuador,cho,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",77.389,0,2,72.789,1,21,0,0,1,,TRUE,TRUE
+ecuador,cho,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",80.029,2.64,3,72.766,0,20,0.023,1,0.879,,FALSE,FALSE
+ecuador,cho,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",79.501,2.112,3,72.238,0.008,20,0.551,1,0.458,,FALSE,FALSE
+ecuador,cho,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",79.89,2.5,3,72.627,0.002,20,0.163,1,0.687,,FALSE,FALSE
+png,cho,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",68.081,0,2,63.376,1,18,0,0,1,,TRUE,TRUE
+png,cho,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",70.843,2.762,3,63.343,0.001,17,0.032,1,0.857,,FALSE,FALSE
+png,cho,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",70.728,2.646,3,63.228,0.002,17,0.148,1,0.701,,FALSE,FALSE
+png,cho,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",70.869,2.787,3,63.369,0,17,0.007,1,0.933,,FALSE,FALSE
+tanzania,cho,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",28.412,0,2,22.698,1,8,0,0,1,,TRUE,TRUE
+tanzania,cho,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",31.817,3.405,3,21.817,0.039,7,0.881,1,0.348,,FALSE,FALSE
+tanzania,cho,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",31.608,3.196,3,21.608,0.048,7,1.09,1,0.297,,FALSE,FALSE
+tanzania,cho,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",32.611,4.199,3,22.611,0.004,7,0.087,1,0.768,,FALSE,FALSE
+ecuador,cho_amino_acid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",79.196,2.669,2,74.596,1,21,0,0,1,,FALSE,FALSE
+ecuador,cho_amino_acid,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",77.984,1.457,3,70.721,0.052,20,3.875,1,0.049,*,TRUE,TRUE
+ecuador,cho_amino_acid,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",76.527,0,3,69.264,0.071,20,5.332,1,0.021,*,TRUE,FALSE
+ecuador,cho_amino_acid,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",81.858,5.331,3,74.595,0,20,0.001,1,0.978,,FALSE,FALSE
+png,cho_amino_acid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",73.573,1.11,2,68.867,1,18,0,0,1,,TRUE,FALSE
+png,cho_amino_acid,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",74.215,1.752,3,66.715,0.031,17,2.152,1,0.142,,TRUE,FALSE
+png,cho_amino_acid,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",72.463,0,3,64.963,0.057,17,3.904,1,0.048,*,TRUE,TRUE
+png,cho_amino_acid,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",75.315,2.852,3,67.815,0.015,17,1.052,1,0.305,,FALSE,FALSE
+tanzania,cho_amino_acid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",33.6,0,2,27.885,1,8,0,0,1,,TRUE,TRUE
+tanzania,cho_amino_acid,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",36.014,2.414,3,26.014,0.067,7,1.872,1,0.171,,FALSE,FALSE
+tanzania,cho_amino_acid,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",37.545,3.945,3,27.545,0.012,7,0.34,1,0.56,,FALSE,FALSE
+tanzania,cho_amino_acid,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",35.684,2.084,3,25.684,0.079,7,2.201,1,0.138,,FALSE,FALSE
+ecuador,h2o,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",61.307,0,2,56.707,1,21,0,0,1,,TRUE,FALSE
+ecuador,h2o,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",63.263,1.957,3,56,0.012,20,0.707,1,0.401,,TRUE,TRUE
+ecuador,h2o,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",63.585,2.279,3,56.322,0.007,20,0.384,1,0.535,,FALSE,FALSE
+ecuador,h2o,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",63.908,2.601,3,56.645,0.001,20,0.062,1,0.803,,FALSE,FALSE
+png,h2o,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",65.965,0,2,61.259,1,18,0,0,1,,TRUE,FALSE
+png,h2o,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",66.423,0.459,3,58.923,0.038,17,2.336,1,0.126,,TRUE,TRUE
+png,h2o,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",68.286,2.321,3,60.786,0.008,17,0.473,1,0.492,,FALSE,FALSE
+png,h2o,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",66.443,0.478,3,58.943,0.038,17,2.316,1,0.128,,TRUE,FALSE
+tanzania,h2o,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",35.789,0,2,30.075,1,8,0,0,1,,TRUE,TRUE
+tanzania,h2o,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",39.983,4.194,3,29.983,0.003,7,0.091,1,0.762,,FALSE,FALSE
+tanzania,h2o,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",38.113,2.324,3,28.113,0.065,7,1.961,1,0.161,,FALSE,FALSE
+tanzania,h2o,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",39.104,3.315,3,29.104,0.032,7,0.971,1,0.324,,FALSE,FALSE
+ecuador,lipid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",81.635,2.846,2,77.035,1,21,0,0,1,,FALSE,FALSE
+ecuador,lipid,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",83.513,4.724,3,76.25,0.01,20,0.785,1,0.376,,FALSE,FALSE
+ecuador,lipid,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",80.284,1.495,3,73.02,0.052,20,4.014,1,0.045,*,TRUE,FALSE
+ecuador,lipid,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",78.788,0,3,71.525,0.072,20,5.509,1,0.019,*,TRUE,TRUE
+png,lipid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",65.058,0,2,60.352,1,18,0,0,1,,TRUE,TRUE
+png,lipid,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",67.845,2.787,3,60.345,0,17,0.007,1,0.934,,FALSE,FALSE
+png,lipid,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",67.635,2.577,3,60.135,0.004,17,0.218,1,0.641,,FALSE,FALSE
+png,lipid,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",67.785,2.727,3,60.285,0.001,17,0.067,1,0.795,,FALSE,FALSE
+tanzania,lipid,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",36.087,0,2,30.373,1,8,0,0,1,,TRUE,FALSE
+tanzania,lipid,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",38.358,2.271,3,28.358,0.066,7,2.015,1,0.156,,FALSE,FALSE
+tanzania,lipid,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",39.64,3.553,3,29.64,0.024,7,0.733,1,0.392,,FALSE,FALSE
+tanzania,lipid,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",37.926,1.839,3,27.926,0.081,7,2.447,1,0.118,,TRUE,TRUE
+ecuador,nacl,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",83.397,0,2,78.797,1,21,0,0,1,,TRUE,FALSE
+ecuador,nacl,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",85.984,2.587,3,78.72,0.001,20,0.076,1,0.782,,FALSE,FALSE
+ecuador,nacl,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",83.47,0.073,3,76.207,0.033,20,2.59,1,0.108,,TRUE,TRUE
+ecuador,nacl,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",83.752,0.356,3,76.489,0.029,20,2.308,1,0.129,,TRUE,FALSE
+png,nacl,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",75.015,2.746,2,70.309,1,18,0,0,1,,FALSE,FALSE
+png,nacl,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",72.268,0,3,64.768,0.079,17,5.54,1,0.019,*,TRUE,TRUE
+png,nacl,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",73.861,1.593,3,66.361,0.056,17,3.948,1,0.047,*,TRUE,FALSE
+png,nacl,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",73.888,1.619,3,66.388,0.056,17,3.921,1,0.048,*,TRUE,FALSE
+tanzania,nacl,null,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ 1",32.257,0,2,26.542,1,8,0,0,1,,TRUE,TRUE
+tanzania,nacl,g,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_generalistic_prop",35.75,3.493,3,25.75,0.03,7,0.793,1,0.373,,FALSE,FALSE
+tanzania,nacl,ht,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_herbivorous_trophobiotic_prop",34.649,2.393,3,24.649,0.071,7,1.893,1,0.169,,FALSE,FALSE
+tanzania,nacl,ps,"cbind(n_occurecnes, max_occurecnes - n_occurecnes) ~ n_occ_predator_scavenger_prop",34.719,2.463,3,24.719,0.069,7,1.823,1,0.177,,FALSE,FALSE

@@ -61,8 +61,8 @@ fit_guild_elev_region_season <-
           "region + season",
           "region * season",
           "elevation + region + season",
-          "elevation + region * season",
-          "elevation * region + season",
+          "(elevation + region) * season",
+          "(elevation * region) + season",
           "elevation * region * season"
         )
       ) %>%
