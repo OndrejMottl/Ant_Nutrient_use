@@ -1,24 +1,24 @@
-mod_name,AICc,delta,model_df,deviance,d2,residual_df,lr_chisq,chisq_df,p_value_chisq,lr_signif,best_model_candidate,best_model
-null,826.991,122.254,2,822.833,1,77,0,0,1,,FALSE,FALSE
-elevation,729.851,25.114,3,723.531,0.121,76,99.301,1,0,***,FALSE,FALSE
-elevation-poly,713.645,8.908,4,705.105,0.143,75,117.728,2,0,***,FALSE,FALSE
-region,825.11,120.373,4,816.57,0.008,75,6.263,2,0.044,*,FALSE,FALSE
-season,829.049,124.312,3,822.729,0,76,0.104,1,0.747,,FALSE,FALSE
-elevation + region,730.453,25.716,5,719.631,0.125,74,103.201,3,0,***,FALSE,FALSE
-elevation * region,725.006,20.269,7,709.429,0.138,72,113.404,5,0,***,FALSE,FALSE
-elevation + season,732.07,27.333,4,723.53,0.121,75,99.303,2,0,***,FALSE,FALSE
-elevation * season,733.718,28.981,5,722.897,0.121,74,99.936,3,0,***,FALSE,FALSE
-elevation-poly + region,716.498,11.761,6,703.331,0.145,73,119.502,4,0,***,FALSE,FALSE
-elevation-poly * region,704.737,0,10,681.502,0.172,69,141.331,8,0,***,TRUE,TRUE
-elevation-poly + season,715.921,11.184,5,705.1,0.143,74,117.733,3,0,***,FALSE,FALSE
-elevation-poly * season,719.474,14.737,7,703.896,0.145,72,118.937,5,0,***,FALSE,FALSE
-region + season,827.371,122.634,5,816.549,0.008,74,6.283,3,0.099,,FALSE,FALSE
-region * season,829.9,125.163,7,814.323,0.01,72,8.51,5,0.13,,FALSE,FALSE
-elevation + region + season,732.789,28.052,6,719.622,0.125,73,103.211,4,0,***,FALSE,FALSE
-elevation + region * season,735.265,30.528,9,714.657,0.131,70,108.176,7,0,***,FALSE,FALSE
-elevation * region + season,727.486,22.749,8,709.428,0.138,71,113.405,6,0,***,FALSE,FALSE
-elevation * region * season,727.358,22.621,13,695.758,0.154,66,127.075,11,0,***,FALSE,FALSE
-elevation-poly + region + season,718.909,14.172,7,703.331,0.145,72,119.502,5,0,***,FALSE,FALSE
-elevation-poly + region * season,722.629,17.892,11,696.688,0.153,68,126.144,9,0,***,FALSE,FALSE
-elevation-poly * region + season,707.13,2.393,11,681.19,0.172,68,141.643,9,0,***,FALSE,FALSE
-elevation-poly * region * season,711.213,6.476,19,660.331,0.197,60,162.502,17,0,***,FALSE,FALSE
+mod_name,mod_formula,AICc,delta,model_df,deviance,d2,residual_df,lr_chisq,chisq_df,p_value_chisq,lr_signif,best_model_candidate,best_model
+null,n_abundance ~ 1,826.991,122.254,2,822.833,1,77,0,0,1,,FALSE,FALSE
+elevation,"n_abundance ~ poly(elevation_mean, 1)",729.851,25.114,3,723.531,0.121,76,99.301,1,0,***,FALSE,FALSE
+elevation-poly,"n_abundance ~ poly(elevation_mean, 2)",713.645,8.908,4,705.105,0.143,75,117.728,2,0,***,FALSE,FALSE
+region,n_abundance ~ regions,825.11,120.373,4,816.57,0.008,75,6.263,2,0.044,*,FALSE,FALSE
+season,n_abundance ~ seasons,829.049,124.312,3,822.729,0,76,0.104,1,0.747,,FALSE,FALSE
+elevation + region,"n_abundance ~ poly(elevation_mean, 1) + regions",730.453,25.716,5,719.631,0.125,74,103.201,3,0,***,FALSE,FALSE
+elevation * region,"n_abundance ~ poly(elevation_mean, 1) + regions + poly(elevation_mean, 1):regions",725.006,20.269,7,709.429,0.138,72,113.404,5,0,***,FALSE,FALSE
+elevation + season,"n_abundance ~ poly(elevation_mean, 1) + seasons",732.07,27.333,4,723.53,0.121,75,99.303,2,0,***,FALSE,FALSE
+elevation * season,"n_abundance ~ poly(elevation_mean, 1) + seasons + poly(elevation_mean, 1):seasons",733.718,28.981,5,722.897,0.121,74,99.936,3,0,***,FALSE,FALSE
+elevation-poly + region,"n_abundance ~ poly(elevation_mean, 2) + regions",716.498,11.761,6,703.331,0.145,73,119.502,4,0,***,FALSE,FALSE
+elevation-poly * region,"n_abundance ~ poly(elevation_mean, 2) + regions + poly(elevation_mean, 2):regions",704.737,0,10,681.502,0.172,69,141.331,8,0,***,TRUE,TRUE
+elevation-poly + season,"n_abundance ~ poly(elevation_mean, 2) + seasons",715.921,11.184,5,705.1,0.143,74,117.733,3,0,***,FALSE,FALSE
+elevation-poly * season,"n_abundance ~ poly(elevation_mean, 2) + seasons + poly(elevation_mean, 2):seasons",719.474,14.737,7,703.896,0.145,72,118.937,5,0,***,FALSE,FALSE
+region + season,n_abundance ~ regions + seasons,827.371,122.634,5,816.549,0.008,74,6.283,3,0.099,,FALSE,FALSE
+region * season,n_abundance ~ regions + seasons + regions:seasons,829.9,125.163,7,814.323,0.01,72,8.51,5,0.13,,FALSE,FALSE
+elevation + region + season,"n_abundance ~ poly(elevation_mean, 1) + regions + seasons",732.789,28.052,6,719.622,0.125,73,103.211,4,0,***,FALSE,FALSE
+(elevation + region) * season,"n_abundance ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):seasons + regions:seasons",735.265,30.528,9,714.657,0.131,70,108.176,7,0,***,FALSE,FALSE
+(elevation * region) + season,"n_abundance ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):regions",727.486,22.749,8,709.428,0.138,71,113.405,6,0,***,FALSE,FALSE
+elevation * region * season,"n_abundance ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):regions + poly(elevation_mean, 1):seasons + regions:seasons + poly(elevation_mean, 1):regions:seasons",727.358,22.621,13,695.758,0.154,66,127.075,11,0,***,FALSE,FALSE
+elevation-poly + region + season,"n_abundance ~ poly(elevation_mean, 2) + regions + seasons",718.909,14.172,7,703.331,0.145,72,119.502,5,0,***,FALSE,FALSE
+(elevation-poly + region) * season,"n_abundance ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):seasons + regions:seasons",722.629,17.892,11,696.688,0.153,68,126.144,9,0,***,FALSE,FALSE
+(elevation-poly * region) + season,"n_abundance ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):regions",707.13,2.393,11,681.19,0.172,68,141.643,9,0,***,FALSE,FALSE
+elevation-poly * region * season,"n_abundance ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):regions + poly(elevation_mean, 2):seasons + regions:seasons + poly(elevation_mean, 2):regions:seasons",711.213,6.476,19,660.331,0.197,60,162.502,17,0,***,FALSE,FALSE

@@ -10,8 +10,8 @@ n_occ_generalistic_prop,elevation * season,"n_occ_prop ~ poly(elevation_mean, el
 n_occ_generalistic_prop,region + season,n_occ_prop ~ regions + seasons,28.378,7.255,7,11.889,0.476,46,10.812,3,0.013,*,FALSE,FALSE
 n_occ_generalistic_prop,region * season,n_occ_prop ~ regions + seasons + regions:seasons,34.045,12.923,9,11.859,0.478,44,10.842,5,0.055,,FALSE,FALSE
 n_occ_generalistic_prop,elevation + region + season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons",21.122,0,8,1.85,0.919,45,20.851,4,0,***,TRUE,TRUE
-n_occ_generalistic_prop,elevation + region * season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):seasons + regions:seasons",24.263,3.14,11,-4.176,1.184,42,26.877,7,0,***,FALSE,FALSE
-n_occ_generalistic_prop,elevation * region + season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):regions",23.639,2.516,10,-1.599,1.07,43,24.3,6,0,***,FALSE,FALSE
+n_occ_generalistic_prop,(elevation + region) * season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):seasons + regions:seasons",24.263,3.14,11,-4.176,1.184,42,26.877,7,0,***,FALSE,FALSE
+n_occ_generalistic_prop,(elevation * region) + season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):regions",23.639,2.516,10,-1.599,1.07,43,24.3,6,0,***,FALSE,FALSE
 n_occ_generalistic_prop,elevation * region * season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):regions + poly(elevation_mean, elev_poly):seasons + regions:seasons + poly(elevation_mean, elev_poly):regions:seasons",30.66,9.538,15,-12.313,1.542,38,35.014,11,0,***,FALSE,FALSE
 n_occ_herbivorous_trophobiotic_prop,null,n_occ_prop ~ 1,47.417,12.552,4,38.584,1,49,0,0,1,,FALSE,FALSE
 n_occ_herbivorous_trophobiotic_prop,elevation,"n_occ_prop ~ poly(elevation_mean, elev_poly)",45.714,10.85,5,34.438,0.107,48,4.146,1,0.042,*,FALSE,FALSE
@@ -24,8 +24,8 @@ n_occ_herbivorous_trophobiotic_prop,elevation * season,"n_occ_prop ~ poly(elevat
 n_occ_herbivorous_trophobiotic_prop,region + season,n_occ_prop ~ regions + seasons,44.444,9.579,7,27.955,0.275,46,10.629,3,0.014,*,FALSE,FALSE
 n_occ_herbivorous_trophobiotic_prop,region * season,n_occ_prop ~ regions + seasons + regions:seasons,46.881,12.017,9,24.695,0.36,44,13.888,5,0.016,*,FALSE,FALSE
 n_occ_herbivorous_trophobiotic_prop,elevation + region + season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons",34.864,0,8,15.592,0.596,45,22.992,4,0,***,TRUE,TRUE
-n_occ_herbivorous_trophobiotic_prop,elevation + region * season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):seasons + regions:seasons",39.557,4.693,11,11.118,0.712,42,27.465,7,0,***,FALSE,FALSE
-n_occ_herbivorous_trophobiotic_prop,elevation * region + season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):regions",40.745,5.881,10,15.507,0.598,43,23.076,6,0.001,***,FALSE,FALSE
+n_occ_herbivorous_trophobiotic_prop,(elevation + region) * season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):seasons + regions:seasons",39.557,4.693,11,11.118,0.712,42,27.465,7,0,***,FALSE,FALSE
+n_occ_herbivorous_trophobiotic_prop,(elevation * region) + season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):regions",40.745,5.881,10,15.507,0.598,43,23.076,6,0.001,***,FALSE,FALSE
 n_occ_herbivorous_trophobiotic_prop,elevation * region * season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):regions + poly(elevation_mean, elev_poly):seasons + regions:seasons + poly(elevation_mean, elev_poly):regions:seasons",52.661,17.797,15,9.688,0.749,38,28.895,11,0.002,**,FALSE,FALSE
 n_occ_predator_scavenger_prop,null,n_occ_prop ~ 1,64.91,39.097,4,56.077,1,49,0,0,1,,FALSE,FALSE
 n_occ_predator_scavenger_prop,elevation,"n_occ_prop ~ poly(elevation_mean, elev_poly)",62.06,36.246,5,50.783,0.094,48,5.294,1,0.021,*,FALSE,FALSE
@@ -38,6 +38,6 @@ n_occ_predator_scavenger_prop,elevation * season,"n_occ_prop ~ poly(elevation_me
 n_occ_predator_scavenger_prop,region + season,n_occ_prop ~ regions + seasons,59.42,33.607,7,42.931,0.234,46,13.146,3,0.004,**,FALSE,FALSE
 n_occ_predator_scavenger_prop,region * season,n_occ_prop ~ regions + seasons + regions:seasons,62.659,36.846,9,40.473,0.278,44,15.604,5,0.008,**,FALSE,FALSE
 n_occ_predator_scavenger_prop,elevation + region + season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons",38.772,12.958,8,19.499,0.652,45,36.578,4,0,***,FALSE,FALSE
-n_occ_predator_scavenger_prop,elevation + region * season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):seasons + regions:seasons",41.138,15.325,11,12.699,0.774,42,43.378,7,0,***,FALSE,FALSE
-n_occ_predator_scavenger_prop,elevation * region + season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):regions",27.815,2.002,10,2.577,0.954,43,53.5,6,0,***,FALSE,FALSE
+n_occ_predator_scavenger_prop,(elevation + region) * season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):seasons + regions:seasons",41.138,15.325,11,12.699,0.774,42,43.378,7,0,***,FALSE,FALSE
+n_occ_predator_scavenger_prop,(elevation * region) + season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):regions",27.815,2.002,10,2.577,0.954,43,53.5,6,0,***,FALSE,FALSE
 n_occ_predator_scavenger_prop,elevation * region * season,"n_occ_prop ~ poly(elevation_mean, elev_poly) + regions + seasons + poly(elevation_mean, elev_poly):regions + poly(elevation_mean, elev_poly):seasons + regions:seasons + poly(elevation_mean, elev_poly):regions:seasons",34.512,8.699,15,-8.461,1.151,38,64.538,11,0,***,FALSE,FALSE

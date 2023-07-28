@@ -15,12 +15,12 @@ Species richness,elevation-poly * season,"n_species ~ poly(elevation_mean, 2) + 
 Species richness,region + season,n_species ~ regions + seasons,448.455,148.129,5,437.633,0.006,74,2.622,3,0.454,,FALSE,FALSE
 Species richness,region * season,n_species ~ regions + seasons + regions:seasons,451.572,151.247,7,435.995,0.01,72,4.26,5,0.513,,FALSE,FALSE
 Species richness,elevation + region + season,"n_species ~ poly(elevation_mean, 1) + regions + seasons",331.723,31.397,6,318.556,0.276,73,121.698,4,0,***,FALSE,FALSE
-Species richness,elevation + region * season,"n_species ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):seasons + regions:seasons",331.609,31.284,9,311.001,0.294,70,129.254,7,0,***,FALSE,FALSE
-Species richness,elevation * region + season,"n_species ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):regions",330.759,30.433,8,312.702,0.29,71,127.553,6,0,***,FALSE,FALSE
+Species richness,(elevation + region) * season,"n_species ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):seasons + regions:seasons",331.609,31.284,9,311.001,0.294,70,129.254,7,0,***,FALSE,FALSE
+Species richness,(elevation * region) + season,"n_species ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):regions",330.759,30.433,8,312.702,0.29,71,127.553,6,0,***,FALSE,FALSE
 Species richness,elevation * region * season,"n_species ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):regions + poly(elevation_mean, 1):seasons + regions:seasons + poly(elevation_mean, 1):regions:seasons",329.509,29.183,13,297.909,0.323,66,142.346,11,0,***,FALSE,FALSE
 Species richness,elevation-poly + region + season,"n_species ~ poly(elevation_mean, 2) + regions + seasons",302.528,2.202,7,286.95,0.348,72,153.304,5,0,***,FALSE,FALSE
-Species richness,elevation-poly + region * season,"n_species ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):seasons + regions:seasons",301.185,0.859,11,275.244,0.375,68,165.01,9,0,***,TRUE,TRUE
-Species richness,elevation-poly * region + season,"n_species ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):regions",307.405,7.079,11,281.465,0.361,68,158.79,9,0,***,FALSE,FALSE
+Species richness,(elevation-poly + region) * season,"n_species ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):seasons + regions:seasons",301.185,0.859,11,275.244,0.375,68,165.01,9,0,***,TRUE,TRUE
+Species richness,(elevation-poly * region) + season,"n_species ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):regions",307.405,7.079,11,281.465,0.361,68,158.79,9,0,***,FALSE,FALSE
 Species richness,elevation-poly * region * season,"n_species ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):regions + poly(elevation_mean, 2):seasons + regions:seasons + poly(elevation_mean, 2):regions:seasons",310.623,10.298,19,259.742,0.41,60,180.513,17,0,***,FALSE,FALSE
 Species occurences,null,n_occurecnes ~ 1,541.859,121.132,2,537.701,1,77,0,0,1,,FALSE,FALSE
 Species occurences,elevation,"n_occurecnes ~ poly(elevation_mean, 1)",458.203,37.476,3,451.883,0.16,76,85.818,1,0,***,FALSE,FALSE
@@ -38,10 +38,10 @@ Species occurences,elevation-poly * season,"n_occurecnes ~ poly(elevation_mean, 
 Species occurences,region + season,n_occurecnes ~ regions + seasons,548.342,127.615,5,537.52,0,74,0.181,3,0.981,,FALSE,FALSE
 Species occurences,region * season,n_occurecnes ~ regions + seasons + regions:seasons,550.731,130.004,7,535.153,0.005,72,2.548,5,0.769,,FALSE,FALSE
 Species occurences,elevation + region + season,"n_occurecnes ~ poly(elevation_mean, 1) + regions + seasons",457.947,37.22,6,444.78,0.173,73,92.921,4,0,***,FALSE,FALSE
-Species occurences,elevation + region * season,"n_occurecnes ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):seasons + regions:seasons",457.789,37.062,9,437.18,0.187,70,100.521,7,0,***,FALSE,FALSE
-Species occurences,elevation * region + season,"n_occurecnes ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):regions",460.118,39.391,8,442.061,0.178,71,95.64,6,0,***,FALSE,FALSE
+Species occurences,(elevation + region) * season,"n_occurecnes ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):seasons + regions:seasons",457.789,37.062,9,437.18,0.187,70,100.521,7,0,***,FALSE,FALSE
+Species occurences,(elevation * region) + season,"n_occurecnes ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):regions",460.118,39.391,8,442.061,0.178,71,95.64,6,0,***,FALSE,FALSE
 Species occurences,elevation * region * season,"n_occurecnes ~ poly(elevation_mean, 1) + regions + seasons + poly(elevation_mean, 1):regions + poly(elevation_mean, 1):seasons + regions:seasons + poly(elevation_mean, 1):regions:seasons",457.373,36.647,13,425.773,0.208,66,111.928,11,0,***,FALSE,FALSE
 Species occurences,elevation-poly + region + season,"n_occurecnes ~ poly(elevation_mean, 2) + regions + seasons",431.779,11.053,7,416.202,0.226,72,121.499,5,0,***,FALSE,FALSE
-Species occurences,elevation-poly + region * season,"n_occurecnes ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):seasons + regions:seasons",429.909,9.182,11,403.969,0.249,68,133.732,9,0,***,FALSE,FALSE
-Species occurences,elevation-poly * region + season,"n_occurecnes ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):regions",432.181,11.455,11,406.241,0.244,68,131.46,9,0,***,FALSE,FALSE
+Species occurences,(elevation-poly + region) * season,"n_occurecnes ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):seasons + regions:seasons",429.909,9.182,11,403.969,0.249,68,133.732,9,0,***,FALSE,FALSE
+Species occurences,(elevation-poly * region) + season,"n_occurecnes ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):regions",432.181,11.455,11,406.241,0.244,68,131.46,9,0,***,FALSE,FALSE
 Species occurences,elevation-poly * region * season,"n_occurecnes ~ poly(elevation_mean, 2) + regions + seasons + poly(elevation_mean, 2):regions + poly(elevation_mean, 2):seasons + regions:seasons + poly(elevation_mean, 2):regions:seasons",420.727,0,19,369.846,0.312,60,167.856,17,0,***,TRUE,TRUE
